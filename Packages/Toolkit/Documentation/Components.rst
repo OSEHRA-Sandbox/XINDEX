@@ -54,6 +54,186 @@ FILES (Data Dictionaries)
 
 PRINT TEMPLATE
 --------------
+
+The following fields contain M code within this file:
+
+File    Field   Field Name        Comments
+----    -----   ----------        --------
+.4      1815    ROUTINE INVOKED
+
+SORT TEMPLATE
+-------------
+
+The following fields contain M code within this file:
+
+File     Field   Field Name                       Comments
+----     -----   ----------                       --------
+.4014    10      GET CODE
+.4014    11      QUERY CONDITION
+.4014    16      COMPUTED FIELD CODE
+.401418  5       RELATIONAL CODE
+.401419  2       OVERFLOW CODE
+.4014    20      SUBHEADER OUTPUT TRANSFORM OUT
+.4011624 4       DISPAR(0,n,OUT)
+.401     1815    ROUTINE INVOKED
+.401     1816    PREVIOUS ROUTINE INVOKED ROUOLD
+
+INPUT TEMPLATE
+--------------
+
+The following fields contain M code within this file:
+
+File     Field   Field Name                      Comments
+----     -----   ----------                      --------
+.402     1815    ROUTINE INVOKED
+.402     1816    PREVIOUS ROUTINE INVOKED ROUOLD
+
+FORM
+----
+
+The following fields contain M code within this file:
+
+File     Field   Field Name         Comments
+----     -----   ----------         --------
+.403     11      PRE ACTION
+.403     12      POST ACTION
+.403     14      POST SAVE
+.403     20      DATA VALIDATION
+.4031    11      PRE ACTION
+.4031    12      POST ACTION
+.4032    11      PRE ACTION
+.4032    12      POST ACTION
+.4032    98      COMPUTED MULTIPLE
+
+
+FUNCTION
+--------
+
+The following fields contain M code within this file:
+
+File     Field   Field Name      Comments
+----     -----   ----------      --------
+.5       .02     MUMPS CODE
+
+DIALOG
+------
+
+The following fields contain M code within this file:
+
+File     Field   Field Name           Comments
+----     -----   ----------           --------
+.84      6       POST MESSAGE ACTION
+
+BULLETIN
+--------
+
+There are no fields that directly take M code that should be Cross-Referenced.
+
+MAIL GROUP
+----------
+
+There are no fields that directly take M code that should be Cross-Referenced.
+
+HELP FRAME
+----------
+
+The following fields contain M code within this file:
+
+File     Field   Field Name               Comments
+----     -----   ----------               --------
+9.2      10.1    ENTRY EXECUTE STATEMENT
+9.2      10.2    EXIT EXECUTE STATEMENT
+
+ROUTINE
+-------
+
+Referenced by Routine name. need to fill in.
+
+OPTION
+------
+
+The following fields contain M code within this file:
+
+File     Field   Field Name               Comments
+----     -----   ----------               --------
+19       15      EXIT ACTION
+19       20      ENTRY ACTION
+19       25      ROUTINE
+19       26      HEADER
+19       34      DIC(S)
+19       35      DIC(W)
+19       54      *DIE(W)
+19       67      DHD
+19       69      DIS(0)
+19       69.1    DIS(1)
+19       69.2    DIS(2)
+19       69.3    DIS(3)
+19       71      DHIT
+19       72      DIOBEG
+19       73      DIOEND
+19.04    3       SUBHEADER OUTPUT TRANSFORM
+19       100     *ORDER PRINT ACTION
+19       100.1   *ORDER CANCEL ACTION
+19       100.2   *ORDER PURGE ACTION
+19.05    2       RULES
+
+SECURITY KEY
+------------
+
+The following fields contain M code within this file:
+
+File    Field   Field Name           Comments
+----    -----   ----------           --------
+19.1    4       GRANTING CONDITION
+
+PROTOCOL
+--------
+TBD
+
+LIST TEMPLATE
+-------------
+
+The following fields contain M code within this file:
+
+File    Field   Field Name    Comments
+----    -----   ----------    --------
+409.61  100     HEADER CODE
+409.61  102     EXPAND CODE
+409.61  103     HELP CODE
+409.61  105     EXIT CODE
+409.61  106     ENTRY CODE
+409.61  107     ARRAY NAME    Holds a variable name prefaced by a space
+
+HL7 APPLICATION PARAMETER
+-------------------------
+
+There are no fields that directly take M code that should be Cross-Referenced.
+
+HL LOWER LEVEL PROTOCOL
+-----------------------
+
+TBD
+
+HL LOGICAL LINK
+---------------
+
+There are no fields that directly take M code that should be Cross-Referenced.
+
+REMOTE PROCEDURE
+----------------
+
+There are no fields that directly take M code that should be Cross-Referenced.
+There is a reference to a TAG (File 8994 Field #.02) and ROUTINE (File 8994 Field #.03).
+Since RPCs should be namespaced into the package and the routines in which they run also
+namespaced into the package there shouldn't be anything new to be added to XINDEX.
+
+
+Data Dictionaries
+=================
+
+PRINT TEMPLATE
+--------------
+
 STANDARD DATA DICTIONARY #.4 -- PRINT TEMPLATE FILE
 STORED IN ^DIPT(
 
@@ -552,6 +732,7 @@ DIPTED                        JUN 11, 1998@17:08  USER #0
 
 SORT TEMPLATE
 -------------
+
 STANDARD DATA DICTIONARY #.401 -- SORT TEMPLATE FILE
 STORED IN ^DIBT(
 
@@ -1730,6 +1911,7 @@ DIBTED                        SEP 04, 1998@13:57  USER #0
 
 INPUT TEMPLATE
 --------------
+
 STANDARD DATA DICTIONARY #.402 -- INPUT TEMPLATE FILE
 STORED IN ^DIE(
 
@@ -1922,9 +2104,9 @@ DIETED                        AUG 01, 1998@07:40  USER #0
   DIETED                        DD #.402
   DIETED2                       DD #.402
 
-
 FORM
 ----
+
 STANDARD DATA DICTIONARY #.403 -- FORM FILE
 STORED IN ^DIST(.403
 
@@ -2707,12 +2889,6 @@ ELEMENT       TITLE                 LOCATION      TYPE
                                 which the Computed Multiple values are
                                 retrieved (usually the file being edited by the
                                 Form).
-
-
-
-
-
-
 .403,21400    BUILD(S)                ;  COMPUTED MULTIPLE POINTER TO BUILD FIL
                                 E (#9.6)
 
@@ -2768,6 +2944,7 @@ DDGF PAGE SELECT              APR 19, 1993        USER #0
 
 FUNCTION
 --------
+
 STANDARD DATA DICTIONARY #.5 -- FUNCTION FILE
 STORED IN ^DD("FUNC",
 
@@ -2841,6 +3018,7 @@ FORM(S)/BLOCK(S):
 
 DIALOG
 ------
+
 STANDARD DATA DICTIONARY #.84 -- DIALOG FILE
 STORED IN ^DI(.84,
 
@@ -3104,10 +3282,6 @@ ELEMENT       TITLE                 LOCATION      TYPE
                                 entry.  This field may contain windows for
                                 variable parameters the same as the TEXT field.
 
-
-
-
-
 .84,8         CALLED FROM ENTRY POINTS 5;0 Multiple #.841
                                  (Add New Entry without Asking)
 
@@ -3175,6 +3349,7 @@ FORM(S)/BLOCK(S):
 
 BULLETIN
 --------
+
 STANDARD DATA DICTIONARY #3.6 -- BULLETIN FILE
 STORED IN ^XMB(3.6,
 
@@ -3363,6 +3538,7 @@ FORM(S)/BLOCK(S):
 
 MAIL GROUP
 ----------
+
 STANDARD DATA DICTIONARY #3.8 -- MAIL GROUP FILE
 STORED IN ^XMB(3.8,
 
@@ -4101,6 +4277,7 @@ FORM(S)/BLOCK(S):
 
 HELP FRAME
 ----------
+
 STANDARD DATA DICTIONARY #9.2 -- HELP FRAME FILE
 STORED IN ^DIC(9.2,
 
@@ -4250,8 +4427,7 @@ ELEMENT       TITLE                 LOCATION      TYPE
 
 9.22,.01        RELATED FRAME KEYWORD  0;1 FREE TEXT (Multiply asked)
 
-                FRAMES WHICH MAY BE CHOSEN FOR GREATER DETAIL, AT THE USER'S DIS
-CRETION
+                FRAMES WHICH MAY BE CHOSEN FOR GREATER DETAIL, AT THE USER'S DISCRETION
                 INPUT TRANSFORM:  K:$L(X)>30!($L(X)<1)!'(X?.PNU) X
                 LAST EDITED:      AUG 01, 1991
                 HELP-PROMPT:      Answer must be 1-30 characters in length.
@@ -4366,8 +4542,7 @@ CRETION
 9.24,.01        EDITOR                 0;1 POINTER TO NEW PERSON FILE (#200)
                                    (Multiply asked)
 
-                A LIST OF FRAMES WHICH SHOULD BE SEQUENTIALLY SCANNED AFTER THIS
- ONE.
+                A LIST OF FRAMES WHICH SHOULD BE SEQUENTIALLY SCANNED AFTER THIS ONE.
                 LAST EDITED:      SEP 08, 1989
                 DESCRIPTION:      Users who are allowed to edit this help
                                   frame, as determined by the author.
@@ -4452,6 +4627,7 @@ FORM(S)/BLOCK(S):
 
 ROUTINE
 -------
+
 STANDARD DATA DICTIONARY #9.8 -- ROUTINE FILE
 STORED IN ^DIC(9.8,
 
@@ -5062,6 +5238,7 @@ FORM(S)/BLOCK(S):
 
 OPTION
 ------
+
 STANDARD DATA DICTIONARY #19 -- OPTION FILE
 STORED IN ^DIC(19,
 
@@ -7635,8 +7812,11 @@ XQEDTOPT                      NOV 04, 1997@12:03  USER #0
   CONTEXT                       DD #19.01
         The form XQEDTOPT is the screen-based Option Editor.
 
+<HERE
+
 SECURITY KEY
 ------------
+
 STANDARD DATA DICTIONARY #19.1 -- SECURITY KEY FILE
 STORED IN ^DIC(19.1,
 
@@ -7890,6 +8070,7 @@ FORM(S)/BLOCK(S):
 
 PROTOCOL
 --------
+
 STANDARD DATA DICTIONARY #101 -- PROTOCOL FILE
 STORED IN ^ORD(101,
 
@@ -9614,6 +9795,7 @@ HL7 INTERFACE                 JUL 09, 1999@08:39  USER #0
 
 LIST TEMPLATE
 -------------
+
 STANDARD DATA DICTIONARY #409.61 -- LIST TEMPLATE FILE
 STORED IN ^SD(409.61,
 
@@ -10307,6 +10489,7 @@ FORM(S)/BLOCK(S):
 
 HL7 APPLICATION PARAMETER
 -------------------------
+
 STANDARD DATA DICTIONARY #771 -- HL7 APPLICATION PARAMETER FILE
 STORED IN ^HL(771,
 
@@ -10679,11 +10862,9 @@ FORM(S)/BLOCK(S):
 HL7 APP                       JUL 01, 1999@15:04  USER #0
   HL7 APP BLK1                  DD #771
 
-HL LOWER LEVEL PROTOCOL
------------------------
-
-HL LOGICAL LINK
+HL Logical Link
 ---------------
+
 STANDARD DATA DICTIONARY #870 -- HL LOGICAL LINK FILE
 STORED IN ^HLCS(870,
 
@@ -11885,7 +12066,7 @@ HL7 LOGICAL LINK              JUL 06, 1999@12:07  USER #0
   HL7 LLP MAIL                  DD #870
   HL7 LLP X3.28                 DD #870
 
-REMOTE PROCEDURE
+Remote Procedure
 ----------------
 
 STANDARD DATA DICTIONARY #8994 -- REMOTE PROCEDURE FILE
