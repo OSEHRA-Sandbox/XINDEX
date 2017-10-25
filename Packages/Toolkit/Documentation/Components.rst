@@ -57,17 +57,20 @@ PRINT TEMPLATE
 
 The following fields contain M code within this file:
 
-File    Field   Field Name        Comments
-----    -----   ----------        --------
-.4      1815    ROUTINE INVOKED
+====     =====   ==========                       ========
+File     Field   Field Name                       Comments
+====     =====   ==========                       ========
+.4       1815    ROUTINE INVOKED
+====     =====   ==========                       ========
 
 SORT TEMPLATE
 -------------
 
 The following fields contain M code within this file:
 
+====     =====   ==========                       ========
 File     Field   Field Name                       Comments
-----     -----   ----------                       --------
+====     =====   ==========                       ========
 .4014    10      GET CODE
 .4014    11      QUERY CONDITION
 .4014    16      COMPUTED FIELD CODE
@@ -77,24 +80,28 @@ File     Field   Field Name                       Comments
 .4011624 4       DISPAR(0,n,OUT)
 .401     1815    ROUTINE INVOKED
 .401     1816    PREVIOUS ROUTINE INVOKED ROUOLD
+====     =====   ==========                       ========
 
 INPUT TEMPLATE
 --------------
 
 The following fields contain M code within this file:
 
-File     Field   Field Name                      Comments
-----     -----   ----------                      --------
+====     =====   ==========                       ========
+File     Field   Field Name                       Comments
+====     =====   ==========                       ========
 .402     1815    ROUTINE INVOKED
 .402     1816    PREVIOUS ROUTINE INVOKED ROUOLD
+====     =====   ==========                       ========
 
 FORM
 ----
 
 The following fields contain M code within this file:
 
-File     Field   Field Name         Comments
-----     -----   ----------         --------
+====     =====   ==========                       ========
+File     Field   Field Name                       Comments
+====     =====   ==========                       ========
 .403     11      PRE ACTION
 .403     12      POST ACTION
 .403     14      POST SAVE
@@ -104,25 +111,29 @@ File     Field   Field Name         Comments
 .4032    11      PRE ACTION
 .4032    12      POST ACTION
 .4032    98      COMPUTED MULTIPLE
-
+====     =====   ==========                       ========
 
 FUNCTION
 --------
 
 The following fields contain M code within this file:
 
-File     Field   Field Name      Comments
-----     -----   ----------      --------
+====     =====   ==========                       ========
+File     Field   Field Name                       Comments
+====     =====   ==========                       ========
 .5       .02     MUMPS CODE
+====     =====   ==========                       ========
 
 DIALOG
 ------
 
 The following fields contain M code within this file:
 
-File     Field   Field Name           Comments
-----     -----   ----------           --------
+====     =====   ==========                       ========
+File     Field   Field Name                       Comments
+====     =====   ==========                       ========
 .84      6       POST MESSAGE ACTION
+====     =====   ==========                       ========
 
 BULLETIN
 --------
@@ -139,10 +150,12 @@ HELP FRAME
 
 The following fields contain M code within this file:
 
-File     Field   Field Name               Comments
-----     -----   ----------               --------
+====     =====   ==========                       ========
+File     Field   Field Name                       Comments
+====     =====   ==========                       ========
 9.2      10.1    ENTRY EXECUTE STATEMENT
 9.2      10.2    EXIT EXECUTE STATEMENT
+====     =====   ==========                       ========
 
 ROUTINE
 -------
@@ -154,8 +167,9 @@ OPTION
 
 The following fields contain M code within this file:
 
-File     Field   Field Name               Comments
-----     -----   ----------               --------
+====     =====   ==========                       ========
+File     Field   Field Name                       Comments
+====     =====   ==========                       ========
 19       15      EXIT ACTION
 19       20      ENTRY ACTION
 19       25      ROUTINE
@@ -176,15 +190,18 @@ File     Field   Field Name               Comments
 19       100.1   *ORDER CANCEL ACTION
 19       100.2   *ORDER PURGE ACTION
 19.05    2       RULES
+====     =====   ==========                       ========
 
 SECURITY KEY
 ------------
 
 The following fields contain M code within this file:
 
-File    Field   Field Name           Comments
-----    -----   ----------           --------
-19.1    4       GRANTING CONDITION
+====     =====   ==========                       ========
+File     Field   Field Name                       Comments
+====     =====   ==========                       ========
+19.1     4       GRANTING CONDITION
+====     =====   ==========                       ========
 
 PROTOCOL
 --------
@@ -195,14 +212,16 @@ LIST TEMPLATE
 
 The following fields contain M code within this file:
 
-File    Field   Field Name    Comments
-----    -----   ----------    --------
-409.61  100     HEADER CODE
-409.61  102     EXPAND CODE
-409.61  103     HELP CODE
-409.61  105     EXIT CODE
-409.61  106     ENTRY CODE
-409.61  107     ARRAY NAME    Holds a variable name prefaced by a space
+====     =====   ==========                       ========
+File     Field   Field Name                       Comments
+====     =====   ==========                       ========
+409.61   100     HEADER CODE
+409.61   102     EXPAND CODE
+409.61   103     HELP CODE
+409.61   105     EXIT CODE
+409.61   106     ENTRY CODE
+409.61   107     ARRAY NAME                       Holds a variable name prefaced by a space
+====     =====   ==========                       ========
 
 HL7 APPLICATION PARAMETER
 -------------------------
