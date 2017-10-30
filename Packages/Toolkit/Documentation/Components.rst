@@ -36,6 +36,12 @@ XINDEX already supports various components:
 
 XINDEX supports these non-routine components by creating Faux routines (adding data to ^UTILITY($J,{dd|{IEN},opt|{IEN},func|{IEN}) - dd|, opt|, and func| are treated like routine names, each item in the DD/option/function is treated as a new line in the Faux routine) and using them as input to XINDEX.
 
+
+Execution flow
+--------------
+
+Normal execution is by running D ^XINDEX from the top of the routine, this in-turn GOTOs the top of ^XINDX6, which asks all of the questions. It will initally ask for the list of routines, then ask for a build, install, or package to run against. START^XINDX10 will handle the package or build file components. The top of ^XINDX11 deals with getting all of the extra build components.
+
 COMPILED (INPUT & PRINT) TEMPLATES
 ----------------------------------
 
@@ -57,83 +63,83 @@ PRINT TEMPLATE
 
 The following fields contain M code within this file:
 
-====     =====   ===============                  ========
-File     Field   Field Name                       Comments
-====     =====   ===============                  ========
-.4       1815    ROUTINE INVOKED
-====     =====   ===============                  ========
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+.4        1815   ROUTINE INVOKED                  ^DIPT(D0,ROU)
+========  =====  ===============================  ===================================  =============================================
 
 SORT TEMPLATE
 -------------
 
 The following fields contain M code within this file:
 
-====     =====   ===============================  ========
-File     Field   Field Name                       Comments
-====     =====   ===============================  ========
-.4014    10      GET CODE
-.4014    11      QUERY CONDITION
-.4014    16      COMPUTED FIELD CODE
-.401418  5       RELATIONAL CODE
-.401419  2       OVERFLOW CODE
-.4014    20      SUBHEADER OUTPUT TRANSFORM OUT
-.4011624 4       DISPAR(0,n,OUT)
-.401     1815    ROUTINE INVOKED
-.401     1816    PREVIOUS ROUTINE INVOKED ROUOLD
-====     =====   ===============================  ========
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+.401      1815   ROUTINE INVOKED                  ^DIBT(D0,ROU)
+.401      1816   PREVIOUS ROUTINE INVOKED ROUOLD  ^DIBT(D0,ROUOLD)
+.4014     10     GET CODE                         ^DIBT(D0,2,D1,GET)                   Part of Sort Field Data Subfile
+.4014     11     QUERY CONDITION                  ^DIBT(D0,2,D1,QCON)                  Part of Sort Field Data Subfile
+.4014     16     COMPUTED FIELD CODE              ^DIBT(D0,2,D1,CM)                    Part of Sort Field Data Subfile
+.4014     20     SUBHEADER OUTPUT                 ^DIBT(D0,2,D1,OUT)                   Part of Sort Field Data Subfile
+.401418   5      RELATIONAL CODE                  ^DIBT(D0,2,D1,2,D2,RCOD)             Part of Relational Jump Field Data Subfile
+.401419   2      OVERFLOW CODE                    ^DIBT(D0,2,D1,3,D2,OVF0)             Part of Overflow Data Subfile
+.4011624  4      DISPAR(0,n,OUT)                  ^DIBT(D0,BY0D,D1,2)                  Part of Sort Range Data For BY(0)
+========  =====  ===============================  ===================================  =============================================
 
 INPUT TEMPLATE
 --------------
 
 The following fields contain M code within this file:
 
-====     =====   ===============================  ========
-File     Field   Field Name                       Comments
-====     =====   ===============================  ========
-.402     1815    ROUTINE INVOKED
-.402     1816    PREVIOUS ROUTINE INVOKED ROUOLD
-====     =====   ===============================  ========
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+.402      1815    ROUTINE INVOKED                 ^DIE(D0,ROU)
+.402      1816    PREVIOUS ROUTINE INVOKED        ^DIE(D0,ROUOLD)
+========  =====  ===============================  ===================================  =============================================
 
 FORM
 ----
 
 The following fields contain M code within this file:
 
-=====    =====   =================                ========
-File     Field   Field Name                       Comments
-=====    =====   =================                ========
-.403     11      PRE ACTION
-.403     12      POST ACTION
-.403     14      POST SAVE
-.403     20      DATA VALIDATION
-.4031    11      PRE ACTION
-.4031    12      POST ACTION
-.4032    11      PRE ACTION
-.4032    12      POST ACTION
-.4032    98      COMPUTED MULTIPLE
-=====    =====   =================                ========
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+.403      11     PRE ACTION                       ^DIST(.403,D0,11)
+.403      12     POST ACTION                      ^DIST(.403,D0,12)
+.403      14     POST SAVE                        ^DIST(.403,D0,14)
+.403      20     DATA VALIDATION                  ^DIST(.403,D0,20)
+.4031     11     PRE ACTION                       ^DIST(.403,D0,40,D1,11)
+.4031     12     POST ACTION                      ^DIST(.403,D0,40,D1,12)
+.4032     11     PRE ACTION                       ^DIST(.403,D0,40,D1,40,D2,11)
+.4032     12     POST ACTION                      ^DIST(.403,D0,40,D1,40,D2,12)
+.4032     98     COMPUTED MULTIPLE                ^DIST(.403,D0,40,D1,40,D2,COMP MUL)
+========  =====  ===============================  ===================================  =============================================
 
 FUNCTION
 --------
 
 The following fields contain M code within this file:
 
-====     =====   ==========                       ========
-File     Field   Field Name                       Comments
-====     =====   ==========                       ========
-.5       .02     MUMPS CODE
-====     =====   ==========                       ========
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+.5        .02    MUMPS CODE                       ^DD("FUNC",D0,1)
+========  =====  ===============================  ===================================  =============================================
 
 DIALOG
 ------
 
 The following fields contain M code within this file:
 
-====     =====   ===================              ========
-File     Field   Field Name                       Comments
-====     =====   ===================              ========
-.84      6       POST MESSAGE ACTION
-====     =====   ===================              ========
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+.84       6      POST MESSAGE ACTION              ^DI(.84,D0,6)
+========  =====  ===============================  ===================================  =============================================
 
 BULLETIN
 --------
@@ -150,12 +156,12 @@ HELP FRAME
 
 The following fields contain M code within this file:
 
-====     =====   =======================          ========
-File     Field   Field Name                       Comments
-====     =====   =======================          ========
-9.2      10.1    ENTRY EXECUTE STATEMENT
-9.2      10.2    EXIT EXECUTE STATEMENT
-====     =====   =======================          ========
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+9.2       10.1   ENTRY EXECUTE STATEMENT          ^DIC(9.2,D0,10.1)
+9.2       10.2   EXIT EXECUTE STATEMENT           ^DIC(9.2,D0,10.2)
+========  =====  ===============================  ===================================  =============================================
 
 ROUTINE
 -------
@@ -167,41 +173,42 @@ OPTION
 
 The following fields contain M code within this file:
 
-=====    =====   ===========================       ========
-File     Field   Field Name                       Comments
-=====    =====   ===========================       ========
-19       15      EXIT ACTION
-19       20      ENTRY ACTION
-19       25      ROUTINE
-19       26      HEADER
-19       34      DIC(S)
-19       35      DIC(W)
-19       54      *DIE(W)
-19       67      DHD
-19       69      DIS(0)
-19       69.1    DIS(1)
-19       69.2    DIS(2)
-19       69.3    DIS(3)
-19       71      DHIT
-19       72      DIOBEG
-19       73      DIOEND
-19.04    3       SUBHEADER OUTPUT TRANSFORM
-19       100     *ORDER PRINT ACTION
-19       100.1   *ORDER CANCEL ACTION
-19       100.2   *ORDER PURGE ACTION
-19.05    2       RULES
-=====    =====   ===========================       ========
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+19        15     EXIT ACTION                      ^DIC(19,D0,15)
+19        20     ENTRY ACTION                     ^DIC(19,D0,20)
+19        22     XQUIT EXECUTABLE                 ^DIC(19,D0,22)
+19        25     ROUTINE                          ^DIC(19,D0,25)
+19        26     HEADER                           ^DIC(19,D0,26)
+19        34     DIC(S)                           ^DIC(19,D0,34)
+19        35     DIC(W)                           ^DIC(19,D0,35)
+19        54     *DIE(W)                          ^DIC(19,D0,54)
+19        67     DHD                              ^DIC(19,D0,67)
+19        69     DIS(0)                           ^DIC(19,D0,69)
+19        69.1   DIS(1)                           ^DIC(19,D0,69.1)
+19        69.2   DIS(2)                           ^DIC(19,D0,69.2)
+19        69.3   DIS(3)                           ^DIC(19,D0,69.3)
+19        71     DHIT                             ^DIC(19,D0,71)
+19        72     DIOBEG                           ^DIC(19,D0,72)
+19        73     DIOEND                           ^DIC(19,D0,73)
+19        100    *ORDER PRINT ACTION              ^DIC(19,D0,100)
+19        100.1  *ORDER CANCEL ACTION             ^DIC(19,D0,100.1)
+19        100.2  *ORDER PURGE ACTION              ^DIC(19,D0,100.2)
+19.04     3      SUBHEADER OUTPUT TRANSFORM       ^DIC(19,D0,SUB,D1,1)                 Part of the DISPAR(0,N) Subfile
+19.05     2      RULES                            ^DIC(19,D0,RPC,D1,1)                 Part of the RPC Subfile
+========  =====  ===============================  ===================================  =============================================
 
 SECURITY KEY
 ------------
 
 The following fields contain M code within this file:
 
-====     =====   ==================               ========
-File     Field   Field Name                       Comments
-====     =====   ==================               ========
-19.1     4       GRANTING CONDITION
-====     =====   ==================               ========
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+19.1      4      GRANTING CONDITION               ^DIC(19.1,D0,4)
+========  =====  ===============================  ===================================  =============================================
 
 PROTOCOL
 --------
@@ -212,16 +219,16 @@ LIST TEMPLATE
 
 The following fields contain M code within this file:
 
-======   =====   ===========                      =========================================
-File     Field   Field Name                       Comments
-======   =====   ===========                      =========================================
-409.61   100     HEADER CODE
-409.61   102     EXPAND CODE
-409.61   103     HELP CODE
-409.61   105     EXIT CODE
-409.61   106     ENTRY CODE
-409.61   107     ARRAY NAME                       Holds a variable name prefaced by a space
-======   =====   ===========                      =========================================
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+409.61    100    HEADER CODE                      ^SD(409.61,D0,HDR)
+409.61    102    EXPAND CODE                      ^SD(409.61,D0,EXP)
+409.61    103    HELP CODE                        ^SD(409.61,D0,HLP)
+409.61    105    EXIT CODE                        ^SD(409.61,D0,FNL)
+409.61    106    ENTRY CODE                       ^SD(409.61,D0,INIT)
+409.61    107    ARRAY NAME                       ^SD(409.61,D0,ARRAY)                 Holds a variable name prefaced by a space
+========  =====  ===============================  ===================================  =============================================
 
 HL7 APPLICATION PARAMETER
 -------------------------
