@@ -24,12 +24,12 @@ PKG D NAMSP ;Package file
  S INDFN="^DD(""FUNC"",",INDRN="|func",INDD="Function",INDSB="FUNC" D NAME
  S INDFN="^DIC(19,",INDRN="|opt",INDD="Option",INDSB="OPT" D NAME
  ; CJE Add more build components that chan have MUMPS Code
- S INDFN="^DIBT(",INDRN="|sort",INDD="Sort Templates",INDSB="SORT" D NAME
- S INDFN="^DIST(.403,",INDRN="|form",INDD="Forms",INDSB="FORM" D NAME
- S INDFN="^DI(.84,",INDRN="|dialog",INDD="Dialogs",INDSB="DIALOG" D NAME
- S INDFN="^DIC(9.2,",INDRN="|help",INDD="Help Frames",INDSB="HELP" D NAME
+ S INDFN="^DIBT(",INDRN="|sort",INDD="Sort Template",INDSB="SORT" D NAME
+ S INDFN="^DIST(.403,",INDRN="|form",INDD="Form",INDSB="FORM" D NAME
+ S INDFN="^DI(.84,",INDRN="|dialog",INDD="Dialog",INDSB="DIALOG" D NAME
+ S INDFN="^DIC(9.2,",INDRN="|help",INDD="Help Frame",INDSB="HELP" D NAME
  S INDFN="^DIC(19.1,",INDRN="|key",INDD="Security Key",INDSB="KEY" D NAME
- S INDFN="^SD(409.61,",INDRN="|list",INDD="List Templates",INDSB="LIST" D NAME
+ S INDFN="^SD(409.61,",INDRN="|list",INDD="List Template",INDSB="LIST" D NAME
  Q
 NAME Q:'$D(@(INDFN_"""B"")"))
  D HDR
@@ -77,7 +77,7 @@ ADD ;Put code in UTILITY for processing
  ; B = {IEN}
  ; INDLC = {counter}
  ; INDRN = {faux routine prefix}
- ; INDC = {Field Name}
+ ; INDC = {IEN} ; {NAME} - {DISPLAY NAME}
  ; INDX = {code to be XINDEXED}
  ; INDL = {NAME field (.01) of IEN}
  ;
@@ -90,7 +90,7 @@ SORT ;Process Sort Templates
  ; File      Field  Field Name                       Global Location                      Comments
  ; ========  =====  ===============================  ===================================  =============================================
  ; .401      1815   ROUTINE INVOKED                  ^DIBT(D0,ROU)
- ; .401      1816   PREVIOUS ROUTINE INVOKED ROUOLD  ^DIBT(D0,ROUOLD)
+ ; .401      1816   PREVIOUS ROUTINE INVOKED         ^DIBT(D0,ROUOLD)
  ; .4014     10     GET CODE                         ^DIBT(D0,2,D1,GET)                   Part of Sort Field Data Subfile
  ; .4014     11     QUERY CONDITION                  ^DIBT(D0,2,D1,QCON)                  Part of Sort Field Data Subfile
  ; .4014     16     COMPUTED FIELD CODE              ^DIBT(D0,2,D1,CM)                    Part of Sort Field Data Subfile
@@ -146,7 +146,9 @@ DIALOG ;Process Dialogs
  ; .84       6      POST MESSAGE ACTION              ^DI(.84,D0,6)
  ; ========  =====  ===============================  ===================================  =============================================
  W !,"Processing Dialogs",!
- S INDX=$P($G(^DI(.84,B,6)),U,1)
+ S INDX=$S($L($P($G(^DI(.84,B,6)),U,1)):$P($G(^DI(.84,B,6)),U,1),1:";")
+ S INDC=B_" ; "_INDL_" - POST MESSAGE ACTION (#6)"
+ D ADD
  W "B: ",$G(B),!
  W "INDLC: ",$G(INDLC),!
  W "INDRN: ",$G(INDRN),!
@@ -164,8 +166,21 @@ HELP ;Process Help Frames
  ; 9.2       10.2   EXIT EXECUTE STATEMENT           ^DIC(9.2,D0,10.2)
  ; ========  =====  ===============================  ===================================  =============================================
  W !,"Processing Help Frames",!
- S INDX=$P($G(^DIC(9.2,B,10.1)),U,1)
- S INDX=INDX_" "_$P($G(^DIC(9.2,B,10.2)),U,1)
+ S INDX=$S($L($P($G(^DIC(9.2,B,10.1)),U,1)):$P($G(^DIC(9.2,B,10.1)),U,1),1:";")
+ S INDC=B_" ; "_INDL_" - ENTRY EXECUTE STATEMENT (#10.1)"
+ D ADD
+ W "FIELD 10.1",!
+ W "B: ",$G(B),!
+ W "INDLC: ",$G(INDLC),!
+ W "INDRN: ",$G(INDRN),!
+ W "INDC: ",$G(INDC),!
+ W "INDX: ",$G(INDX),!
+ W "INDL: ",$G(INDL),!
+ W "FAUX Routine1: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC-1,0)
+ W "FAUX Routine: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC,0)
+ S INDX=$S($L($P($G(^DIC(9.2,B,10.2)),U,1)):$P($G(^DIC(9.2,B,10.2)),U,1),1:";")
+ S INDC=" ; "_INDL_" - EXIT EXECUTE STATEMENT (#10.2)"
+ D ADD
  W "B: ",$G(B),!
  W "INDLC: ",$G(INDLC),!
  W "INDRN: ",$G(INDRN),!
@@ -182,7 +197,9 @@ KEY ;Process Security Keys
  ; 19.1      4      GRANTING CONDITION               ^DIC(19.1,D0,4)
  ; ========  =====  ===============================  ===================================  =============================================
  W !,"Processing Security Keys",!
- S INDX=$P($G(^DIC(19.1,B,4)),U,1)
+ S INDX=$S($L($P($G(^DIC(19.1,B,4)),U,1)):$P($G(^DIC(19.1,B,4)),U,1),1:";")
+ S INDC=B_" ; "_INDL_" - GRANTING CONDITION (#4)"
+ D ADD
  W "B: ",$G(B),!
  W "INDLC: ",$G(INDLC),!
  W "INDRN: ",$G(INDRN),!
@@ -204,12 +221,9 @@ LIST ;Process List Templates
  ; 409.61    107    ARRAY NAME                       ^SD(409.61,D0,ARRAY)                 Holds a variable name prefaced by a space
  ; ========  =====  ===============================  ===================================  =============================================
  W !,"Processing List Templates",!
- S INDX=$P($G(^SD(409.61,B,"HDR")),U,1)
- S INDX=INDX_" "_$P($G(^SD(409.61,B,"EXP")),U,1)
- S INDX=INDX_" "_$P($G(^SD(409.61,B,"HLP")),U,1)
- S INDX=INDX_" "_$P($G(^SD(409.61,B,"FNL")),U,1)
- S INDX=INDX_" "_$P($G(^SD(409.61,B,"INIT")),U,1)
- S INDX=INDX_" "_$P($G(^SD(409.61,B,"ARRAY")),U,1)
+ S INDX=$S($L($G(^SD(409.61,B,"HDR"))):$G(^SD(409.61,B,"HDR")),1:";")
+ S INDC=B_" ; "_INDL_" - HEADER CODE (#100)"
+ D ADD
  W "B: ",$G(B),!
  W "INDLC: ",$G(INDLC),!
  W "INDRN: ",$G(INDRN),!
@@ -218,4 +232,57 @@ LIST ;Process List Templates
  W "INDL: ",$G(INDL),!
  W "FAUX Routine1: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC-1,0)
  W "FAUX Routine: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC,0)
+ S INDX=$S($L($G(^SD(409.61,B,"EXP"))):$G(^SD(409.61,B,"EXP")),1:";")
+ S INDC=" ; "_INDL_" - EXPAND CODE (#102)"
+ D ADD
+ W "B: ",$G(B),!
+ W "INDLC: ",$G(INDLC),!
+ W "INDRN: ",$G(INDRN),!
+ W "INDC: ",$G(INDC),!
+ W "INDX: ",$G(INDX),!
+ W "INDL: ",$G(INDL),!
+ W "FAUX Routine1: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC-1,0)
+ W "FAUX Routine: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC,0)
+ S INDX=$S($L($G(^SD(409.61,B,"HLP"))):$G(^SD(409.61,B,"HLP")),1:";")
+ S INDC=" ; "_INDL_" - HELP CODE (#103)"
+ D ADD
+ W "B: ",$G(B),!
+ W "INDLC: ",$G(INDLC),!
+ W "INDRN: ",$G(INDRN),!
+ W "INDC: ",$G(INDC),!
+ W "INDX: ",$G(INDX),!
+ W "INDL: ",$G(INDL),!
+ W "FAUX Routine1: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC-1,0)
+ W "FAUX Routine: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC,0)
+ S INDX=$S($L($G(^SD(409.61,B,"FNL"))):$G(^SD(409.61,B,"FNL")),1:";")
+ S INDC=" ; "_INDL_" - EXIT CODE (#105)"
+ D ADD
+ W "B: ",$G(B),!
+ W "INDLC: ",$G(INDLC),!
+ W "INDRN: ",$G(INDRN),!
+ W "INDC: ",$G(INDC),!
+ W "INDX: ",$G(INDX),!
+ W "INDL: ",$G(INDL),!
+ W "FAUX Routine1: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC-1,0)
+ W "FAUX Routine: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC,0)
+ S INDX=$S($L($G(^SD(409.61,B,"INIT"))):$G(^SD(409.61,B,"INIT")),1:";")
+ S INDC=" ; "_INDL_" - ENTRY CODE (#106)"
+ D ADD
+ W "B: ",$G(B),!
+ W "INDLC: ",$G(INDLC),!
+ W "INDRN: ",$G(INDRN),!
+ W "INDC: ",$G(INDC),!
+ W "INDX: ",$G(INDX),!
+ W "INDL: ",$G(INDL),!
+ W "FAUX Routine1: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC-1,0)
+ W "FAUX Routine: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC,0)
+ ; S INDX=INDX_" "_$P($G(^SD(409.61,B,"ARRAY")),U,1)
+ ; W "B: ",$G(B),!
+ ; W "INDLC: ",$G(INDLC),!
+ ; W "INDRN: ",$G(INDRN),!
+ ; W "INDC: ",$G(INDC),!
+ ; W "INDX: ",$G(INDX),!
+ ; W "INDL: ",$G(INDL),!
+ ; W "FAUX Routine1: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC-1,0)
+ ; W "FAUX Routine: ",! ZWRITE ^UTILITY($J,1,INDRN,0,INDLC,0)
  Q
