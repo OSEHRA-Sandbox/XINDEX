@@ -26,6 +26,9 @@ PKG D NAMSP ;Package file
  S INDFN="^DIC(9.2,",INDRN="|help",INDD="Help Frame",INDSB="HELP" D NAME
  S INDFN="^DIC(19.1,",INDRN="|key",INDD="Security Key",INDSB="KEY" D NAME
  S INDFN="^SD(409.61,",INDRN="|list",INDD="List Template",INDSB="LIST" D NAME
+ S INDFN="^ORD(101,",INDRN="|ptcl",INDD="Protocol",INDSB="PROTOCOL" D NAME
+ S INDFN="^HL(771,",INDRN="|hlap",INDD="HL7 Application Parameter",INDSB="HL7AP" D NAME
+ S INDFN="^XWB(8994,",INDRN="|rpc",INDD="Remote Procedure",INDSB="RPC" D NAME
  Q
 LNS S INDXN="NAMESPACE" ; Defined list of namespaces
  S INDFN="^DD(""FUNC"",",INDRN="|func",INDD="Function",INDSB="FUNC" D NS
