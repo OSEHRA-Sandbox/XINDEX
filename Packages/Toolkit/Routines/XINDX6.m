@@ -10,7 +10,7 @@ XINDX6 ;ISC/REL,GRK - GET SET OF ROUTINES TO INDEX ;07/22/08  13:54
  S:'$D(DTIME)#2 DTIME=360
  D HOME^%ZIS,HDR^XINDX7
  D ASKRTN,PARAM
- I $D(^DIC(9.4))!$D(^DIC(9.6)) D ^XINDX10 G END:$D(DUOUT) S INDDA=DA I DA>0,INP(10)'=9.7 D ANS("Include the compiled template routines: N//","NY") G:X="^" END S:"Nn"'[X INP(9)=1
+ I $D(^DIC(9.4))!$D(^DIC(9.6)) D ^XINDX10 G END:$D(DUOUT) S INDDA=DA I DA>0,(INP(10)'=9.7)!(INP(10="NAMESPACE")) D ANS("Include the compiled template routines: N//","NY") G:X="^" END S:"Nn"'[X INP(9)=1
  G END:(NRO'>0)&(INDDA'>0)
  D ANS("Print more than compiled errors and warnings? YES//","YN","Print detailed info") G:X="^" END S INP(1)="Yy"[X G:'INP(1) L7
  D ANS("Print summary only? NO//","NY","Skip detail on each routine") G:X="^" END S INP(6)="Yy"[X G L7:INP(6)
