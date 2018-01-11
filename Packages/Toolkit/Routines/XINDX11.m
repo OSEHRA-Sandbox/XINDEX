@@ -44,45 +44,41 @@ LNS S INDXN="NAMESPACE" ; Defined list of namespaces
  S INDFN="^XWB(8994,",INDRN="|rpc",INDD="Remote Procedure",INDSB="RPC" D NS
  K NAMESPACES,ENAMESPACES,FILES
  Q
-NS
- Q:'$D(@(INDFN_"""B"")")) ; Don't run if there isn't a B cross reference
+NS ;Index based on a list of namespaces
+ Q:'$D(@(INDFN_"""B"")"))  ; Don't run if there isn't a B cross reference
  D HDR ; Add Header in the style of |{component} ; '{Namespace}' {Filename as defined above}s. With a comment line below.
  N EXCLUDE,ISNOTEXCLUDED,PROCESSEDIENS
  F  S INDXN=$O(NAMESPACES($J,INDXN)) Q:INDXN=""  D
  . S INDL=$E(INDXN,1,$L(INDXN)-1)_$C($A(INDXN,$L(INDXN))-1)_"z" ; get the last letter of the prefix(INDXN) and get the previous letter (B=A), then append "z" to the end
- . F A=0:0 S INDL=$O(@(INDFN_"""B"",INDL)")) Q:$P(INDL,INDXN,1)]""!(INDL="")  D ; Order through the B index of the given file. If it nolonger matches the prefix or we hit the end of the B index quit
- . . F B=0:0 S B=$O(@(INDFN_"""B"",INDL,B)")) Q:B=""  D ; For each IEN in the B index
+ . F A=0:0 S INDL=$O(@(INDFN_"""B"",INDL)")) Q:$P(INDL,INDXN,1)]""!(INDL="")  D  ; Order through the B index of the given file. If it nolonger matches the prefix or we hit the end of the B index quit
+ . . F B=0:0 S B=$O(@(INDFN_"""B"",INDL,B)")) Q:B=""  D  ; For each IEN in the B index
   . . . I $D(PROCESSEDIENS(B)) Q
  . . . S PROCESSEDIENS(B)=""
  . . . S ISNOTEXCLUDED=1 S EXCLUDE="" F  S EXCLUDE=$O(ENAMESPACES($J,EXCLUDE)) Q:EXCLUDE=""  I $P(INDL,$E(EXCLUDE,2,$L(EXCLUDE)))="" S ISNOTEXCLUDED=0 Q
  . . . D:ISNOTEXCLUDED @INDSB ; cross reference it
- I INDLC=2 K ^UTILITY($J,INDRN),^UTILITY($J,1,INDRN) Q ; If there is only a header delete the faux routine
+ I INDLC=2 K ^UTILITY($J,INDRN),^UTILITY($J,1,INDRN) Q  ; If there is only a header delete the faux routine
  S ^UTILITY($J,1,INDRN,0,0)=INDLC ; set the number of lines in the routine where the output will find it
  Q
-NAME
- Q:'$D(@(INDFN_"""B"")")) ; Don't run if there isn't a B cross reference
+NAME ; Index based on package file
+ Q:'$D(@(INDFN_"""B"")"))  ; Don't run if there isn't a B cross reference
  D HDR ; Add Header in the style of |{component} ; '{Namespace}' {Filename as defined above}s. With a comment line below.
  S INDL=$E(INDXN,1,$L(INDXN)-1)_$C($A(INDXN,$L(INDXN))-1)_"z" ; get the last letter of the prefix and get the previous letter (B=A), then append "z" to the end
- F A=0:0 S INDL=$O(@(INDFN_"""B"",INDL)")) Q:$P(INDL,INDXN,1)]""!(INDL="")  D ; Order through the B index of the given file. If it nolonger matches the prefix or we hit the end of the B index quit
- . F B=0:0 S B=$O(@(INDFN_"""B"",INDL,B)")) Q:B=""  D ; For each IEN in the B index
+ F A=0:0 S INDL=$O(@(INDFN_"""B"",INDL)")) Q:$P(INDL,INDXN,1)]""!(INDL="")  D  ; Order through the B index of the given file. If it nolonger matches the prefix or we hit the end of the B index quit
+ . F B=0:0 S B=$O(@(INDFN_"""B"",INDL,B)")) Q:B=""  D  ; For each IEN in the B index
  . . X INDF ; Make sure it isn't an excluded namespace
  . . D:C8 @INDSB ; If it isn't an excluded namesapce cross reference it
- I INDLC=2 K ^UTILITY($J,INDRN),^UTILITY($J,1,INDRN) Q ; If there is only a header delete the faux routine
+ I INDLC=2 K ^UTILITY($J,INDRN),^UTILITY($J,1,INDRN) Q  ; If there is only a header delete the faux routine
  S ^UTILITY($J,1,INDRN,0,0)=INDLC ; set the number of lines in the routine where the output will find it
  Q
-NAMSP
+NAMSP ; Setup processing for Indexing based on package file
  S INDXN=$P(^DIC(9.4,DA,0),"^",2) ; PREFIX (#1) from Package File
  S C9=0 ; Subscript for INDXN
  S INDXN(C9)="," ; 0th subscript is always ","
- F A=0:0 S A=$O(^DIC(9.4,DA,"EX",A)) Q:A'>0  D ; For each excluded name space in the package file
- . I $D(^(A,0))#2 D ; If there is an excluded namespace value
+ F A=0:0 S A=$O(^DIC(9.4,DA,"EX",A)) Q:A'>0  D  ; For each excluded name space in the package file
+ . I $D(^(A,0))#2 D  ; If there is an excluded namespace value
  . . S C9=C9+1 ; increment the counter
  . . S INDXN(C9)=$P(^(0),"^") ; set INDXN(COUNTER)=excluded namespace
  S INDF="S C8=1 F H=1:1:C9 I $P(INDL,INDXN(H))="""" S C8=0 Q" ; Checks excluded namespaces
- ; expanded code for the above:
- ; S C8=1 ; This will skip subscript (0), which is always ","
- ; F  H=1:1:C9 I $P(INDL,INDXN(H))="""" D ; For each subscript in INDXN check to see if the prefix of INDL matches INDXN(H), if so don't process INDL
- ; . S C8=0 Q
  Q
 HDR S INDLC=0,INDC=INDRN_" ; '"_INDXN_"' "_INDD_"s.",INDX=";" D ADD S ^UTILITY($J,INDRN)="",^UTILITY($J,1,INDRN,0,0)=0
  Q
