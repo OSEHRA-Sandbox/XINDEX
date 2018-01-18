@@ -166,7 +166,7 @@ File      Field  Field Name                       Global Location               
 ROUTINE
 -------
 
-Referenced by Routine name. need to fill in.
+This is done by selecting Routine names during normal XINDEX prompts.
 
 OPTION
 ------
@@ -212,7 +212,26 @@ File      Field  Field Name                       Global Location               
 
 PROTOCOL
 --------
-TBD
+
+The following fields contain M code within this file:
+
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+101       15     EXIT ACTION                      ^ORD(101,D0,15) E1,245
+101       20     ENTRY ACTION                     ^ORD(101,D0,20) E1,245
+101       24     SCREEN                           ^ORD(101,D0,24) E1,245
+101       26     HEADER                           ^ORD(101,D0,26) E1,245
+101       27     MENU HELP                        ^ORD(101,D0,27) E1,245
+101       100    ORDER PRINT ACTION               ^ORD(101,D0,100) E1,245
+101       100.1  ORDER CANCEL ACTION              ^ORD(101,D0,100.1) E1,245
+101       100.2  ORDER PURGE ACTION               ^ORD(101,D0,100.2) E1,245
+101       771    PROCESSING ROUTINE               ^ORD(101,D0,771) E1,245
+101       772    RESPONSE PROCESSING ROUTINE      ^ORD(101,D0,772) E1,245
+101       774    ROUTING LOGIC                    ^ORD(101,D0,774) E1,245
+101       21     REQUIRED VARIABLES               ^ORD(101,D0,21,D1,0)                 Required Variables sub file
+101.05    .02    METHOD ACTION                    ^ORD(101,D0,101.05,D1,1) E1,245      Method sub file
+========  =====  ===============================  ===================================  =============================================
 
 LIST TEMPLATE
 -------------
@@ -233,12 +252,18 @@ File      Field  Field Name                       Global Location               
 HL7 APPLICATION PARAMETER
 -------------------------
 
-There are no fields that directly take M code that should be Cross-Referenced.
+The following fields contain M code within this file:
+
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+771.06    1      PROCESSING ROUTINE               ^HL(771,D0,MSG,D1,R)
+========  =====  ===============================  ===================================  =============================================
 
 HL LOWER LEVEL PROTOCOL
 -----------------------
 
-TBD
+There are no fields that directly take M code that should be Cross-Referenced.
 
 HL LOGICAL LINK
 ---------------
@@ -248,11 +273,14 @@ There are no fields that directly take M code that should be Cross-Referenced.
 REMOTE PROCEDURE
 ----------------
 
-There are no fields that directly take M code that should be Cross-Referenced.
-There is a reference to a TAG (File 8994 Field #.02) and ROUTINE (File 8994 Field #.03).
-Since RPCs should be namespaced into the package and the routines in which they run also
-namespaced into the package there shouldn't be anything new to be added to XINDEX.
+The following fields contain M code within this file:
 
+========  =====  ===============================  ===================================  =============================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================
+8994      .02    TAG                              ^XWB(8994,D0,0) Piece 2              Needs to be concatenated with ROUTINE
+8994      .03    ROUTINE                          ^XWB(8994,D0,0) Piece 3
+========  =====  ===============================  ===================================  =============================================
 
 Data Dictionaries
 =================
