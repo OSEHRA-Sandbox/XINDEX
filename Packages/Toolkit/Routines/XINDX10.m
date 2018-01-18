@@ -11,13 +11,42 @@ ASK ;Ask for Build, Install, or Package file.
  . Q
  K DIC Q:$D(DUOUT)
  I $D(^DD(9.4,0)),'DA S DIC="^DIC(9.4,",DIC(0)="AEQMZ" D ^DIC S INP(10)=9.4,DA=+Y
+ D ASKNS,ASKFILES
+ Q
+ASKNS ;Ask for a list of namespaces
+ N NSC,NS
+ W !,"LIST OF NAMESPACES TO BE INDEXED; PRESS RETURN TO TERMINATE LIST",! S NSC=0
+N1 R !,"NAMESPACE: ",NS:$S($G(DTIME):DTIME,1:360) Q:NS=""  Q:NS="^"
+ I NS'?1(1"%",1"!",1"-").UN&(NS'?1U.UN) W "  INVALID NAMESPACE" G N1
+ I NS?1(1"!",1"-").UN S $E(NS,1,1)="!" S NSC=NSC+1,ENAMESPACES($J,NS)=""
+ E  S NSC=NSC+1,NAMESPACES($J,NS)=""
+ S INP(10)="NAMESPACE",DA=1
+ G N1
+ Q
+ ;
+ASKFILES ;Ask for a list of files
+ N FILESC,FILE
+ W !,"LIST OF FILES TO BE INDEXED; PRESS RETURN TO TERMINATE LIST",! S FILESC=0
+F1 R !,"FILE: ",FILE:$S($G(DTIME):DTIME,1:360) Q:FILE=""  Q:FILE="^"
+ I FILE'?1.45UNP&('$D(^DIC(FILE))!'($D(^DIC("B",FILE)))) W "  INVALID FILENAME" G F1
+ ; should only get file number for list, but accept file name or number
+ E  D
+ . ; translate the file name into a number
+ . I FILE'=+FILE S FILE=$O(^DIC("B",FILE,"")) I FILE="" W "  INVALID FILENAME" Q
+ . ; if we have a number then we can add it and continue
+ . S FILESC=FILESC+1,FILES($J,FILE)=""
+ S INP(10)="NAMESPACE",DA=1
+ G F1
  Q
  ;
 START ;called from SETUP^XINDX7
- G PKG:INP(10)=9.4,NEXT:INP(10)=9.7
+ G PKG:INP(10)=9.4,NEXT:INP(10)=9.7,NS:INP(10)="NAMESPACE"
  ;Get routines and other code from BUILD.
  W !,"The BUILD file Data Dictionaries are being processed.",!
  F J=0:0 S J=$O(^XPD(9.6,DA,4,J)) Q:J'>0  I $D(^(J,0)) S INDFN=+^(0),INDRN="|dd"_INDFN D XPD
+ G NEXT
+NS W !,"The selected file Data Dictionaries are being processed.",!
+ F J=0:0 S J=$O(FILES($J,J)) Q:J'>0  I $D(^DIC(J,0)) S INDFN=J,INDRN="|dd"_INDFN,(INDF,INDL)=0 D INSERT
  G NEXT
 PKG W !,"The package file Data Dictionaries are being processed.",!
  F J=0:0 S J=$O(^DIC(9.4,DA,4,J)) Q:J'>0  I $D(^(J,0)) S INDFN=+^(0),INDRN="|dd"_INDFN,(INDF,INDL)=0 D INSERT

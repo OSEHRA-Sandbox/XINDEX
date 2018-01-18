@@ -4,6 +4,7 @@ XINDX11 ;ISC/GRK - Create phantom routines for functions, options, etc. ;07/08/9
  G:INP(10)=9.7 RTN
  W !,"The option and function files are being processed.",!
  G:INP(10)=9.4 PKG
+ G:INP(10)="NAMESPACE" LNS
  N KRN,TYPE ;Build file
  S INDFN="^DD(""FUNC"",",INDRN="|func",INDD="Function",INDSB="FUNC",INDXN="Build file" D HDR
  F KRN=0:0 S KRN=$O(^XPD(9.6,INDDA,"KRN",.5,"NM",KRN)) Q:KRN'>0  S INDXN=$P(^(KRN,0),U) D ENTRY
@@ -18,15 +19,65 @@ RTN ;Routines
 PKG D NAMSP ;Package file
  S INDFN="^DD(""FUNC"",",INDRN="|func",INDD="Function",INDSB="FUNC" D NAME
  S INDFN="^DIC(19,",INDRN="|opt",INDD="Option",INDSB="OPT" D NAME
+ ; CJE Add more build components that chan have MUMPS Code
+ S INDFN="^DIBT(",INDRN="|sort",INDD="Sort Template",INDSB="SORT^XINDX12" D NAME
+ S INDFN="^DIST(.403,",INDRN="|form",INDD="Form",INDSB="FORM^XINDX12" D NAME
+ S INDFN="^DI(.84,",INDRN="|dialog",INDD="Dialog",INDSB="DIALOG^XINDX12" D NAME
+ S INDFN="^DIC(9.2,",INDRN="|help",INDD="Help Frame",INDSB="HELP^XINDX12" D NAME
+ S INDFN="^DIC(19.1,",INDRN="|key",INDD="Security Key",INDSB="KEY^XINDX12" D NAME
+ S INDFN="^SD(409.61,",INDRN="|list",INDD="List Template",INDSB="LIST^XINDX12" D NAME
+ S INDFN="^ORD(101,",INDRN="|ptcl",INDD="Protocol",INDSB="PROTOCOL" D NAME
+ S INDFN="^HL(771,",INDRN="|hlap",INDD="HL7 Application Parameter",INDSB="HL7AP^XINDX12" D NAME
+ S INDFN="^XWB(8994,",INDRN="|rpc",INDD="Remote Procedure",INDSB="RPC^XINDX12" D NAME
  Q
-NAME Q:'$D(@(INDFN_"""B"")"))
- D HDR
- S INDL=$E(INDXN,1,$L(INDXN)-1)_$C($A(INDXN,$L(INDXN))-1)_"z"
- F A=0:0 S INDL=$O(@(INDFN_"""B"",INDL)")) Q:$P(INDL,INDXN,1)]""!(INDL="")  F B=0:0 S B=$O(@(INDFN_"""B"",INDL,B)")) Q:B=""  X INDF D:C8 @INDSB
- I INDLC=2 K ^UTILITY($J,INDRN),^UTILITY($J,1,INDRN) Q
- S ^UTILITY($J,1,INDRN,0,0)=INDLC
+LNS S INDXN="NAMESPACE" ; Defined list of namespaces
+ S INDFN="^DD(""FUNC"",",INDRN="|func",INDD="Function",INDSB="FUNC" D NS
+ S INDFN="^DIC(19,",INDRN="|opt",INDD="Option",INDSB="OPT" D NS
+ S INDFN="^DIBT(",INDRN="|sort",INDD="Sort Template",INDSB="SORT^XINDX12" D NS
+ S INDFN="^DIST(.403,",INDRN="|form",INDD="Form",INDSB="FORM^XINDX12" D NS
+ S INDFN="^DI(.84,",INDRN="|dialog",INDD="Dialog",INDSB="DIALOG^XINDX12" D NS
+ S INDFN="^DIC(9.2,",INDRN="|help",INDD="Help Frame",INDSB="HELP^XINDX12" D NS
+ S INDFN="^DIC(19.1,",INDRN="|key",INDD="Security Key",INDSB="KEY^XINDX12" D NS
+ S INDFN="^SD(409.61,",INDRN="|list",INDD="List Template",INDSB="LIST^XINDX12" D NS
+ S INDFN="^ORD(101,",INDRN="|ptcl",INDD="Protocol",INDSB="PROTOCOL^XINDX12" D NS
+ S INDFN="^HL(771,",INDRN="|hlap",INDD="HL7 Application Parameter",INDSB="HL7AP^XINDX12" D NS
+ S INDFN="^XWB(8994,",INDRN="|rpc",INDD="Remote Procedure",INDSB="RPC^XINDX12" D NS
+ K NAMESPACES,ENAMESPACES,FILES
  Q
-NAMSP S INDXN=$P(^DIC(9.4,DA,0),"^",2),C9=0,INDXN(C9)="," F A=0:0 S A=$O(^DIC(9.4,DA,"EX",A)) Q:A'>0  I $D(^(A,0))#2 S C9=C9+1,INDXN(C9)=$P(^(0),"^")
+NS ;Index based on a list of namespaces
+ Q:'$D(@(INDFN_"""B"")"))  ; Don't run if there isn't a B cross reference
+ D HDR ; Add Header in the style of |{component} ; '{Namespace}' {Filename as defined above}s. With a comment line below.
+ N EXCLUDE,ISNOTEXCLUDED,PROCESSEDIENS
+ F  S INDXN=$O(NAMESPACES($J,INDXN)) Q:INDXN=""  D
+ . S INDL=$E(INDXN,1,$L(INDXN)-1)_$C($A(INDXN,$L(INDXN))-1)_"z" ; get the last letter of the prefix(INDXN) and get the previous letter (B=A), then append "z" to the end
+ . F A=0:0 S INDL=$O(@(INDFN_"""B"",INDL)")) Q:$P(INDL,INDXN,1)]""!(INDL="")  D  ; Order through the B index of the given file. If it nolonger matches the prefix or we hit the end of the B index quit
+ . . F B=0:0 S B=$O(@(INDFN_"""B"",INDL,B)")) Q:B=""  D  ; For each IEN in the B index
+  . . . I $D(PROCESSEDIENS(B)) Q
+ . . . S PROCESSEDIENS(B)=""
+ . . . S ISNOTEXCLUDED=1 S EXCLUDE="" F  S EXCLUDE=$O(ENAMESPACES($J,EXCLUDE)) Q:EXCLUDE=""  I $P(INDL,$E(EXCLUDE,2,$L(EXCLUDE)))="" S ISNOTEXCLUDED=0 Q
+ . . . D:ISNOTEXCLUDED @INDSB ; cross reference it
+ I INDLC=2 K ^UTILITY($J,INDRN),^UTILITY($J,1,INDRN) Q  ; If there is only a header delete the faux routine
+ S ^UTILITY($J,1,INDRN,0,0)=INDLC ; set the number of lines in the routine where the output will find it
+ Q
+NAME ; Index based on package file
+ Q:'$D(@(INDFN_"""B"")"))  ; Don't run if there isn't a B cross reference
+ D HDR ; Add Header in the style of |{component} ; '{Namespace}' {Filename as defined above}s. With a comment line below.
+ S INDL=$E(INDXN,1,$L(INDXN)-1)_$C($A(INDXN,$L(INDXN))-1)_"z" ; get the last letter of the prefix and get the previous letter (B=A), then append "z" to the end
+ F A=0:0 S INDL=$O(@(INDFN_"""B"",INDL)")) Q:$P(INDL,INDXN,1)]""!(INDL="")  D  ; Order through the B index of the given file. If it nolonger matches the prefix or we hit the end of the B index quit
+ . F B=0:0 S B=$O(@(INDFN_"""B"",INDL,B)")) Q:B=""  D  ; For each IEN in the B index
+ . . X INDF ; Make sure it isn't an excluded namespace
+ . . D:C8 @INDSB ; If it isn't an excluded namesapce cross reference it
+ I INDLC=2 K ^UTILITY($J,INDRN),^UTILITY($J,1,INDRN) Q  ; If there is only a header delete the faux routine
+ S ^UTILITY($J,1,INDRN,0,0)=INDLC ; set the number of lines in the routine where the output will find it
+ Q
+NAMSP ; Setup processing for Indexing based on package file
+ S INDXN=$P(^DIC(9.4,DA,0),"^",2) ; PREFIX (#1) from Package File
+ S C9=0 ; Subscript for INDXN
+ S INDXN(C9)="," ; 0th subscript is always ","
+ F A=0:0 S A=$O(^DIC(9.4,DA,"EX",A)) Q:A'>0  D  ; For each excluded name space in the package file
+ . I $D(^(A,0))#2 D  ; If there is an excluded namespace value
+ . . S C9=C9+1 ; increment the counter
+ . . S INDXN(C9)=$P(^(0),"^") ; set INDXN(COUNTER)=excluded namespace
  S INDF="S C8=1 F H=1:1:C9 I $P(INDL,INDXN(H))="""" S C8=0 Q" ; Checks excluded namespaces
  Q
 HDR S INDLC=0,INDC=INDRN_" ; '"_INDXN_"' "_INDD_"s.",INDX=";" D ADD S ^UTILITY($J,INDRN)="",^UTILITY($J,1,INDRN,0,0)=0

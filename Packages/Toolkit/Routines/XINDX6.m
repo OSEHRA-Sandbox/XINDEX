@@ -10,13 +10,13 @@ XINDX6 ;ISC/REL,GRK - GET SET OF ROUTINES TO INDEX ;07/22/08  13:54
  S:'$D(DTIME)#2 DTIME=360
  D HOME^%ZIS,HDR^XINDX7
  D ASKRTN,PARAM
- I $D(^DIC(9.4))!$D(^DIC(9.6)) D ^XINDX10 G END:$D(DUOUT) S INDDA=DA I DA>0,INP(10)'=9.7 D ANS("Include the compiled template routines: N//","NY") G:X="^" END S:"Nn"'[X INP(9)=1
+ I $D(^DIC(9.4))!$D(^DIC(9.6)) D ^XINDX10 G END:$D(DUOUT) S INDDA=DA I DA>0,(INP(10)'=9.7)!(INP(10)="NAMESPACE") D ANS("Include the compiled template routines: N//","NY") G:X="^" END S:"Nn"'[X INP(9)=1
  G END:(NRO'>0)&(INDDA'>0)
  D ANS("Print more than compiled errors and warnings? YES//","YN","Print detailed info") G:X="^" END S INP(1)="Yy"[X G:'INP(1) L7
  D ANS("Print summary only? NO//","NY","Skip detail on each routine") G:X="^" END S INP(6)="Yy"[X G L7:INP(6)
  D ANS("Print routines? YES//","YN","Print routines code also") G:X="^" END S INP(2)="Yy"[X
  I INP(2) D ANS("Print (R)egular,(S)tructured or (B)oth?  R//","RLIST") G:X="^" END S INP(5)=X
- I INDDA>0,INP(10)'=9.7 D ANS("Print the DDs, Functions, and Options? YES//","YN","Gather other package code.") G:X="^" END S INP(4)="Yy"[X
+ I INDDA>0,INP(10)'=9.7 D ANS("Print the DDs, Functions, Options, and other package code? YES//","YN","Gather other package code.") G:X="^" END S INP(4)="Yy"[X
  D ANS("Print errors and warnings with each routine? YES//","YN") G:X="^" END S INP(3)="Yy"[X
 L7 I $D(^DIC(9.8,0)),$D(DUZ) D ANS("Save parameters in ROUTINE file? NO//","NY","Update the ROUTINE file with details") G:X="^" END S INP(7)="Yy"[X
  D ANS("Index all called routines? NO//","NY","Add called routines") G:X="^" END S INP(8)="Yy"[X
