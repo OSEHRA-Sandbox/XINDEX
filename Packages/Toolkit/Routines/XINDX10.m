@@ -77,22 +77,21 @@ FILE ;Get additional File level fields that contain executable code
  I $D(^DD(INDFN,0,"DIC"))#2 S INDC="DIC ; SPECIAL LOOKUP",INDX="D ^"_^("DIC") D ADD
 INDX ;Get New-Style Cross-Reference stored in the INDEX File
  ;We can get this from the "BB" index on the INDEX file (INDEL is the index name)
- W ! S INDEL="" F  S INDEL=$O(^DD("IX","BB",INDFN,INDEL)) Q:INDEL=""  D
+ S INDEL="" F  S INDEL=$O(^DD("IX","BB",INDFN,INDEL)) Q:INDEL=""  D
  . S X=$Q(^(INDEL)),X=$QS(X,5)
- . W "SET LOGIC: ",$E($G(^DD("IX",X,1)),1,245),!
- . W "SET CONDITION: ",$E($G(^DD("IX",X,1.3)),1,245),!
- . W "SET CONDITION CODE: ",$E($G(^DD("IX",X,1.4)),1,245),!
- . W "KILL LOGIC: ",$E($G(^DD("IX",X,2.1)),1,245),!
- . W "KILL CONDITION: ",$E($G(^DD("IX",X,2.3)),1,245),!
- . W "KILL CONDITION CODE: ",$E($G(^DD("IX",X,2.4)),1,245),!
- . W "KILL ENTIRE INDEX CODE: ",$E($G(^DD("IX",X,2.5)),1,245),!
+ . I $D(^DD("IX",X,1))#2 S INDC="IX"_INDEL_"SL ; SET LOGIC",INDX=$E(^DD("IX",X,1),1,245) D ADD
+ . I $D(^DD("IX",X,1.3))#2 S INDC="IX"_INDEL_"SC ; SET CONDITION",INDX=$E(^DD("IX",X,1.3),1,245) D ADD
+ . I $D(^DD("IX",X,1.4))#2 S INDC="IX"_INDEL_"SCC ; SET CONDITION CODE",INDX=$E(^DD("IX",X,1.4),1,245) D ADD
+ . I $D(^DD("IX",X,2.1))#2 S INDC="IX"_INDEL_"KL ; KILL LOGIC",INDX=$E(^DD("IX",X,2.1),1,245) D ADD
+ . I $D(^DD("IX",X,2.3))#2 S INDC="IX"_INDEL_"KC ; KILL CONDITION",INDX=$E(^DD("IX",X,2.3),1,245) D ADD
+ . I $D(^DD("IX",X,2.4))#2 S INDC="IX"_INDEL_"KCC ; KILL CONDITION CODE",INDX=$E(^DD("IX",X,2.4),1,245) D ADD
+ . I $D(^DD("IX",X,2.5))#2 S INDC="IX"_INDEL_"KEIC ; KILL ENTIRE INDEX CODE",INDX=$E(^DD("IX",X,2.5),1,245) D ADD
  . S SUB="" F  S SUB=$O(^DD("IX",X,11.1,SUB)) Q:SUB=""  Q:SUB'=+SUB  D
- . . W "COMPUTED VALUE ("_SUB_"): "_$E($G(^DD("IX",X,11.1,SUB,1)),1,245),!
- . . W "COMPUTED CODE ("_SUB_"): "_$E($G(^DD("IX",X,11.1,SUB,1.5)),1,245),!
- . . W "TRANSFORM FOR STORAGE ("_SUB_"): "_$E($G(^DD("IX",X,11.1,SUB,2)),1,245),!
- . . W "TRANSFORM FOR LOOKUP ("_SUB_"): "_$E($G(^DD("IX",X,11.1,SUB,4)),1,245),!
- . . W "TRANSFORM FOR DISPLAY ("_SUB_"): "_$E($G(^DD("IX",X,11.1,SUB,3)),1,245),!
- . ;I $D(^(INDEL,0))#2 S INDC=INDF_"DEL"_INDEL_" ; DELETE PROTECTION CODE",INDX=^(0) D ADD
+ . . I $D(^DD("IX",X,11.1,SUB,1))#2 S INDC="IX"_INDEL_"P"_SUB_"CV ; COMPUTED VALUE ("_SUB_")",INDX=$E(^DD("IX",X,11.1,SUB,1),1,245) D ADD
+ . . I $D(^DD("IX",X,11.1,SUB,1.5))#2 S INDC="IX"_INDEL_"P"_SUB_"CC ; COMPUTED CODE ("_SUB_")",INDX=$E(^DD("IX",X,11.1,SUB,1.5),1,245) D ADD
+ . . I $D(^DD("IX",X,11.1,SUB,2))#2 S INDC="IX"_INDEL_"P"_SUB_"TS ; TRANSFORM FOR STORAGE ("_SUB_")",INDX=$E(^DD("IX",X,11.1,SUB,2),1,245) D ADD
+ . . I $D(^DD("IX",X,11.1,SUB,4))#2 S INDC="IX"_INDEL_"P"_SUB_"TL ; TRANSFORM FOR LOOKUP ("_SUB_")",INDX=$E(^DD("IX",X,11.1,SUB,4),1,245) D ADD
+ . . I $D(^DD("IX",X,11.1,SUB,3))#2 S INDC="IX"_INDEL_"P"_SUB_"TD ; TRANSFORM FOR DISPLAY ("_SUB_")",INDX=$E(^DD("IX",X,11.1,SUB,3),1,245) D ADD
 FLD S INDF=$O(^DD(INDFN,INDF)) I INDF>0 D STRIP W "." G FLD
  S ^UTILITY($J,1,INDRN,0,0)=INDLC Q
 STRIP ;

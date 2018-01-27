@@ -67,13 +67,13 @@ DD        12     POINTER SCREEN                                         ^DD(D0,D
 DD        12.1   CODE TO SET POINTER (Set of codes as well) SCREEN      ^DD(D0,D1,12.1)                      Already implemented in XINDX10
 DD        12.2   EXPRESSION FOR POINTER SCREEN                          ^DD(D0,D1,12.2)
 DD        9.2    OVERFLOW CODE                                          ^DD(D0,D1,9.2)                       Already implemented in XINDX10
-DD        9.3    OVERFLOW CODE                                          ^DD(D0,D1,9.2)                       Already implemented in XINDX10
-DD        9.4    OVERFLOW CODE                                          ^DD(D0,D1,9.2)                       Already implemented in XINDX10
-DD        9.5    OVERFLOW CODE                                          ^DD(D0,D1,9.2)                       Already implemented in XINDX10
-DD        9.6    OVERFLOW CODE                                          ^DD(D0,D1,9.2)                       Already implemented in XINDX10
-DD        9.7    OVERFLOW CODE                                          ^DD(D0,D1,9.2)                       Already implemented in XINDX10
-DD        9.8    OVERFLOW CODE                                          ^DD(D0,D1,9.2)                       Already implemented in XINDX10
-DD        9.9    OVERFLOW CODE                                          ^DD(D0,D1,9.2)                       Already implemented in XINDX10
+DD        9.3    OVERFLOW CODE                                          ^DD(D0,D1,9.3)                       Already implemented in XINDX10
+DD        9.4    OVERFLOW CODE                                          ^DD(D0,D1,9.4)                       Already implemented in XINDX10
+DD        9.5    OVERFLOW CODE                                          ^DD(D0,D1,9.5)                       Already implemented in XINDX10
+DD        9.6    OVERFLOW CODE                                          ^DD(D0,D1,9.6)                       Already implemented in XINDX10
+DD        9.7    OVERFLOW CODE                                          ^DD(D0,D1,9.7)                       Already implemented in XINDX10
+DD        9.8    OVERFLOW CODE                                          ^DD(D0,D1,9.8)                       Already implemented in XINDX10
+DD        9.9    OVERFLOW CODE                                          ^DD(D0,D1,9.9)                       Already implemented in XINDX10
 ========  =====  =====================================================  ===================================  =============================================
 
 Special FILE level fields (not defined in the DD):
@@ -87,7 +87,6 @@ ACT       Post-Action                      ^DD(D0,0,"ACT")
 DIC       Special Lookup                   ^DD(D0,0,"DIC")                      Routine Name without leading "^"
 ID        Field Identifiers                ^DD(D0,0,"ID",D1)                    Only numerics - Already implemented in XINDX10
 ID        Write Identifier                 ^DD(D0,0,"ID",*)                     Starts with uppercase Alpha characters - Already implemented in XINDX10
-IX        NEW STYLE CROSS-REFERENCES       ^DD(IX)                      This is actually in the INDEX File and searched by...
 ========  ===============================  ===================================  =======================================================================
 
 INDEX
