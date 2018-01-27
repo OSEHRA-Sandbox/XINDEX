@@ -104,7 +104,7 @@ File      Field  Field Name                       Global Location               
 .11       1.3    SET CONDITION                    ^DD("IX",D0,1.3) E1,245              Contains a FileMan computed expression. Necessary?
 .11       1.4    SET CONDITION CODE               ^DD("IX",D0,1.4) E1,245
 .11       2.1    KILL LOGIC                       ^DD("IX",D0,2.1) E1,245
-.112      2      OVERFLOW KILL LOGIC              ^DD("IX",D0,2.2,2) E1,245)           Need to factor in the .01 field to make sure it is ordered correctly
+.112      2      OVERFLOW KILL LOGIC              ^DD("IX",D0,2.2,D1,2) E1,245         Need to factor in the .01 field to make sure it is ordered correctly
 .11       2.3    KILL CONDITION                   ^DD("IX",D0,2.3) E1,245              Contains a FileMan computed expression. Necessary?
 .11       2.4    KILL CONDITION CODE              ^DD("IX",D0,2.4) E1,245
 .11       2.5    KILL ENTIRE INDEX CODE           ^DD("IX",D0,2.5) E1,245
