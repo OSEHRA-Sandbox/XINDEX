@@ -72,6 +72,27 @@ INSERT ;Find executable code in this DD
  Q:'$$HDR
 ID S INDID=-1 F G=0:0 S INDID=$O(^DD(INDFN,0,"ID",INDID)) Q:INDID=""  I $D(^(INDID))#2 S INDC="ID"_INDID_" ; IDENTIFIER CODE FOR "_INDID S INDX=$S(^(INDID)]"":^(INDID),1:"Q") D ADD
 W I $D(^DD(INDFN,0,"W"))#2 S INDX=^("W"),INDC="W ; 'W' code ??" D ADD
+FILE ;Get additional File level fields that contain executable code
+ I $D(^DD(INDFN,0,"ACT"))#2 S INDC="ACT ; POST-ACTION",INDX=^("ACT") D ADD
+ I $D(^DD(INDFN,0,"DIC"))#2 S INDC="DIC ; SPECIAL LOOKUP",INDX="D ^"_^("DIC") D ADD
+INDX ;Get New-Style Cross-Reference stored in the INDEX File
+ ;We can get this from the "BB" index on the INDEX file (INDEL is the index name)
+ W ! S INDEL="" F  S INDEL=$O(^DD("IX","BB",INDFN,INDEL)) Q:INDEL=""  D
+ . S X=$Q(^(INDEL)),X=$QS(X,5)
+ . W "SET LOGIC: ",$E($G(^DD("IX",X,1)),1,245),!
+ . W "SET CONDITION: ",$E($G(^DD("IX",X,1.3)),1,245),!
+ . W "SET CONDITION CODE: ",$E($G(^DD("IX",X,1.4)),1,245),!
+ . W "KILL LOGIC: ",$E($G(^DD("IX",X,2.1)),1,245),!
+ . W "KILL CONDITION: ",$E($G(^DD("IX",X,2.3)),1,245),!
+ . W "KILL CONDITION CODE: ",$E($G(^DD("IX",X,2.4)),1,245),!
+ . W "KILL ENTIRE INDEX CODE: ",$E($G(^DD("IX",X,2.5)),1,245),!
+ . S SUB="" F  S SUB=$O(^DD("IX",X,11.1,SUB)) Q:SUB=""  Q:SUB'=+SUB  D
+ . . W "COMPUTED VALUE ("_SUB_"): "_$E($G(^DD("IX",X,11.1,SUB,1)),1,245),!
+ . . W "COMPUTED CODE ("_SUB_"): "_$E($G(^DD("IX",X,11.1,SUB,1.5)),1,245),!
+ . . W "TRANSFORM FOR STORAGE ("_SUB_"): "_$E($G(^DD("IX",X,11.1,SUB,2)),1,245),!
+ . . W "TRANSFORM FOR LOOKUP ("_SUB_"): "_$E($G(^DD("IX",X,11.1,SUB,4)),1,245),!
+ . . W "TRANSFORM FOR DISPLAY ("_SUB_"): "_$E($G(^DD("IX",X,11.1,SUB,3)),1,245),!
+ . ;I $D(^(INDEL,0))#2 S INDC=INDF_"DEL"_INDEL_" ; DELETE PROTECTION CODE",INDX=^(0) D ADD
 FLD S INDF=$O(^DD(INDFN,INDF)) I INDF>0 D STRIP W "." G FLD
  S ^UTILITY($J,1,INDRN,0,0)=INDLC Q
 STRIP ;
@@ -86,6 +107,9 @@ STRIP ;
  S INDEL="" F  S INDEL=$O(^DD(INDFN,INDF,"DEL",INDEL)) Q:INDEL=""  I $D(^(INDEL,0))#2 S INDC=INDF_"DEL"_INDEL_" ; DELETE PROTECTION CODE",INDX=^(0) D ADD
  S INDEL="" F G=0:0 S INDEL=$O(^DD(INDFN,INDF,"LAYGO",INDEL)) Q:INDEL=""  I $D(^(INDEL,0))#2 S INDC=INDF_"LAYGO"_INDEL_" ; LAYGO CHECK CODE",INDX=^(0) D ADD
  F INDXRF=0:0 S INDXRF=$O(^DD(INDFN,INDF,1,INDXRF)) Q:INDXRF'>0  S C=$P(^(INDXRF,0),"^",2) F G=0:0 S G=$O(^DD(INDFN,INDF,1,INDXRF,G)) Q:G'>0  D XREFS
+ ; Additional Data Dictionary fields that contain executable code
+ I $D(^DD(INDFN,INDF,12.2)) S INDC=INDF_"SCREXP ; EXPRESSION FOR POINTER SCREEN",INDX=$S($D(^(12.2))#2:^(12.2),1:"Q") D ADD
+ S INDEL="" F  S INDEL=$O(^DD(INDFN,INDF,"V",INDEL)) Q:INDEL=""  I $D(^(INDEL,1))#2 S INDC=INDF_"VPSCR"_INDEL_" ; VARIABLE POINTER SCREEN",INDX=^(1) D ADD
  Q
 XREFS Q:('$D(^(G))#2)!(G=3)  ;Node 3 is don't delete comment.
  S INDC=INDF_"XRF"_INDXRF_$S(G=1:"S",G=2:"K",1:"n"_G)_" ; "_$S(G<2:"SET",G<3:"KILL",1:"OVERFLOW")_" LOGIC FOR '"_$S(C]"":C,1:INDXRF)_"' XREF",INDX=^(G) D ADD
