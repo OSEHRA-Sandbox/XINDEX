@@ -20,18 +20,12 @@ when trying to find other code references or compliance with the SAC.
 Development
 -----------
 
-A Dockerfile has been created for convience of development. This uses a
-docker volume to mount the local routines directory into the container's
-p directory. This eliminates the need to sftp or otherwise transfer the
-developed routines into the container.
-
-To build the image:
-
-    docker build -t osehra/xindex .
+You can mount a volume into the container to share the routines instead of
+transferring them using sftp or only modifying the routines in the container.
 
 To run the image:
 
-    docker run -p 9430:9430 -p 8001:8001 -p 2222:22 -v $(pwd)/Packages/Toolkit/Routines:/home/osehra/p -d -P --name=xindex osehra/xindex
+    docker run -p 9430:9430 -p 8001:8001 -p 2222:22 -v $(pwd)/Packages/Toolkit/Routines:/home/osehra/p -d -P --name=xindex krmassociates/osehravista
 
 -----
 Links
