@@ -16,6 +16,17 @@ It has been found that XINDEX doesn't run or report on all VistA components
 that can be contained within a KIDS build. This creates errors of omission
 when trying to find other code references or compliance with the SAC.
 
+-----------
+Development
+-----------
+
+You can mount a volume into the container to share the routines instead of
+transferring them using sftp or only modifying the routines in the container.
+
+To run the image:
+
+    docker run -p 9430:9430 -p 8001:8001 -p 2222:22 -v $(pwd)/Packages/Toolkit/Routines:/home/osehra/p -d -P --name=xindex krmassociates/osehravista
+
 -----
 Links
 -----
