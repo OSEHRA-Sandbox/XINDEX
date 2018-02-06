@@ -222,7 +222,7 @@ PROTOCOL ;Process Protocols
  ; ========  =====  ===============================  ===================================  =============================================
  W !,"Processing Protocols",!
  K INDN
- S INDN=$P($G(^ORD(101,B,0),U,1)
+ S INDN=$P($G(^ORD(101,B,0)),U,1)
  S INDX=$S($L($E($G(^ORD(101,B,15)),1,245)):$E($G(^ORD(101,B,15)),1,245),1:";")
  S INDC=B_" ; "_INDN_" - EXIT ACTION (#15)"
  D ADD^XINDX11
