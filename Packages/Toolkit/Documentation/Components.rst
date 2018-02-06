@@ -100,15 +100,12 @@ The following fields contain M code within this file:
 File      Field  Field Name                       Global Location                      Comments
 ========  =====  ===============================  ===================================  =============================================================
 .11 	  1.1    SET LOGIC                        ^DD("IX",D0,1) E1,245
-.111      1      OVERFLOW SET LOGIC               ^DD("IX",D0,1.2,D1,1) E1,245         Need to factor in the .01 field to make sure it is ordered correctly
-.11       1.3    SET CONDITION                    ^DD("IX",D0,1.3) E1,245              Contains a FileMan computed expression. Necessary?
+.111      1      OVERFLOW SET LOGIC               ^DD("IX",D0,1.2,D1,1) E1,245
 .11       1.4    SET CONDITION CODE               ^DD("IX",D0,1.4) E1,245
 .11       2.1    KILL LOGIC                       ^DD("IX",D0,2.1) E1,245
-.112      2      OVERFLOW KILL LOGIC              ^DD("IX",D0,2.2,D1,2) E1,245         Need to factor in the .01 field to make sure it is ordered correctly
-.11       2.3    KILL CONDITION                   ^DD("IX",D0,2.3) E1,245              Contains a FileMan computed expression. Necessary?
+.112      2      OVERFLOW KILL LOGIC              ^DD("IX",D0,2.2,D1,2) E1,245
 .11       2.4    KILL CONDITION CODE              ^DD("IX",D0,2.4) E1,245
 .11       2.5    KILL ENTIRE INDEX CODE           ^DD("IX",D0,2.5) E1,245
-.114      4      COMPUTED VALUE                   ^DD("IX",D0,11.1,D1,1) E1,245        Contains a FileMan computed expression. Necessary?
 .114      4.5    COMPUTED CODE                    ^DD("IX",D0,11.1,D1,1.5) E1,245
 .114      5      TRANSFORM FOR STORAGE            ^DD("IX",D0,11.1,D1,2) E1,245
 .114      5.3    TRANSFORM FOR LOOKUP             ^DD("IX",D0,11.1,D1,4) E1,245
