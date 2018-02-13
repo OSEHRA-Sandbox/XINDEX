@@ -415,8 +415,9 @@ DIPTM ; [Public] Collect M code fields from all print templates
  .. ; Is it the same (after removing the quotes) as the MCode?
  .. ; If so, then this is not a computed expression
  .. i potComputedCode=mCode do  quit
+ ... N X S X=mCode D ^DIM
  ... ; Add code to be INDEXed
- ... W X,! s INDX=X d ADDLN^XINDX11
+ ... I $D(X) W X,! s INDX=X d ADDLN^XINDX11
  quit
  ;
 PARENT(subfile) ; [Private] Find out who my parent is
