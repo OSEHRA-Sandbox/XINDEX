@@ -321,91 +321,102 @@ DIPTOUT(outputData,outputPath,outputFile) ; [Private] Print Template Data Output
  d CLOSE^%ZISH("file1")
  quit
  ;
-DIETM(mCodeData) ; [Public] Collect M code fileds from all input templates
- n diet f diet=0:0 s diet=$o(^DIE(diet)) q:'diet  do
- . quit:'$data(^DIE(diet,0))                 ; get valid ones only
- . new name s name=$p(^DIE(diet,0),U)
- . new file s file=$p(^DIE(diet,0),U,4)
- . ;
- . ; for each file in the input template
- . n line f line=0:0 s line=$o(^DIE(diet,"DR",line)) q:line>98  q:line=""  do  ; 99 is reserved for some compiled code
- .. n lineFile f lineFile=0:0 s lineFile=$o(^DIE(diet,"DR",line,lineFile)) q:'lineFile  q:(lineFile'=+lineFile)  do
- ... n fields s fields=^DIE(diet,"DR",line,lineFile)
- ... n fieldIndex,field f fieldIndex=1:1:$l(fields,";") do
- .... s field=$piece(fields,";",fieldIndex)
- .... ; various tests for the field
- .... i field="" quit       ; empty field. Can happen!
- .... ;
- .... ; FROM X+2^DIA3: Get M field and check it
- .... N X S X=field
- .... i X'?.E1":" S X=$S(X["//^":$P(X,"//^",2),1:X),X=$S(X[";":$P(X,";"),1:X) D ^DIM
- .... i $d(X) s mCodeData(lineFile,line)=X
+ ; DIETM and DIPTM are used by XINDEX to process input and sort templates
+ ; respectively. XINDEX passes required parameters through the stack instead
+ ; passed variables.
+ ;
+ ; B = {IEN}
+ ; INDLC = {counter}
+ ; INDRN = {faux routine prefix}
+ ; INDC = {IEN} ; {NAME} - {DISPLAY NAME}
+ ; INDX = {code to be XINDEXED}
+ ; INDL = {NAME field (.01) of IEN}
+DIETM ; [Public] Collect M code fileds from all input templates
+ quit:'$data(^DIE(B,0))                 ; get valid ones only
+ new name s name=$p(^DIE(B,0),U)
+ new file s file=$p(^DIE(B,0),U,4)
+ ;
+ ; for each file in the input template
+ n line f line=0:0 s line=$o(^DIE(B,"DR",line)) q:line>98  q:line=""  do  ; 99 is reserved for some compiled code
+ . n lineFile f lineFile=0:0 s lineFile=$o(^DIE(B,"DR",line,lineFile)) q:'lineFile  q:(lineFile'=+lineFile)  do
+ .. n fields s fields=^DIE(B,"DR",line,lineFile)
+ .. n fieldIndex,field f fieldIndex=1:1:$l(fields,";") do
+ ... s field=$piece(fields,";",fieldIndex)
+ ... ; various tests for the field
+ ... i field="" quit       ; empty field. Can happen!
+ ... ;
+ ... ; FROM X+2^DIA3: Get M field and check it
+ ... N X S X=field
+ ... i X'?.E1":" S X=$S(X["//^":$P(X,"//^",2),1:X),X=$S(X[";":$P(X,";"),1:X) D ^DIM
+ ... ; Add code to be INDEXed
+ ... i $d(X) s INDX=X d ADDLN^XINDX11
  quit
  ;
-DIPTM(mCodeData) ; [Public] Collect M code fields from all print templates
- n dipt f dipt=0:0 s dipt=$o(^DIPT(dipt)) q:'dipt  d
- . quit:'$data(^DIPT(dipt,0))                 ; get valid ones only
- . new name s name=$p(^DIPT(dipt,0),U)
- . new file s file=$p(^DIPT(dipt,0),U,4)
- . ;
- . ; for each field
- . new fileNamePrint set fileNamePrint=1
- . new line f line=0:0 s line=$o(^DIPT(dipt,"F",line)) q:'line  do
- .. new lineContents s lineContents=^DIPT(dipt,"F",line)
- .. new fieldDataIndex for fieldDataIndex=1:1:$l(lineContents,"~") do
- ... new fieldData set fieldData=$p(lineContents,"~",fieldDataIndex)
- ... quit:fieldData=""
- ... n fields s fields=$p(fieldData,";")
- ... quit:fields=""
- ... quit:fields=" "
- ... ;
- ... ; If zpiece is defined, then we have a COMPUTED EXPRESSION or M code
- ... n Zpiece s Zpiece=0
- ... n i f i=1:1:$l(fieldData,";") i $p(fieldData,";",i)="Z" s Zpiece=i quit
- ... ;
- ... ; This can be a "hidden" M field masqurading -- the entire line is M code
- ... ; NB: This is rare, but print templates support that.
- ... n isNonTradMCode s isNonTradMCode=0
- ... if 'Zpiece do
- .... n p1 s p1=$p(fields,",")
- .... i +p1=p1 quit  ; Just a normal field
- .... N X S X=$P(fields,";") D ^DIM
- .... I $D(X) s isNonTradMCode=1,mCodeData(+file,line)=X quit
- ... ;
- ... q:isNonTradMCode  ; We already have M code. Quit.
- ... ;
- ... q:'Zpiece  ; Straight field
- ... ;
- ... ; extract compiled code from file/subfile references
- ... n mCode s mCode=""
- ... n fileField,fileFieldIndex
- ... f fileFieldIndex=1:1:$l(fields,",") do  q:mCode]""
- .... s fileField=$p(fields,",",fileFieldIndex)
- .... i fileField'=+fileField s mCode=$p(fields,",",fileFieldIndex,99)
- ... ;
- ... i mCode="" quit  ; no compiled code in this field
- ... ;
- ... ; If zpiece is defined, see if computed expression or M code
- ... ; Get the potentially COMPUTED EXPRESSION code for this field
- ... n potComputedCode s potComputedCode=$p(fieldData,";",Zpiece+1)
- ... s potComputedCode=$e(potComputedCode,2,$l(potComputedCode)-1)
- ... ;
- ... ; If M Code is broken up, put it back together
- ... i $f(mCode,"X DXS") do
- .... n startdxs s startdxs=$f(mCode,"DXS")-3
- .... n enddxs s enddxs=$f(mCode,")",startdxs)-1
- .... n dxsString s dxsString=$e(mCode,startdxs,enddxs)
- .... n s1,s2
- .... s s1=$qs(dxsString,1)
- .... s s2=$qs(dxsString,2)
- .... n dxsCode s dxsCode=^DIPT(dipt,"DXS",s1,s2)
- .... n % s %("X "_dxsString)=dxsCode
- .... s mCode=$$REPLACE^XLFSTR(mCode,.%)
- ... ;
- ... ; Is it the same (after removing the quotes) as the MCode?
- ... ; If so, then this is not a computed expression
- ... i potComputedCode=mCode do  quit
- .... set mCodeData(+file,line)=mCode
+DIPTM ; [Public] Collect M code fields from all print templates
+ quit:'$data(^DIPT(B,0))                 ; get valid ones only
+ new name s name=$p(^DIPT(B,0),U)
+ new file s file=$p(^DIPT(B,0),U,4)
+ ;
+ ; for each field
+ new fileNamePrint set fileNamePrint=1
+ new line f line=0:0 s line=$o(^DIPT(B,"F",line)) q:'line  do
+ . new lineContents s lineContents=^DIPT(B,"F",line)
+ . new fieldDataIndex for fieldDataIndex=1:1:$l(lineContents,"~") do
+ .. new fieldData set fieldData=$p(lineContents,"~",fieldDataIndex)
+ .. quit:fieldData=""
+ .. n fields s fields=$p(fieldData,";")
+ .. quit:fields=""
+ .. quit:fields=" "
+ .. ;
+ .. ; If zpiece is defined, then we have a COMPUTED EXPRESSION or M code
+ .. n Zpiece s Zpiece=0
+ .. n i f i=1:1:$l(fieldData,";") i $p(fieldData,";",i)="Z" s Zpiece=i quit
+ .. ;
+ .. ; This can be a "hidden" M field masqurading -- the entire line is M code
+ .. ; NB: This is rare, but print templates support that.
+ .. n isNonTradMCode s isNonTradMCode=0
+ .. if 'Zpiece do
+ ... n p1 s p1=$p(fields,",")
+ ... i +p1=p1 quit  ; Just a normal field
+ ... N X S X=$P(fields,";") D ^DIM
+ ... ; Add code to be INDEXed
+ ... I $D(X) s isNonTradMCode=1 W X,! s INDX=X d ADDLN^XINDX11 quit
+ .. ;
+ .. q:isNonTradMCode  ; We already have M code. Quit.
+ .. ;
+ .. q:'Zpiece  ; Straight field
+ .. ;
+ .. ; extract compiled code from file/subfile references
+ .. n mCode s mCode=""
+ .. n fileField,fileFieldIndex
+ .. f fileFieldIndex=1:1:$l(fields,",") do  q:mCode]""
+ ... s fileField=$p(fields,",",fileFieldIndex)
+ ... i fileField'=+fileField s mCode=$p(fields,",",fileFieldIndex,99)
+ .. ;
+ .. i mCode="" quit  ; no compiled code in this field
+ .. ;
+ .. ; If zpiece is defined, see if computed expression or M code
+ .. ; Get the potentially COMPUTED EXPRESSION code for this field
+ .. n potComputedCode s potComputedCode=$p(fieldData,";",Zpiece+1)
+ .. s potComputedCode=$e(potComputedCode,2,$l(potComputedCode)-1)
+ .. ;
+ .. ; If M Code is broken up, put it back together
+ .. i $f(mCode,"X DXS") do
+ ... n startdxs s startdxs=$f(mCode,"DXS")-3
+ ... n enddxs s enddxs=$f(mCode,")",startdxs)-1
+ ... n dxsString s dxsString=$e(mCode,startdxs,enddxs)
+ ... n s1,s2
+ ... s s1=$qs(dxsString,1)
+ ... s s2=$qs(dxsString,2)
+ ... n dxsCode s dxsCode=^DIPT(B,"DXS",s1,s2)
+ ... n % s %("X "_dxsString)=dxsCode
+ ... s mCode=$$REPLACE^XLFSTR(mCode,.%)
+ .. ;
+ .. ; Is it the same (after removing the quotes) as the MCode?
+ .. ; If so, then this is not a computed expression
+ .. i potComputedCode=mCode do  quit
+ ... ; Add code to be INDEXed
+ ... W X,! s INDX=X d ADDLN^XINDX11
  quit
  ;
 PARENT(subfile) ; [Private] Find out who my parent is

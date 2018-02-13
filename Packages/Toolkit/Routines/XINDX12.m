@@ -73,6 +73,22 @@ SORT ;Process Sort Templates
  . S INDC=B_"BY0D"_SUB_" ; "_INDL_" - DISPAR (#4) - "_SUB
  . D ADD^XINDX11
  Q
+ ; Input and Print templates are implemented in XINDX13
+ ; The executable code doesn't have defined field numbers in the DD,
+ ; So we put all of the lines together as "EXECUTABLE CODE"
+ ; Thanks to Sam Habiel for the implementation requried to support this.
+INPUT ; Input Templates
+ W !,"Processing Input Templates",!
+ S INDC=B_" ; "_INDL_" - EXECUTABLE CODE"
+ D ADD^XINDX11
+ D DIETM^XINDX13
+ Q
+PRINT ; Print Templates
+ W !,"Processing Print Templates",!
+ S INDC=B_" ; "_INDL_" - EXECUTABLE CODE"
+ D ADD^XINDX11
+ D DIPTM^XINDX13
+ Q
 FORM ;Process Forms
  ; ========  =====  ===============================  ===================================  =============================================
  ; File      Field  Field Name                       Global Location                      Comments
