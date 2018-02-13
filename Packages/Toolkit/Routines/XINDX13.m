@@ -380,7 +380,7 @@ DIPTM ; [Public] Collect M code fields from all print templates
  ... i +p1=p1 quit  ; Just a normal field
  ... N X S X=$P(fields,";") D ^DIM
  ... ; Add code to be INDEXed
- ... I $D(X) s isNonTradMCode=1 W X,! s INDX=X d ADDLN^XINDX11 quit
+ ... I $D(X) s isNonTradMCode=1 s INDX=X d ADDLN^XINDX11 quit
  .. ;
  .. q:isNonTradMCode  ; We already have M code. Quit.
  .. ;
@@ -417,7 +417,7 @@ DIPTM ; [Public] Collect M code fields from all print templates
  .. i potComputedCode=mCode do  quit
  ... N X S X=mCode D ^DIM
  ... ; Add code to be INDEXed
- ... I $D(X) W X,! s INDX=X d ADDLN^XINDX11
+ ... I $D(X) s INDX=X d ADDLN^XINDX11
  quit
  ;
 PARENT(subfile) ; [Private] Find out who my parent is
