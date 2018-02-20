@@ -1,7 +1,12 @@
-XINDX13 ; OSE/SMH - Input, Print, and Sort Template Analysis;2018-02-01  10:50 AM
- ;;0.1;OSEHRA;
+XINDX13 ; OSE/SMH - Input, Print, and Sort Template Analysis;2018-02-20  2:39 PM
+ ;;7.3;TOOLKIT;**10001**;Apr 25, 1995;Build 13
+ ; Entire routine authored by Sam Habiel; minor modifications by
+ ; Christopher Edwards
  ;
  ; This routine finds non-self files that are pointed to by a template
+ ; EPs DIPTM and DIETM support XINDX12 in finding M code in Input and
+ ; Print templates.
+ ;
  ;
 DIBT ; [Public] Sort template analysis
  n outputData

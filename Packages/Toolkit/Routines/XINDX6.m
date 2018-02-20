@@ -1,6 +1,7 @@
-XINDX6 ;ISC/REL,GRK - GET SET OF ROUTINES TO INDEX ;07/22/08  13:54
+XINDX6 ;ISC/REL,GRK - GET SET OF ROUTINES TO INDEX ;2018-02-20  2:37 PM
  ;;7.3;TOOLKIT;**20,27,66,110,132**;Apr 25, 1995;Build 13
- ; Per VHA Directive 2004-038, this routine should not be modified.
+ ; Original routine authored by U.S. Department of Veterans Affairs
+ ; XINDX6+13,+19 modified by Christopher Edwards
  ;INP(1=Print more than warnings, 2= Print routines, 3= Print warnings, 4= Print DDs & Functions & Options, 5= Type of List, 6= Summary only, 7= Save Parameters
  ;INP(8= Index called routines, 9= Include the Compiled template routines, 10 = Build or Package file DA
  ;INP(11= execute to check for version number on second line, 12= Patch number check.

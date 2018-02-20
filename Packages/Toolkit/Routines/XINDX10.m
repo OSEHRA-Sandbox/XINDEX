@@ -1,6 +1,8 @@
-XINDX10 ;ISC/GRK - assemble DD executable code ;11/12/2002  11:40
- ;;7.3;TOOLKIT;**20,27,66,68,132**;Apr 25, 1995;Build 13
- ; Per VHA Directive 2004-038, this routine should not be modified.
+XINDX10 ;ISC/GRK - assemble DD executable code ;2018-02-20  2:23 PM
+ ;;7.3;TOOLKIT;**20,27,66,68,132,10001**;Apr 25, 1995;Build 13
+ ; Original routine authored by U.S. Department of Veterans Affairs
+ ; Entry points ASKNS,ASKFILES,N1,F1,NS,FILE,INDX &
+ ; Lines START+1,STRIP+14-16 authored by Christopher Edwards.
 ASK ;Ask for Build, Install, or Package file.
  N X,Y,P,V,RN
  S DA=0,Y=-1,INP(11)=""
