@@ -73,6 +73,22 @@ SORT ;Process Sort Templates
  . S INDC=B_"BY0D"_SUB_" ; "_INDL_" - DISPAR (#4) - "_SUB
  . D ADD^XINDX11
  Q
+ ; Input and Print templates are implemented in XINDX13
+ ; The executable code doesn't have defined field numbers in the DD,
+ ; So we put all of the lines together as "EXECUTABLE CODE"
+ ; Thanks to Sam Habiel for the implementation requried to support this.
+INPUT ; Input Templates
+ W !,"Processing Input Templates",!
+ S INDC=B_" ; "_INDL_" - EXECUTABLE CODE"
+ D ADD^XINDX11
+ D DIETM^XINDX13
+ Q
+PRINT ; Print Templates
+ W !,"Processing Print Templates",!
+ S INDC=B_" ; "_INDL_" - EXECUTABLE CODE"
+ D ADD^XINDX11
+ D DIPTM^XINDX13
+ Q
 FORM ;Process Forms
  ; ========  =====  ===============================  ===================================  =============================================
  ; File      Field  Field Name                       Global Location                      Comments
@@ -221,48 +237,50 @@ PROTOCOL ;Process Protocols
  ; 101.05    .02    METHOD ACTION                    ^ORD(101,D0,101.05,D1,1) E1,245      Method sub file
  ; ========  =====  ===============================  ===================================  =============================================
  W !,"Processing Protocols",!
+ K INDN
+ S INDN=$P($G(^ORD(101,B,0)),U,1)
  S INDX=$S($L($E($G(^ORD(101,B,15)),1,245)):$E($G(^ORD(101,B,15)),1,245),1:";")
- S INDC=B_" ; "_INDL_" - EXIT ACTION (#15)"
+ S INDC=B_" ; "_INDN_" - EXIT ACTION (#15)"
  D ADD^XINDX11
  ;
  S INDX=$S($L($E($G(^ORD(101,B,20)),1,245)):$E($G(^ORD(101,B,20)),1,245),1:";")
- S INDC=" ; "_INDL_" - ENTRY ACTION (#20)"
+ S INDC=" ; "_INDN_" - ENTRY ACTION (#20)"
  D ADD^XINDX11
  ;
  S INDX=$S($L($E($G(^ORD(101,B,24)),1,245)):$E($G(^ORD(101,B,24)),1,245),1:";")
- S INDC=" ; "_INDL_" - SCREEN (#24)"
+ S INDC=" ; "_INDN_" - SCREEN (#24)"
  D ADD^XINDX11
  ;
  S INDX=$S($L($E($G(^ORD(101,B,26)),1,245)):$E($G(^ORD(101,B,26)),1,245),1:";")
- S INDC=" ; "_INDL_" - HEADER (#26)"
+ S INDC=" ; "_INDN_" - HEADER (#26)"
  D ADD^XINDX11
  ;
  S INDX=$S($L($E($G(^ORD(101,B,27)),1,245)):$E($G(^ORD(101,B,27)),1,245),1:";")
- S INDC=" ; "_INDL_" - MENU HELP (#27)"
+ S INDC=" ; "_INDN_" - MENU HELP (#27)"
  D ADD^XINDX11
  ;
  S INDX=$S($L($E($G(^ORD(101,B,100)),1,245)):$E($G(^ORD(101,B,100)),1,245),1:";")
- S INDC=" ; "_INDL_" - ORDER PRINT ACTION (#100)"
+ S INDC=" ; "_INDN_" - ORDER PRINT ACTION (#100)"
  D ADD^XINDX11
  ;
  S INDX=$S($L($E($G(^ORD(101,B,100.1)),1,245)):$E($G(^ORD(101,B,100.1)),1,245),1:";")
- S INDC=" ; "_INDL_" - ORDER CANCEL ACTION (#100.1)"
+ S INDC=" ; "_INDN_" - ORDER CANCEL ACTION (#100.1)"
  D ADD^XINDX11
  ;
  S INDX=$S($L($E($G(^ORD(101,B,100.2)),1,245)):$E($G(^ORD(101,B,100.2)),1,245),1:";")
- S INDC=" ; "_INDL_" - ORDER PURGE ACTION (#100.2)"
+ S INDC=" ; "_INDN_" - ORDER PURGE ACTION (#100.2)"
  D ADD^XINDX11
  ;
  S INDX=$S($L($E($G(^ORD(101,B,771)),1,245)):$E($G(^ORD(101,B,771)),1,245),1:";")
- S INDC=" ; "_INDL_" - PROCESSING ROUTINE (#771)"
+ S INDC=" ; "_INDN_" - PROCESSING ROUTINE (#771)"
  D ADD^XINDX11
  ;
  S INDX=$S($L($E($G(^ORD(101,B,772)),1,245)):$E($G(^ORD(101,B,772)),1,245),1:";")
- S INDC=" ; "_INDL_" - ORDER PURGE ACTION (#772)"
+ S INDC=" ; "_INDN_" - ORDER PURGE ACTION (#772)"
  D ADD^XINDX11
  ;
  S INDX=$S($L($E($G(^ORD(101,B,774)),1,245)):$E($G(^ORD(101,B,774)),1,245),1:";")
- S INDC=" ; "_INDL_" - ROUTING LOGIC (#774)"
+ S INDC=" ; "_INDN_" - ROUTING LOGIC (#774)"
  D ADD^XINDX11
  ;
  N SUB
@@ -270,14 +288,14 @@ PROTOCOL ;Process Protocols
  F  S SUB=$O(^ORD(101,B,21,SUB)) Q:SUB=""  Q:SUB'=+SUB  D
  . S INDX=$S($L($E($G(^ORD(101,B,21,SUB,0)),1,17)):"$G("_$E($G(^HL(771,B,"MSG",SUB,"R")),1,17)_")",1:";")
  . I INDX="D Q" S INDX=";"
- . S INDC=B_"R"_SUB_" ; "_INDL_" - REQUIRED VARIABLES SUB FILE (#101.021) REQUIRED VARIABLES (#1) - "_SUB
+ . S INDC=B_"R"_SUB_" ; "_INDN_" - REQUIRED VARIABLES SUB FILE (#101.021) REQUIRED VARIABLES (#1) - "_SUB
  . D ADD^XINDX11
  ;
  S SUB=""
  F  S SUB=$O(^ORD(101,B,101.05,SUB)) Q:SUB=""  Q:SUB'=+SUB  D
  . S INDX=$S($L($E($G(^ORD(101,B,101.05,SUB,1)),1,245)):$E($G(^ORD(101,B,101.05,SUB,1)),1,245),1:";")
  . I INDX="D Q" S INDX=";"
- . S INDC=B_"M"_SUB_" ; "_INDL_" - METHOD SUB FILE (#101.05) METHOD ACTION (#.02) - "_SUB
+ . S INDC=B_"M"_SUB_" ; "_INDN_" - METHOD SUB FILE (#101.05) METHOD ACTION (#.02) - "_SUB
  . D ADD^XINDX11
  ;
  Q

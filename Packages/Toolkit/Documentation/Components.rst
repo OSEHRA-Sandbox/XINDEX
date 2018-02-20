@@ -32,42 +32,100 @@ XINDEX already supports various components:
  * ROUTINES
  * OPTION - Implemented in XINDX11
  * FUNCTION - Implemented in XINDX11
- * COMPILED (INPUT & PRINT) TEMPLATES - Implemented in XINDX10
 
 XINDEX supports these non-routine components by creating Faux routines (adding data to ^UTILITY($J,{dd|{IEN},opt|{IEN},func|{IEN}) - dd|, opt|, and func| are treated like routine names, each item in the DD/option/function is treated as a new line in the Faux routine) and using them as input to XINDEX.
-
 
 Execution flow
 --------------
 
 Normal execution is by running D ^XINDEX from the top of the routine, this in-turn GOTOs the top of ^XINDX6, which asks all of the questions. It will initally ask for the list of routines, then ask for a build, install, or package to run against. START^XINDX10 will handle the package or build file components. The top of ^XINDX11 deals with getting all of the extra build components.
 
-COMPILED (INPUT & PRINT) TEMPLATES
-----------------------------------
-
-Compiled templates are found using XINDX10 and removed from the selected routine list (REMCOMP). As it appears that XINDEX will always use the code in ^DIE and ^DIPT to be XINDEX'ed instead of the routine file (which makes sense).
-
-Compiled Print templates are indicated by:
-
-	^DIPT(IEN,"ROU")=ROUTINE
-
-Compiled Input templates are indicated by:
-
-	^DIE(IEN,"ROU")=ROUTINE
-
 FILES (Data Dictionaries)
 -------------------------
+
+The following FileMan documentation pages were used to verify global locations:
+
+ * http://www.hardhats.org/fileman/pm/gfs_3a.htm
+ * http://www.hardhats.org/fileman/pm/gfs_3b.htm
+ * http://www.hardhats.org/fileman/pm/gfs_3c.htm
+
+The following fields contain M code in the Data Dictionary:
+
+========  =====  =====================================================  ===================================  =============================================
+File      Field  Field Name                                             Global Location                      Comments
+========  =====  =====================================================  ===================================  =============================================
+DD        0      INPUT TRANSFORM                                        ^DD(D0,D1,0) Piece 5,99              Already implemented in XINDX10
+DD        .12,1  VARIABLE POINTER SCREEN                                ^DD(D0,D1,V,D3,1)
+DD        .26    COMPUTE ALGORITHM                                      ^DD(D0,D1,9.1)                       Already implemented in XINDX10
+DD        1,1    (OLD STYLE) CROSS-REFERENCE & TRIGGERS SET STATEMENT   ^DD(D0,D1,1,D3,1)                    Already implemented in XINDX10
+DD        1,2    (OLD STYLE) CROSS-REFERENCE & TRIGGERS KILL STATEMENT  ^DD(D0,D1,1,D3,2)                    Already implemented in XINDX10
+DD        1.2    AUDIT CONDITION                                        ^DD(D0,D1,AX)                        Already implemented in XINDX10
+DD        2      OUTPUT TRANSFORM                                       ^DD(D0,D1,2)                         Already implemented in XINDX10
+DD        4      XECUTABLE 'HELP'                                       ^DD(D0,D1,4)                         Already implemented in XINDX10
+DD        7.5    PRE-LOOKUP TRANSFORM                                   ^DD(D0,D1,7.5)                       Already implemented in XINDX10
+DD        12     POINTER SCREEN                                         ^DD(D0,D1,12)                        Already implemented in XINDX10
+DD        12.1   CODE TO SET POINTER (Set of codes as well) SCREEN      ^DD(D0,D1,12.1)                      Already implemented in XINDX10
+DD        12.2   EXPRESSION FOR POINTER SCREEN                          ^DD(D0,D1,12.2)
+DD        9.2    OVERFLOW CODE                                          ^DD(D0,D1,9.2)                       Already implemented in XINDX10
+DD        9.3    OVERFLOW CODE                                          ^DD(D0,D1,9.3)                       Already implemented in XINDX10
+DD        9.4    OVERFLOW CODE                                          ^DD(D0,D1,9.4)                       Already implemented in XINDX10
+DD        9.5    OVERFLOW CODE                                          ^DD(D0,D1,9.5)                       Already implemented in XINDX10
+DD        9.6    OVERFLOW CODE                                          ^DD(D0,D1,9.6)                       Already implemented in XINDX10
+DD        9.7    OVERFLOW CODE                                          ^DD(D0,D1,9.7)                       Already implemented in XINDX10
+DD        9.8    OVERFLOW CODE                                          ^DD(D0,D1,9.8)                       Already implemented in XINDX10
+DD        9.9    OVERFLOW CODE                                          ^DD(D0,D1,9.9)                       Already implemented in XINDX10
+========  =====  =====================================================  ===================================  =============================================
+
+Special FILE level fields (not defined in the DD):
+
+========  ===============================  ===================================  =======================================================================
+Field     Field Name                       Global Location                      Comments
+========  ===============================  ===================================  =======================================================================
+DEL       Field Delete Condition           ^DD(D0,D1,"DEL")                     Already implemented in XINDX10
+LAYGO     LAYGO Add Condition              ^DD(D0,D1,"LAYGO")                   Already implemented in XINDX10
+ACT       Post-Action                      ^DD(D0,0,"ACT")
+DIC       Special Lookup                   ^DD(D0,0,"DIC")                      Routine Name without leading "^"
+ID        Field Identifiers                ^DD(D0,0,"ID",D1)                    Only numerics - Already implemented in XINDX10
+ID        Write Identifier                 ^DD(D0,0,"ID",*)                     Starts with uppercase Alpha characters - Already implemented in XINDX10
+========  ===============================  ===================================  =======================================================================
+
+INDEX
+-----
+
+This covers the new-style cross references that can be applied to a FILE. FileMan stores these types of cross references in a different file than embedded into the Data Dictionary.
+
+The following fields contain M code within this file:
+
+========  =====  ===============================  ===================================  =============================================================
+File      Field  Field Name                       Global Location                      Comments
+========  =====  ===============================  ===================================  =============================================================
+.11 	  1.1    SET LOGIC                        ^DD("IX",D0,1) E1,245
+.111      1      OVERFLOW SET LOGIC               ^DD("IX",D0,1.2,D1,1) E1,245
+.11       1.4    SET CONDITION CODE               ^DD("IX",D0,1.4) E1,245
+.11       2.1    KILL LOGIC                       ^DD("IX",D0,2.1) E1,245
+.112      2      OVERFLOW KILL LOGIC              ^DD("IX",D0,2.2,D1,2) E1,245
+.11       2.4    KILL CONDITION CODE              ^DD("IX",D0,2.4) E1,245
+.11       2.5    KILL ENTIRE INDEX CODE           ^DD("IX",D0,2.5) E1,245
+.114      4.5    COMPUTED CODE                    ^DD("IX",D0,11.1,D1,1.5) E1,245
+.114      5      TRANSFORM FOR STORAGE            ^DD("IX",D0,11.1,D1,2) E1,245
+.114      5.3    TRANSFORM FOR LOOKUP             ^DD("IX",D0,11.1,D1,4) E1,245
+.114      5.5    TRANSFORM FOR DISPLAY            ^DD("IX",D0,11.1,D1,3) E1,245
+========  =====  ===============================  ===================================  =============================================================
+
 
 PRINT TEMPLATE
 --------------
 
 The following fields contain M code within this file:
 
-========  =====  ===============================  ===================================  =============================================
+========  =====  ===============================  ===================================  =============================================================
 File      Field  Field Name                       Global Location                      Comments
-========  =====  ===============================  ===================================  =============================================
+========  =====  ===============================  ===================================  =============================================================
 .4        1815   ROUTINE INVOKED                  ^DIPT(D0,ROU)
-========  =====  ===============================  ===================================  =============================================
+                 EXECUTABLE CODE                  ^DIPT(D0,F)                          This isn't officially in the DD, but contains executable code
+                                                                                       code needs to be checked with ^DIM as it can contain FileMan
+                                                                                       Functions
+========  =====  ===============================  ===================================  =============================================================
 
 SORT TEMPLATE
 -------------
@@ -284,6 +342,895 @@ File      Field  Field Name                       Global Location               
 
 Data Dictionaries
 =================
+
+FILES
+-----
+
+NOTE: You can't pull a Data Dictionary of the Data Dictionary under normal circumstances. The code was modified to pull a global listing of the Data Dictionary to make it easy to do analysis.
+
+::
+
+  ^DD(D0,0)= (#.01) LABEL [1F] ^ (#.2) SPECIFIER [2F] ^ (#.3) POINTER [3F] ^
+        ==>(#.4) GLOBAL SUBSCRIPT LOCATION [4F] ^
+  ^DD(D0,.007,0)=^.007^^  (#1.007) SET TRANSLATION
+  ^DD(D0,.007,D1,0)= (#.01) SET VALUES [1F] ^
+  ^DD(D0,.008,0)=^.008^^  (#1.008) TRANSLATION
+  ^DD(D0,.008,D1,0)= (#.01) TRANSLATION [1F] ^
+  ^DD(D0,.009,0)=^.009^^  (#1.009) HELP TRANSLATION
+  ^DD(D0,.009,D1,0)= (#.01) HELP MESSAGE [1F] ^
+  ^DD(D0,.1)= (#.1) TITLE [E1,999F] ^
+  ^DD(D0,1,0)=^.1^^  (#1) CROSS-REFERENCE
+  ^DD(D0,1,D1,0)= (#.01) INDEX [E1,245F] ^
+  ^DD(D0,1,D1,1)= (#1) SET STATEMENT [E1,245K] ^
+  ^DD(D0,1,D1,2)= (#2) KILL STATEMENT [E1,245K] ^
+  ^DD(D0,1,D1,3)= (#3) NO-DELETION MESSAGE [1F] ^
+  ^DD(D0,1,D1,%D,0)=^.101^^  (#10) DESCRIPTION
+  ^DD(D0,1,D1,%D,D2,0)= (#.01) DESCRIPTION [1W] ^
+  ^DD(D0,1,D1,DT)= (#4) DATE UPDATED [1D] ^
+  ^DD(D0,1,D1,NOREINDEX)= (#666) RE-INDEXING [1S] ^
+  ^DD(D0,2)= (#2) OUTPUT TRANSFORM [E1,245F] ^
+  ^DD(D0,3)= (#3) 'HELP'-PROMPT [E1,245F] ^
+  ^DD(D0,4)= (#4) XECUTABLE 'HELP' [E1,245F] ^
+  ^DD(D0,5,0)=^.15^^  (#999) TRIGGERED-BY POINTER
+  ^DD(D0,5,D1,0)= (#.01) DD NUMBER [1N] ^ (#2) FIELD NUMBER [2N] ^ (#3)
+             ==>CROSS-REFERENCE NUMBER [3N] ^
+  ^DD(D0,7.5)= (#7.5) PRE-LOOKUP TRANSFORM [E1,245F] ^
+  ^DD(D0,8)= (#8) READ ACCESS (OPTIONAL) [E1,245F] ^
+  ^DD(D0,8.5)= (#8.5) DELETE ACCESS (OPTIONAL) [E1,245F] ^
+  ^DD(D0,9)= (#9) WRITE ACCESS (OPTIONAL) [E1,245F] ^
+  ^DD(D0,9.01)= (#9.01) COMPUTED FIELDS USED [E1,250F] ^
+  ^DD(D0,9.1)= (#.26) COMPUTE ALGORITHM [E1,245F] ^
+  ^DD(D0,10)= (#10) SOURCE [E1,99F] ^
+  ^DD(D0,11,0)=^.2LAP^^  (#11) DESTINATION
+  ^DD(D0,11,D1,0)= (#.01) DESTINATION [1P:0] ^
+  ^DD(D0,12)= (#12) POINTER SCREEN [E1,250] ^
+  ^DD(D0,12.1)= (#12.1) CODE TO SET POINTER SCREEN [E1,250] ^
+  ^DD(D0,12.2)= (#12.2) EXPRESSION FOR POINTER SCREEN [E1,250] ^
+  ^DD(D0,20,0)=^.3LA^^  (#20) GROUP
+  ^DD(D0,20,D1,0)= (#.01) GROUP [1F] ^
+  ^DD(D0,21,0)=^.001^^  (#21) DESCRIPTION
+  ^DD(D0,21,D1,0)= (#.01) DESCRIPTION [1W] ^
+  ^DD(D0,23,0)=^.001^^  (#23) TECHNICAL DESCRIPTION
+  ^DD(D0,23,D1,0)= (#.01) DESCRIPTION [1W] ^
+  ^DD(D0,101,0)=^.10101P^^  (#101) PROPERTY
+  ^DD(D0,101,D1,0)= (#.01) PROPERTY [1P:.86] ^
+  ^DD(D0,101,D1,31)= (#31) VALUE [E1,245F] ^
+  ^DD(D0,201,0)=^.10201P^^  (#102) METHOD
+  ^DD(D0,201,D1,0)= (#.01) METHOD [1P:.87] ^
+  ^DD(D0,201,D1,31)= (#31) VALUE [E1,245 K] ^
+  ^DD(D0,AUDIT)= (#1.1) AUDIT [1S] ^
+  ^DD(D0,AX)= (#1.2) AUDIT CONDITION [E1,245K] ^
+  ^DD(D0,DT)= (#50) DATE FIELD LAST EDITED [1D] ^
+  ^DD(D0,V,0)=^.12^^  (#.12) VARIABLE POINTER
+  ^DD(D0,V,D1,0)= (#.01) VARIABLE-POINTER [1P:1] ^ (#.02) MESSAGE [2F] ^ (#.03)
+             ==>ORDER [3N] ^ (#.04) PREFIX [4F] ^ (#.05) SHOULD ENTRIES BE
+             ==>SCREENED [5S] ^ (#.06) LAYGO [6S] ^
+  ^DD(D0,V,D1,1)= (#1) SCREEN [E1,240F] ^
+  ^DD(D0,V,D1,2)= (#2) EXPLANATION OF SCREEN [1F] ^
+
+
+INDEX
+-----
+
+::
+
+	STANDARD DATA DICTIONARY #.11 -- INDEX FILE
+	STORED IN ^DD("IX",
+
+	DATA          NAME                  GLOBAL        DATA
+	ELEMENT       TITLE                 LOCATION      TYPE
+	-------------------------------------------------------------------------------
+	This file stores information about new-style cross-references defined on a
+	file. Whereas traditional cross-references are stored under the 1 nodes of the
+	^DD for a particular field, new-style cross-references are stored in this file
+	and can consist of one field (simple cross-references), as well as more than
+	one field (compound cross-references).
+
+
+	              DD ACCESS: ^
+	              WR ACCESS: ^
+	             DEL ACCESS: ^
+	           LAYGO ACCESS: ^
+	IDENTIFIED BY:
+	"DI SHORT DESCRIPTION 50": D EN^DDIOL($E($P(^(0),U,3),1,50),"","?0")
+
+	PRIMARY KEY:        A (#.1101)
+	  Uniqueness Index: BB (#.1101)
+	       File, Field: 1) FILE (.11,.01)  2) NAME (.11,.02)
+
+	POINTED TO BY: UNIQUENESS INDEX field (#3) of the KEY File (#.31)
+
+
+	CROSS
+	REFERENCED BY: ROOT FILE(AC), FILE(B)
+
+	INDEXED BY:    FILE & NAME (BB), FILE & FIELD (F), NAME (IX)
+
+
+
+
+	.11,.01       FILE                   0;1 NUMBER (Required) (Key field)
+
+	              INPUT TRANSFORM:  K:+X'=X!(X>999999999999)!(X<0)!(X?.E1"."8N.N) X
+	              LAST EDITED:      JUN 11, 1998
+	              HELP-PROMPT:      Answer must be between 0 and 999999999999, with
+	                                up to 7 decimal digits. Answer '??' for more
+	                                help.
+	              DESCRIPTION:      Answer should be the number of the file
+	                                cross-referenced by this index.  For whole file
+	                                cross-references on subfiles, answer with the
+	                                number of the file where the index physically
+	                                resides, not the subfile number.
+
+	              CROSS-REFERENCE:  .11^B
+	                                1)= S ^DD("IX","B",$E(X,1,30),DA)=""
+	                                2)= K ^DD("IX","B",$E(X,1,30),DA)
+	                                3)= Lets developers pick indexes by file number
+	                                The B index, on the .01 (File) of the Index
+	                                file, lets developers pick indexes by the
+	                                numbers of the files they cross-reference.
+
+
+	              RECORD INDEXES:   BB (#.1101)
+
+	.11,.02       NAME                   0;2 FREE TEXT (Required) (Key field)
+
+	              INPUT TRANSFORM:  K:$L(X)>30!($L(X)<1)!'(X?1A.AN) X
+	              LAST EDITED:      MAR 03, 1999
+	              HELP-PROMPT:      Answer must be 1-30 characters in length.
+	                                Answer '??' for more help.
+	              DESCRIPTION:      Answer must be the name of the index. For
+	                                example, the name of the default lookup index
+	                                on a file's .01 field is B, the name of the
+	                                uniqueness index of a compound key is BB, and
+	                                the name of an index not used for lookup must
+	                                start with A.
+
+	              FIELD INDEX:      IX (#.1102)    REGULAR    IR
+	                                LOOKUP & SORTING
+	                  Short Descr:  Allows user to look up Indexes by Name.
+	                  Description:  This 'Regular' index on the Name field (#.02)
+	                                allows users to select an index by its name.
+	                    Set Logic:  S ^DD("IX","IX",$E(X,1,30),DA)=""
+	                   Kill Logic:  K ^DD("IX","IX",$E(X,1,30),DA)
+	                   Whole Kill:  K ^DD("IX","IX")
+	                         X(1):  NAME  (.11,.02)  (Subscr 1)  (Len 30)
+	                                (forwards)
+
+	              RECORD INDEXES:   BB (#.1101)
+
+	.11,.1        DESCRIPTION            .1;0   WORD-PROCESSING #.1101
+
+
+	.11,.11       SHORT DESCRIPTION      0;3 FREE TEXT (Required)
+
+	              INPUT TRANSFORM:  K:$L(X)>79!($L(X)<1) X
+	              LAST EDITED:      FEB 16, 1996
+	              HELP-PROMPT:      Answer must be 1-79 characters in length.
+	                                Answer '??' for more help.
+	              DESCRIPTION:      Answer should be text briefly explaining the
+	                                function of this cross-reference.
+
+
+	.11,.2        TYPE                   0;4 SET (Required)
+
+	                                'R' FOR REGULAR;
+	                                'MU' FOR MUMPS;
+	              LAST EDITED:      JUL 18, 1997
+	              HELP-PROMPT:      Answer '??' for more help.
+	              DESCRIPTION:      REGULAR - One or more field values are stored
+	                                in an index on the file. The index can be used
+	                                for sorting, or optionally, looking up entries.
+
+	                                MUMPS - Customizable M code executes whenever a
+	                                field that makes up the cross-references
+	                                changes.
+
+
+	.11,.4        EXECUTION              0;6 SET (Required)
+
+	                                'F' FOR FIELD;
+	                                'R' FOR RECORD;
+	              LAST EDITED:      JUN 11, 1998
+	              HELP-PROMPT:      Answer '??' for more help.
+	              DESCRIPTION:      Answer with the code that indicates whether the
+	                                cross reference logic should be executed after
+	                                a field in the index changes, or only after all
+	                                fields in a record are updated. The logic for
+	                                most simple (single-field) indexes should be
+	                                executed immediately after the field changes,
+	                                and so should get the code 'F'. The logic for
+	                                most compound indexes should be executed only
+	                                once after a transaction on the entire record
+	                                is complete, and so should get the code 'R'.
+	                                Exceptions to this rule are rare.
+
+
+	.11,.41       ACTIVITY               0;7 FREE TEXT
+
+	              INPUT TRANSFORM:  K:$L(X)>2!($L(X)<1)!($TR(X,"IR")]"") X
+	              LAST EDITED:      JUN 11, 1998
+	              HELP-PROMPT:      Answer must be 2 characters in length. Answer
+	                                '??' for more help.
+	              DESCRIPTION:      Answer with the flags that control whether
+	                                FileMan fires this cross-reference during an
+	                                installation and a re-cross-referencing
+	                                operation. The possible flags are:
+
+	                                  I = Installing an entry at a site
+	                                  R = Re-cross-referencing this index
+
+	                                FileMan automatically fires cross-references
+	                                during an edit, regardless of Activity, though
+	                                you can control whether a cross-reference is
+	                                fired by entering Set and Kill Conditions.
+
+	                                Also, if you explicity select a cross-reference
+	                                in an EN^DIK, EN1^DIK, or ENALL^DIK call, or in
+	                                the UTILITY FUNCTIONS/RE-INDEX FILE option on
+	                                the VA FileMan menu, that cross-reference will
+	                                be fired whether or not its Activity contains
+	                                an "R".
+
+	              NOTES:            XXXX--CAN'T BE ALTERED EXCEPT BY PROGRAMMER
+
+
+	.11,.42       USE                    0;14 SET
+
+	                                'LS' FOR LOOKUP & SORTING;
+	                                'S' FOR SORTING ONLY;
+	                                'A' FOR ACTION;
+	              LAST EDITED:      APR 16, 1998
+	              HELP-PROMPT:      Controls how the index will be used by Classic
+	                                FileMan Lookup (^DIC), Finder (FIND^DIC and
+	                                $$FIND1^DIC) and Sort/Print (EN1^DIP). Answer
+	                                '??' for more help.
+	              DESCRIPTION:      LOOKUP & SORTING - The index name starts with
+	                                "B" or a letter that alphabetically follows
+	                                "B".  Calls to Classic FileMan lookup (^DIC) or
+	                                the Finder (FIND^DIC or $$FIND1^DIC) where the
+	                                index is not specified will include this index
+	                                in the search. The index will be available for
+	                                use by the FileMan Sort and Print (EN1^DIP).
+
+	                                SORTING ONLY - The index name starts with "A".
+	                                Calls to Classic FileMan lookup (^DIC) or the
+	                                Finder (FIND^DIC or $$FIND1^DIC) will not use
+	                                this index unless it is specified in the input
+	                                parameters. The index will be available for use
+	                                by the FileMan Sort and Print (EN1^DIP).
+
+	                                ACTION - The index name starts with "A". This
+	                                is used for M code that performs some actions
+	                                and does NOT build an index. Therefore, it is
+	                                not available for use by either the Classic
+	                                FileMan lookup (^DIC), the Finder (FIND^DIC or
+	                                $$FIND1^DIC) or the Sort and Print (EN1^DIP).
+
+
+	.11,.5        ROOT TYPE              0;8 SET
+
+	                                'I' FOR INDEX FILE;
+	                                'W' FOR WHOLE FILE;
+	              LAST EDITED:      SEP 08, 1998
+	              HELP-PROMPT:      Answer '??' for more help.
+	              DESCRIPTION:      Answer 'I' if the fields that make up the file
+	                                are defined at the same level at which the
+	                                index is located.
+
+	                                Answer 'W' if this is a whole file
+	                                cross-reference in which the fields that make
+	                                up the index are defined in a subfile, but the
+	                                index is physically located at a parent file
+	                                level.
+
+
+	.11,.51       ROOT FILE              0;9 NUMBER (Required)
+
+	              INPUT TRANSFORM:  K:+X'=X!(X>999999999999)!(X<0)!(X?.E1"."8N.N) X
+	              LAST EDITED:      SEP 29, 1998
+	              HELP-PROMPT:      Type a Number between 0 and 999999999999, 7
+	                                Decimal Digits. Answer '??' for more help.
+	              DESCRIPTION:      Answer with the number of the file or subfile
+	                                where this index is defined.  For whole file
+	                                indexes, answer with the subfile number, not
+	                                the number of the file where the index
+	                                physically resides.
+
+	              CROSS-REFERENCE:  .11^AC
+	                                1)= S ^DD("IX","AC",$E(X,1,30),DA)=""
+	                                2)= K ^DD("IX","AC",$E(X,1,30),DA)
+	                                3)= Lets FileMan find indexes defined on fields
+	                                 from a particular file
+
+
+	.11,1.1       SET LOGIC              1;E1,245 MUMPS (Required)
+
+	              INPUT TRANSFORM:  K:$L(X)>245 X D:$D(X) ^DIM
+	              LAST EDITED:      JAN 16, 1996
+	              HELP-PROMPT:      Answer must be Standard M code. Answer '??' for
+	                                more help.
+	              DESCRIPTION:      Answer with the M code that FileMan should
+	                                execute when the values of fields that make up
+	                                the cross-reference are set or changed. When
+	                                field values are changed, FileMan executes
+	                                first the KILL LOGIC, then the SET LOGIC.
+
+	                                Assume the DA array describes the record to be
+	                                cross-referenced, and that the X(order#) array
+	                                contains values after the transform for storage
+	                                is applied, but before the truncation to the
+	                                maximum length.  The variable X also equals
+	                                X(order#) of the lowest order number.
+
+	                                When fields that make up a cross-reference are
+	                                edited and the kill and set logic are executed,
+	                                the X1(order#) array contains the old field
+	                                values, and the X2(order#) array contains the
+	                                new field values. If a record is being added,
+	                                and there is an X1(order#) array element that
+	                                corresponds to the .01 field, it is set to
+	                                null. When a record is deleted, all X2(order#)
+	                                array elements are null.
+
+	              WRITE AUTHORITY:  @
+
+	.11,1.2       OVERFLOW SET LOGIC     1.2;0 Multiple #.111
+
+	              LAST EDITED:      JAN 24, 1996
+
+	.111,.01        OVERFLOW SET LOGIC NODE 0;1 NUMBER (Multiply asked)
+
+	                INPUT TRANSFORM:K:+X'=X!(X>999999)!(X<1)!(X?.E1"."1N.N) X S:$D(
+	                                X) DINUM=X
+	                LAST EDITED:    SEP 10, 1998
+	                HELP-PROMPT:    Type a Number between 1 and 999999, 0 Decimal
+	                                Digits. Answer '??' for more help.
+	                DESCRIPTION:    Answer must be the number of the node under
+	                                which the additional line of set logic will be
+	                                filed. Use the overflow nodes if the set logic
+	                                is too long to fit in the SET LOGIC field.
+
+	                NOTES:          XXXX--CAN'T BE ALTERED EXCEPT BY PROGRAMMER
+
+
+	.111,1          OVERFLOW SET LOGIC   1;E1,245 MUMPS (Required)
+
+	                INPUT TRANSFORM:K:$L(X)>245 X D:$D(X) ^DIM
+	                LAST EDITED:    JAN 24, 1996
+	                HELP-PROMPT:    Answer must be Standard M code. Answer '??' for
+	                                more help.
+	                DESCRIPTION:    Answer with the M code of the additional set
+	                                logic stored at this node.  FileMan will not
+	                                automatically execute this additional code, so
+	                                the set logic must invoke the additional code
+	                                stored in this overflow node.
+
+	                                The M code can assume that DIXR contains the
+	                                internal entry number of the Index file entry.
+
+	                WRITE AUTHORITY:@
+
+
+
+	.11,1.3       SET CONDITION          1.3;E1,245 FREE TEXT
+
+	              INPUT TRANSFORM:  K:$L(X)>245!($L(X)<1) X
+	              LAST EDITED:      JAN 16, 1996
+	              HELP-PROMPT:      Answer must be a valid FileMan computed
+	                                expression. Answer '??' for more help.
+	              DESCRIPTION:      Answer with a FileMan computed expression that
+	                                will evaluate to Boolean true (according to the
+	                                M rules for Boolean interpretation). FileMan
+	                                will evaluate this expression whenever it would
+	                                normally execute the cross-reference's Set
+	                                Logic, and will not execute the Set Logic
+	                                unless this condition evaluates to true.
+
+
+	.11,1.4       SET CONDITION CODE     1.4;E1,245 MUMPS
+
+	              INPUT TRANSFORM:  K:$L(X)>245 X D:$D(X) ^DIM
+	              LAST EDITED:      JAN 17, 1997
+	              HELP-PROMPT:      This is Standard MUMPS code. Answer '??' for
+	                                more help.
+	              DESCRIPTION:      This is MUMPS code that sets the variable X.
+	                                The SET LOGIC is executed only if the SET
+	                                CONDTION, if present, sets X to Boolean true
+	                                (according to M rules for Boolean
+	                                interpretation).
+
+	                                Assume the DA array describes the record to be
+	                                cross-referenced, and that the X(order#) array
+	                                contains values after the transform for storage
+	                                is applied, but before the truncation to the
+	                                maximum length.  The variable X also equals
+	                                X(order#) of the lowest order number.
+
+	                                When fields that make up a cross-reference are
+	                                edited and the kill and set conditions are
+	                                executed, the X1(order#) array contains the old
+	                                field values, and the X2(order#) array contains
+	                                the new field values. If a record is being
+	                                added, and there is an X1(order#) array element
+	                                that corresponds to the .01 field, it is set to
+	                                null. When a record is deleted, all X2(order#)
+	                                array elements are null.
+
+	              WRITE AUTHORITY:  @
+
+	.11,2.1       KILL LOGIC             2;E1,245 MUMPS (Required)
+
+	              INPUT TRANSFORM:  K:$L(X)>245 X D:$D(X) ^DIM
+	              LAST EDITED:      JAN 16, 1996
+	              HELP-PROMPT:      Answer must be Standard M code. Answer '??' for
+	                                more help.
+	              DESCRIPTION:      Answer with the M code that FileMan should
+	                                execute when the values of fields that make up
+	                                the cross-reference are changed or deleted.
+	                                When field values are changed, FileMan executes
+	                                first the KILL LOGIC, then the SET LOGIC.
+
+	                                Assume the DA array describes the record to be
+	                                cross-referenced, and that the X(order#) array
+	                                contains values after the transform for storage
+	                                is applied, but before the truncation to the
+	                                maximum length.  The variable X also equals
+	                                X(order#) of the lowest order number.
+
+	                                When fields that make up a cross-reference are
+	                                edited and the kill and set logic are executed,
+	                                the X1(order#) array contains the old field
+	                                values, and the X2(order#) array contains the
+	                                new field values. If a record is being added,
+	                                and there is an X1(order#) array element that
+	                                corresponds to the .01 field, it is set to
+	                                null. When a record is deleted, all X2(order#)
+	                                array elements are null.
+
+	              WRITE AUTHORITY:  @
+
+	.11,2.2       OVERFLOW KILL LOGIC    2.2;0 Multiple #.112
+
+	              LAST EDITED:      JAN 24, 1996
+
+	.112,.01        OVERFLOW KILL LOGIC NODE 0;1 NUMBER (Multiply asked)
+
+	                INPUT TRANSFORM:K:+X'=X!(X>999999)!(X<1)!(X?.E1"."1N.N) X S:$D(
+	                                X) DINUM=X
+	                LAST EDITED:    SEP 10, 1998
+	                HELP-PROMPT:    Type a Number between 1 and 999999, 0 Decimal
+	                                Digits. Answer '??' for more help.
+	                DESCRIPTION:    Answer must be the number of the node under
+	                                which the additional line of Set Logic will be
+	                                filed. Use the overflow nodes if the kill logic
+	                                is too long to fit in the KILL LOGIC field.
+
+	                NOTES:          XXXX--CAN'T BE ALTERED EXCEPT BY PROGRAMMER
+
+
+	.112,2          OVERFLOW KILL LOGIC  2;E1,245 MUMPS (Required)
+
+	                INPUT TRANSFORM:K:$L(X)>245 X D:$D(X) ^DIM
+	                LAST EDITED:    JAN 24, 1996
+	                HELP-PROMPT:    Answer must be Standard M code. Answer '??' for
+	                                more help.
+	                DESCRIPTION:    Answer with the M code of the additional kill
+	                                logic stored at this node.  FileMan will not
+	                                automatically execute this additional code, so
+	                                the kill logic must invoke the additional code
+	                                stored in this overflow node.
+
+	                                The M code can assume that DIXR contains the
+	                                internal entry number of the Index file entry.
+
+	                WRITE AUTHORITY:@
+
+
+
+	.11,2.3       KILL CONDITION         2.3;E1,245 FREE TEXT
+
+	              INPUT TRANSFORM:  K:$L(X)>245!($L(X)<1) X
+	              LAST EDITED:      JAN 16, 1996
+	              HELP-PROMPT:      Answer must be a valid FileMan computed
+	                                expression. Answer '??' for more help.
+	              DESCRIPTION:      Answer with a FileMan computed expression that
+	                                will evaluate to Boolean true (according to the
+	                                M rules for Boolean interpretation). FileMan
+	                                will evaluate this expression whenever it would
+	                                normally execute the cross-reference's Kill
+	                                Logic, and will not execute the Kill Logic
+	                                unless this condition evaluates to true.
+
+
+	.11,2.4       KILL CONDITION CODE    2.4;E1,245 MUMPS
+
+	              INPUT TRANSFORM:  K:$L(X)>245 X D:$D(X) ^DIM
+	              LAST EDITED:      JAN 17, 1997
+	              HELP-PROMPT:      This is Standard MUMPS code. Answer '??' for
+	                                more help.
+	              DESCRIPTION:      This is MUMPS code, that sets the variable X.
+	                                The KILL LOGIC is executed only if the KILL
+	                                CONDITION, if present, sets X such the X
+	                                evaluates to true,  (according to M rules for
+	                                Boolean interpretation)
+
+	                                Assume the DA array describes the record to be
+	                                cross-referenced, and that the X(order#) array
+	                                contains values after the transform for storage
+	                                is applied, but before the truncation to the
+	                                maximum length.  The variable X also equals
+	                                X(order#) of the lowest order number.
+
+	                                When fields that make up a cross-reference are
+	                                edited and the kill and set conditions are
+	                                executed, the X1(order#) array contains the old
+	                                field values, and the X2(order#) array contains
+	                                the new field values. If a record is being
+	                                added, and there is an X1(order#) array element
+	                                that corresponds to the .01 field, it is set to
+	                                null. When a record is deleted, all X2(order#)
+	                                array elements are null.
+
+	              WRITE AUTHORITY:  @
+
+	.11,2.5       KILL ENTIRE INDEX CODE 2.5;E1,245 MUMPS
+
+	              INPUT TRANSFORM:  K:$L(X)>245 X D:$D(X) ^DIM
+	              HELP-PROMPT:      This is Standard MUMPS code. Answer '??' for
+	                                more help.
+	              DESCRIPTION:      This is a kill statement that can be executed
+	                                to remove an entire index for all records in a
+	                                file. When an entire file is reindexed, FileMan
+	                                executes this code instead of looping through
+	                                all the entries in a file and executing the
+	                                kill logic once for each entry.
+
+	              WRITE AUTHORITY:  @
+
+	.11,11.1      CROSS-REFERENCE VALUES 11.1;0 Multiple #.114
+	                                 (Add New Entry without Asking)
+
+	              LAST EDITED:      FEB 21, 1996
+	              IDENTIFIED BY:    TYPE OF VALUE(#1)[R]
+
+	              PRIMARY KEY:      A (#.11401)
+	              Uniqueness Index: BB (#.11401)
+	                   File, Field: 1) ORDER NUMBER (.114,.01)
+
+	              INDEXED BY:       SUBSCRIPT NUMBER (AC), ORDER NUMBER (BB)
+
+	.114,.01        ORDER NUMBER           0;1 NUMBER (Multiply asked) (Key field)
+
+	                INPUT TRANSFORM:  K:+X'=X!(X>125)!(X<1)!(X?.E1"."1N.N) X
+	                LAST EDITED:      APR 25, 2002
+	                HELP-PROMPT:      Type a Number between 1 and 125, 0 Decimal
+	                                  Digits. Answer '??' for more help.
+	                DESCRIPTION:      Answer must be the order number of this
+	                                  cross-reference value.
+
+	                                  FileMan evaluates cross-reference values by
+	                                  order of "Order Number" and places each value
+	                                  in the X(order#) array. The set and kill
+	                                  logic, for example, can use X(2) to refer to
+	                                  the cross-reference value with order number
+	                                  2.
+
+	                DELETE TEST:      1,0)= I $P($G(DDS),U,2)="DIKC EDIT" D BLDLOG^
+	                                DIKCFORM(DA(1)) S DIKCREB=1 I 0
+
+	                CROSS-REFERENCE:.114^B
+	                                1)= S ^DD("IX",DA(1),11.1,"B",$E(X,1,30),DA)=""
+	                                2)= K ^DD("IX",DA(1),11.1,"B",$E(X,1,30),DA)
+
+	                FIELD INDEX:    BB (#.11401)    REGULAR    IR
+	                                LOOKUP & SORTING
+	                   Unique for:  Key A (#.11401), File #.114
+	                  Short Descr:  The uniqueness index of the Cross-Reference
+	                                Values multiple of the Index file
+	                    Set Logic:  S ^DD("IX",DA(1),11.1,"BB",X,DA)=""
+	                   Kill Logic:  K ^DD("IX",DA(1),11.1,"BB",X,DA)
+	                   Whole Kill:  K ^DD("IX",DA(1),11.1,"BB")
+	                         X(1):  ORDER NUMBER  (.114,.01)  (Subscr 1)
+
+
+	.114,.5         SUBSCRIPT NUMBER     0;6 NUMBER
+
+	                INPUT TRANSFORM:K:+X'=X!(X>125)!(X<1)!(X?.E1"."1N.N) X
+	                LAST EDITED:    JUN 11, 1998
+	                HELP-PROMPT:    Type a Number between 1 and 125, 0 Decimal
+	                                Digits. Answer '??' for more help.
+	                DESCRIPTION:    If this cross-reference value is used as a
+	                                subscript in an index, enter the subscript
+	                                position number. The first subscript to the
+	                                right of the index name is subscript number 1.
+
+	                FIELD INDEX:    AC (#.11402)    REGULAR    IR    SORTING ONLY
+	                  Short Descr:  Lets FileMan find cross reference values by
+	                                subscript
+	                    Set Logic:  S ^DD("IX",DA(1),11.1,"AC",X,DA)=""
+	                   Kill Logic:  K ^DD("IX",DA(1),11.1,"AC",X,DA)
+	                   Whole Kill:  K ^DD("IX",DA(1),11.1,"AC")
+	                         X(1):  SUBSCRIPT NUMBER  (.114,.5)  (Subscr 1)
+	                                (forwards)
+
+
+	.114,1          TYPE OF VALUE        0;2 SET (Required)
+
+	                                'F' FOR FIELD;
+	                                'C' FOR COMPUTED VALUE;
+	                LAST EDITED:    JAN 16, 1996
+	                HELP-PROMPT:    Answer '??' for more help.
+	                DESCRIPTION:    Answer 'F' if this cross-reference value is
+	                                based on the value of a field.
+
+	                                Answer 'C' if this cross-reference value should
+	                                be determined by executing the COMPUTED CODE.
+
+
+	.114,2          FILE                 0;3 NUMBER
+
+	                INPUT TRANSFORM:K:+X'=X!(X>999999999999)!(X<0)!(X?.E1"."8N.N) X
+	                LAST EDITED:    JAN 16, 1996
+	                HELP-PROMPT:    Answer must be between 0 and 999999999999, with
+	                                up to 7 decimal digits. Answer '??' for more
+	                                help.
+	                DESCRIPTION:    If this cross-reference value is a field value,
+	                                answer with the number of the file or subfile
+	                                in which this field is defined.
+
+	                RECORD INDEXES: F (#.11403) (WHOLE FILE #.11)
+
+	.114,3          FIELD                0;4 NUMBER
+
+	                INPUT TRANSFORM:D ITFLD^DIKCDD I $D(X) K:+X'=X!(X>999999999999)
+	                                !(X<0)!(X?.E1"."8N.N) X
+	                LAST EDITED:    SEP 02, 1997
+	                HELP-PROMPT:    Type a Number between 0 and 999999999999, 7
+	                                Decimal Digits. Answer '??' for more help.
+	                DESCRIPTION:    If this cross-reference value is a field,
+	                                answer with the field number.
+
+	                EXECUTABLE HELP:D EHFLD^DIKCDD
+	                NOTES:          XXXX--CAN'T BE ALTERED EXCEPT BY PROGRAMMER
+
+	                RECORD INDEXES: F (#.11403) (WHOLE FILE #.11)
+
+	.114,4          COMPUTED VALUE       1;1 FREE TEXT
+
+	                INPUT TRANSFORM:K:$L(X)>245!($L(X)<1) X
+	                LAST EDITED:    FEB 19, 1996
+	                HELP-PROMPT:    Answer must be a valid FileMan computed
+	                                expression. Answer '??' for more help.
+	                DESCRIPTION:    If this cross-reference value is computed,
+	                                answer with the computed expression that
+	                                evaluates to it.
+
+
+	.114,4.5        COMPUTED CODE        1.5;E1,245 MUMPS
+
+	                INPUT TRANSFORM:K:$L(X)>245 X D:$D(X) ^DIM
+	                LAST EDITED:    FEB 21, 1996
+	                HELP-PROMPT:    This is Standard MUMPS code. Answer '??' for
+	                                more help.
+	                DESCRIPTION:    Answer with M code that sets X equal to the
+	                                cross-reference value. The X(order#) array is
+	                                available for those cross-reference values with
+	                                lower Order Numbers, and the DA array describes
+	                                the IEN of the current record.
+
+	                WRITE AUTHORITY:@
+
+	.114,5          TRANSFORM FOR STORAGE 2;E1,245 MUMPS
+
+	                INPUT TRANSFORM:K:$L(X)>245 X D:$D(X) ^DIM
+	                LAST EDITED:    JUL 31, 1998
+	                HELP-PROMPT:    This is Standard M code. Answer '??' for more
+	                                help.
+	                DESCRIPTION:    Used only when setting or killing an entry in
+	                                the index.
+
+	                                Answer should be M code that sets the variable
+	                                X to a new value. X is the only input variable
+	                                that is guaranteed to be defined and is equal
+	                                to the internal value of the field.
+
+	                                TRANSFORM FOR STORAGE can be used on field-type
+	                                cross-reference values to transform the
+	                                internal value of the field before it is stored
+	                                as a subscript in the index.
+
+	                                If a match is made on this index during a
+	                                lookup, then in order to properly display the
+	                                resulting index value to the user, the
+	                                developer may need to enter code into the
+	                                TRANSFORM FOR DISPLAY field to transform the
+	                                index value back to a displayable format.
+
+	                WRITE AUTHORITY:@
+
+	.114,5.3        TRANSFORM FOR LOOKUP 4;E1,245 MUMPS
+
+	                INPUT TRANSFORM:K:$L(X)>245 X D:$D(X) ^DIM
+	                LAST EDITED:    JAN 05, 2000
+	                HELP-PROMPT:    This is Standard MUMPS code. Answer '??' for
+	                                more help.
+	                DESCRIPTION:    Used only during lookup.
+
+	                                Answer should be M code that sets the variable
+	                                X to a new value. X is the only input variable
+	                                that is guaranteed to be defined and is equal
+	                                to the lookup value entered by the user.
+
+	                                During lookup, if the lookup value is not found
+	                                in the index, FileMan will execute the
+	                                TRANSFORM FOR LOOKUP code to transform the
+	                                lookup value X. It will then search this index
+	                                looking for a match to the transformed lookup
+	                                value.
+
+	                WRITE AUTHORITY:@
+
+	.114,5.5        TRANSFORM FOR DISPLAY 3;E1,245 MUMPS
+
+	                INPUT TRANSFORM:K:$L(X)>245 X D:$D(X) ^DIM
+	                LAST EDITED:    JUL 31, 1998
+	                HELP-PROMPT:    This is Standard MUMPS code. Answer '??' for
+	                                more help.
+	                DESCRIPTION:    Used only during lookup.
+
+	                                Answer should be M code that sets the variable
+	                                X to a new value. X is the only variable that
+	                                is guaranteed to be defined and is equal to the
+	                                value of the subscript from the index.
+
+	                                TRANSFORM FOR DISPLAY should be set only for an
+	                                index value that has been transformed using the
+	                                code in the TRANSFORM FOR STORAGE prior to
+	                                storing the value in the index.
+
+	                                The code should take the internal value from
+	                                the index subscript X, and convert it back to a
+	                                format that can be displayed to an end user.
+	                                During lookup, if a match or matches are made
+	                                to a lookup value that was transformed using
+	                                the TRANSFORM FOR LOOKUP code on this index,
+	                                then FileMan will execute the TRANSFORM FOR
+	                                DISPLAY code before displaying the index
+	                                value(s) to the end user.
+
+	                WRITE AUTHORITY:@
+
+	.114,6          MAXIMUM LENGTH       0;5 NUMBER
+
+	                INPUT TRANSFORM:K:+X'=X!(X>240)!(X<1)!(X?.E1"."1N.N) X
+	                LAST EDITED:    FEB 19, 1996
+	                HELP-PROMPT:    Answer must be between 1 and 240, with no
+	                                decimal digits. Answer '??' for more help.
+	                DESCRIPTION:    Answer must be the maximum length this
+	                                cross-reference value should have when stored
+	                                as a subscript in the index. FileMan's lookup
+	                                utilties account for lookup values longer than
+	                                the maximum length.
+
+	                                Specify a MAXIMUM LENGTH when an untruncated
+	                                subscript may cause the length of a global
+	                                reference in the index to exceed the M
+	                                Portability Requirements.
+
+
+	.114,7          COLLATION            0;7 SET
+
+	                                'F' FOR forwards;
+	                                'B' FOR backwards;
+	                LAST EDITED:    FEB 13, 1997
+	                HELP-PROMPT:    Answer '??' for more help.
+	                DESCRIPTION:    Answer with the direction FileMan's lookup
+	                                utilities should $ORDER through this subscript
+	                                when entries are returned or displayed to the
+	                                user. If for example, you have a compound index
+	                                on a Date of Birth field and a Name field, and
+	                                you specify a COLLATION of 'backwards' on the
+	                                Date of Birth value, the Lister and the Finder
+	                                will return entries in reverse-date order.
+	                                Likewise, question mark (?) help and partial
+	                                matches in interactive ^DIC lookups will
+	                                display entries in reverse-date order.
+
+
+	.114,8          LOOKUP PROMPT        0;8 FREE TEXT
+
+	                INPUT TRANSFORM:K:$L(X)>30!($L(X)<1) X
+	                LAST EDITED:    MAY 06, 1997
+	                HELP-PROMPT:    Answer must be 1-30 characters in length.
+	                                Answer '??' for more help.
+	                DESCRIPTION:    The text entered here will become a prompt for
+	                                the user when this index is used for lookup
+	                                (i.e., in the Classic FileMan calls to ^DIC.)
+	                                If the text is missing, then the FIELD LABEL
+	                                will be used as a default.
+
+
+
+
+	.11,666       RE-INDEXING            NOREINDEX;1 SET
+
+	                                '1' FOR NO RE-INDEXING ALLOWED;
+	                                '0' FOR ALLOW REINDEXING;
+	              HELP-PROMPT:      Should the re-indexing of this cross reference
+	                                be prohibited?
+	              DESCRIPTION:      If you answer '1', this cross reference will
+	                                not be re-indexed during a general re-indexing
+	                                of this file, whether it's done via API or
+	                                interactively. If you answer '0', which is the
+	                                default, it will.  A 'NO RE-INDEXING'
+	                                cross-reference will ONLY be re-indexed if it
+	                                is specifically named in an API call
+
+	                                UNEDITABLE
+
+	File #.11
+
+	  Record Indexes:
+
+	  BB (#.1101)    RECORD    REGULAR    IR    LOOKUP & SORTING
+	       Unique for:  Key A (#.1101), File #.11
+	      Short Descr:  The uniqueness index for the primary key of the Index file
+	      Description:  The BB index, on the key of the Index file, lets FileMan
+	                    test potential key values for uniqueness. It is a regular
+	                    compound index with two fields, the .01 (File) and .02
+	                    (Index Name).
+	        Set Logic:  S ^DD("IX","BB",X(1),X(2),DA)=""
+	       Kill Logic:  K ^DD("IX","BB",X(1),X(2),DA)
+	       Whole Kill:  K ^DD("IX","BB")
+	             X(1):  FILE  (.11,.01)  (Subscr 1)
+	             X(2):  NAME  (.11,.02)  (Subscr 2)
+
+	Subfile #.114
+
+	  Record Indexes:
+
+	  F (#.11403)    RECORD    REGULAR    IR    LOOKUP & SORTING
+	                    WHOLE FILE (#.11)
+	      Short Descr:  Lets FileMan find the indexes affected when a field changes
+	      Description:  The F index, is a whole file compound cross-reference on
+	                    two fields in the Cross-Reference Values multiple: File
+	                    (#2) and Field (#3). It lets FileMan identify the indexes
+	                    that might be affected when a field value changes.  The
+	                    checking of this index is an essential step during field
+	                    level transactions in building the list of record level
+	                    cross-references that must be fired after user-driven
+	                    changes to the record are finished.
+	        Set Logic:  S ^DD("IX","F",X(1),X(2),DA(1),DA)=""
+	       Kill Logic:  K ^DD("IX","F",X(1),X(2),DA(1),DA)
+	       Whole Kill:  K ^DD("IX","F")
+	             X(1):  FILE  (.114,2)  (Subscr 1)
+	             X(2):  FIELD  (.114,3)  (Subscr 2)
+
+
+	INPUT TEMPLATE(S):
+
+	PRINT TEMPLATE(S):
+
+	SORT TEMPLATE(S):
+
+	FORM(S)/BLOCK(S):
+	DIKC EDIT                     JUN 12, 1997@10:58  USER #0
+	  DIKC EDIT MAIN                DD #.11
+	  DIKC EDIT HDR 1               DD #.11
+	  DIKC EDIT LOGIC               DD #.11
+	  DIKC EDIT CRV                 DD #.114
+	  DIKC EDIT CRV HDR             DD #.11
+	  DIKC EDIT HDR 2               DD #.11
+	  DIKC EDIT FIELD CRV           DD #.114
+	  DIKC EDIT COMPUTED CRV        DD #.114
+
+	DIKC EDIT UI                  JUN 12, 1997@10:58  USER #0
+	  DIKC EDIT UI MAIN             DD #.11
+	  DIKC EDIT UI HDR              DD #.11
+	  DIKC EDIT UI CRV              DD #.114
+	  DIKC EDIT UI CRV HDR          DD #.11
+	  DIKC EDIT UI FIELD CRV        DD #.114
 
 PRINT TEMPLATE
 --------------

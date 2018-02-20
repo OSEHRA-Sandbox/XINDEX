@@ -21,6 +21,8 @@ PKG D NAMSP ;Package file
  S INDFN="^DIC(19,",INDRN="|opt",INDD="Option",INDSB="OPT" D NAME
  ; CJE Add more build components that chan have MUMPS Code
  S INDFN="^DIBT(",INDRN="|sort",INDD="Sort Template",INDSB="SORT^XINDX12" D NAME
+ S INDFN="^DIE(",INDRN="|inpt",INDD="Input Template",INDSB="INPUT^XINDX12" D NAME
+ S INDFN="^DIPT(",INDRN="|prnt",INDD="Print Template",INDSB="PRINT^XINDX12" D NAME
  S INDFN="^DIST(.403,",INDRN="|form",INDD="Form",INDSB="FORM^XINDX12" D NAME
  S INDFN="^DI(.84,",INDRN="|dialog",INDD="Dialog",INDSB="DIALOG^XINDX12" D NAME
  S INDFN="^DIC(9.2,",INDRN="|help",INDD="Help Frame",INDSB="HELP^XINDX12" D NAME
@@ -34,6 +36,8 @@ LNS S INDXN="NAMESPACE" ; Defined list of namespaces
  S INDFN="^DD(""FUNC"",",INDRN="|func",INDD="Function",INDSB="FUNC" D NS
  S INDFN="^DIC(19,",INDRN="|opt",INDD="Option",INDSB="OPT" D NS
  S INDFN="^DIBT(",INDRN="|sort",INDD="Sort Template",INDSB="SORT^XINDX12" D NS
+ S INDFN="^DIE(",INDRN="|inpt",INDD="Input Template",INDSB="INPUT^XINDX12" D NS
+ S INDFN="^DIPT(",INDRN="|prnt",INDD="Print Template",INDSB="PRINT^XINDX12" D NS
  S INDFN="^DIST(.403,",INDRN="|form",INDD="Form",INDSB="FORM^XINDX12" D NS
  S INDFN="^DI(.84,",INDRN="|dialog",INDD="Dialog",INDSB="DIALOG^XINDX12" D NS
  S INDFN="^DIC(9.2,",INDRN="|help",INDD="Help Frame",INDSB="HELP^XINDX12" D NS
@@ -52,7 +56,8 @@ NS ;Index based on a list of namespaces
  . S INDL=$E(INDXN,1,$L(INDXN)-1)_$C($A(INDXN,$L(INDXN))-1)_"z" ; get the last letter of the prefix(INDXN) and get the previous letter (B=A), then append "z" to the end
  . F A=0:0 S INDL=$O(@(INDFN_"""B"",INDL)")) Q:$P(INDL,INDXN,1)]""!(INDL="")  D  ; Order through the B index of the given file. If it nolonger matches the prefix or we hit the end of the B index quit
  . . F B=0:0 S B=$O(@(INDFN_"""B"",INDL,B)")) Q:B=""  D  ; For each IEN in the B index
-  . . . I $D(PROCESSEDIENS(B)) Q
+ . . . I $D(@(INDFN_"""B"",INDL,B)"))=10 W !,"SKIPPING SYNONYM "_INDL Q
+ . . . I $D(PROCESSEDIENS(B)) Q
  . . . S PROCESSEDIENS(B)=""
  . . . S ISNOTEXCLUDED=1 S EXCLUDE="" F  S EXCLUDE=$O(ENAMESPACES($J,EXCLUDE)) Q:EXCLUDE=""  I $P(INDL,$E(EXCLUDE,2,$L(EXCLUDE)))="" S ISNOTEXCLUDED=0 Q
  . . . D:ISNOTEXCLUDED @INDSB ; cross reference it
@@ -98,4 +103,7 @@ OPTC F J=1:1 S H=$P(INDN,",",J) Q:H=""  I $D(^DIC(19,B,H))#2 D
  Q
 ADD ;Put code in UTILITY for processing
  S INDLC=INDLC+1,^UTILITY($J,1,INDRN,0,INDLC,0)=INDC I INDX]"" S INDLC=INDLC+1,^UTILITY($J,1,INDRN,0,INDLC,0)=" "_INDX
+ Q
+ADDLN
+ S INDLC=INDLC+1,^UTILITY($J,1,INDRN,0,INDLC,0)=" "_INDX
  Q
