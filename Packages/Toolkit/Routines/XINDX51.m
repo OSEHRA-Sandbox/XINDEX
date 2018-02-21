@@ -1,6 +1,7 @@
-XINDX51 ;ISC/REL,GRK,RWF - PRINT ROUTINE ;06/24/08  16:06
+XINDX51 ;ISC/REL,GRK,RWF - PRINT ROUTINE ;2018-02-21  12:14 PM
  ;;7.3;TOOLKIT;**20,48,61,110,133**;Apr 25, 1995;Build 15
- ; Per VHA Directive 2004-038, this routine should not be modified.
+ ; Original routine authored by Department of Veterans Affairs
+ ; B1+1 added by David Whitten 2018
  ;Setup Local IO paramiters
 B S RTN="",INL(1)=IOM-2,INL(2)=IOSL-4,INL(3)=("C"=$E(IOST)),INL(4)=IOM-1,PG=0,INL(5)="Compiled list of Errors and Warnings "
  K ER,HED D HD1 ;Do header
@@ -49,6 +50,7 @@ CHK I $D(ZTQUEUED),$$S^%ZTLOAD S IND("QUIT")=1,ZTSTOP=1
  Q
  ;
 B1 I '$D(^UTILITY($J,1,RTN,0)) Q  ;No data to show
+ S:INP(5)["N" OPT("NUM")=1
  D:INP(5)["S"!(INP(5)["B") ^XINDX8 ;Show structured listing
  D:INP(5)["F" SC
  D:INP(5)["R"!(INP(5)["B") WR ;Show normal listing
