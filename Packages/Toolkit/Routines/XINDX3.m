@@ -1,6 +1,7 @@
-XINDX3 ;ISC/REL,GRK,RWF - PROCESS MERGE/SET/READ/KILL/NEW/OPEN COMMANDS ;06/24/08  15:44
+XINDX3 ;ISC/REL,GRK,RWF - PROCESS MERGE/SET/READ/KILL/NEW/OPEN COMMANDS ;2018-02-22  11:29 AM
  ;;7.3;TOOLKIT;**20,27,61,68,110,121,128,132,133,140**;Apr 25, 1995;Build 23
- ; Per VHA Directive 2004-038, this routine should not be modified.
+ ; Original routine authored by Department of Veterans Affairs
+ ; RD3+3 contributed by George Timson (date written unknown)
 PEEK S Y=$G(LV(LV,LI+1)) Q
 PEEK2 S Y=$G(LV(LV,LI+2)) Q
 INC2 S LI=LI+1 ;Drop into INC
@@ -93,6 +94,7 @@ RD2 Q:","[CH
  D INC G RD2
 RD3 Q:","[CH  I "!#?"[CH D INC G RD3
  I (CH="%")!(CH?1A)!(CH="@") D ARG^XINDX2,INC G RD3
+ I CH="$" S ERR=21,RDTIME=1 D ^XINDX1 ;**MSC/EJ  READ can't contain $$ (Erwin); READ $P is invalid.
  Q
 O S STR=ARG,AC=99 D ^XINDX9,INC S ARG="" I S["@" D ARGS^XINDX2 Q
  D ARG^XINDX2,INC D  D INC,ARGS^XINDX2 Q
