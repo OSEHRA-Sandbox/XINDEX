@@ -1,5 +1,5 @@
-XINDX6 ;ISC/REL,GRK - GET SET OF ROUTINES TO INDEX ;2018-02-21  12:15 PM
- ;;7.3;TOOLKIT;**20,27,66,110,132**;Apr 25, 1995;Build 13
+XINDX6 ;ISC/REL,GRK - GET SET OF ROUTINES TO INDEX ;2018-02-22  12:54 PM
+ ;;7.3;TOOLKIT;**20,27,66,110,132,10001**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; XINDX6+14,+20 modified by Christopher Edwards 2018
  ; XINDX6+13,RLIST Modified by David Whitten (year unknown)

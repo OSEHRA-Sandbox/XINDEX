@@ -1,5 +1,5 @@
-XINDX5 ;SF-ISC/RWF - CROSS REFERENCE ALL ROUTINES ;2018-02-21  12:19 PM
- ;;7.3;TOOLKIT;**20,27,61,121,133**;Apr 25, 1995;Build 15
+XINDX5 ;SF-ISC/RWF - CROSS REFERENCE ALL ROUTINES ;2018-02-22  12:56 PM
+ ;;7.3;TOOLKIT;**20,27,61,121,133,10001**;Apr 25, 1995;Build 15
  ; Routine originally authored by Department of Veterans Affairs
  ; VTAG+1 modified by John McCormack
  G END:$D(IND("QUIT")) I INP(8) W !,"Called Routines",! D ^XINDX52 ;Get called routines

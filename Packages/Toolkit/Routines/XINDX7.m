@@ -1,5 +1,5 @@
-XINDX7 ;ISC/RWF - SETUP ENVIRONMENT ;2018-02-22  12:11 PM
- ;;7.3;TOOLKIT;**20,27,48,68,110**;Apr 25, 1995;Build 11
+XINDX7 ;ISC/RWF - SETUP ENVIRONMENT ;2018-02-22  12:54 PM
+ ;;7.3;TOOLKIT;**20,27,48,68,110,10001**;Apr 25, 1995;Build 11
  ; Routine originally authored by Department of Veterans Affairs
  ; HDR+3 updated by Sam Habiel to update SAC Version number
  ; SVN updated by George Timson to remove PDISPLAY

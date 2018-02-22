@@ -1,5 +1,5 @@
-XINDX8 ;ISC/GRK - STRUCTURED INDEX ;2018-02-21  12:18 PM
- ;;7.3;TOOLKIT;**20,27,61**;Apr 25, 1995
+XINDX8 ;ISC/GRK - STRUCTURED INDEX ;2018-02-22  12:56 PM
+ ;;7.3;TOOLKIT;**20,27,61,10001**;Apr 25, 1995
  ; Originally authored by the Department of Veterans Affairs
  ; CD+1 new,EE+3,SET+1,DGX+4 Modified by David Whitten 2018
  S Q="""",(DDOT,LO)=0,PG=+$G(PG) D HDR

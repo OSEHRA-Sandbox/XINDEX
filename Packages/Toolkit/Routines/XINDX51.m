@@ -1,5 +1,5 @@
-XINDX51 ;ISC/REL,GRK,RWF - PRINT ROUTINE ;2018-02-22  11:29 AM
- ;;7.3;TOOLKIT;**20,48,61,110,133**;Apr 25, 1995;Build 15
+XINDX51 ;ISC/REL,GRK,RWF - PRINT ROUTINE ;2018-02-22  12:55 PM
+ ;;7.3;TOOLKIT;**20,48,61,110,133,10001**;Apr 25, 1995;Build 15
  ; Original routine authored by Department of Veterans Affairs
  ; B1+1 added by David Whitten 2018
  ; BHDR+1 corrected by Geroge Timson 2018
