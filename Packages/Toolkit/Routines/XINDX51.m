@@ -1,4 +1,4 @@
-XINDX51 ;ISC/REL,GRK,RWF - PRINT ROUTINE ;2018-02-22  12:55 PM
+XINDX51 ;ISC/REL,GRK,RWF - PRINT ROUTINE ;2018-02-22  2:42 PM
  ;;7.3;TOOLKIT;**20,48,61,110,133,10001**;Apr 25, 1995;Build 15
  ; Original routine authored by Department of Veterans Affairs
  ; B1+1 added by David Whitten 2018
@@ -94,7 +94,7 @@ P2 I $Y'<INL(2) D HD S PC="*"
  Q
 P3 W:$X>TAB !,?TAB
  S PC=L F I=1:1 S ARG=$P(X,",",I) Q:ARG=""  W:$X+$L(ARG)>INL(1) !?TAB W:$X'=TAB "," W ARG
- I $G(ROU),LOC="L" S I=$O(^DIZ(1009.1,ROU,3,"B",L,0)) I I,'$WP^DIUTL($NA(^DIZ(1009.1,ROU,3,I,1)),14,IOM) S IND("QUIT")=1 ; GFT Tammy Docs
+ I $G(ROU),LOC="L" S I=$O(^DIZ(1009.1,ROU,3,"B",L,0)) I I,'$$WP^DIUTL($NA(^DIZ(1009.1,ROU,3,I,1)),14,IOM) S IND("QUIT")=1 ; GFT Tammy Docs
  Q
 HD D:$Y'<INL(2) HD1 D HD2
  Q
