@@ -1,4 +1,4 @@
-XINDX6 ;ISC/REL,GRK - GET SET OF ROUTINES TO INDEX ;2018-02-22  12:54 PM
+XINDX6 ;ISC/REL,GRK - GET SET OF ROUTINES TO INDEX ;2018-02-22  2:44 PM
  ;;7.3;TOOLKIT;**20,27,66,110,132,10001**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; XINDX6+14,+20 modified by Christopher Edwards 2018
@@ -17,7 +17,7 @@ XINDX6 ;ISC/REL,GRK - GET SET OF ROUTINES TO INDEX ;2018-02-22  12:54 PM
  D ANS("Print more than compiled errors and warnings? YES//","YN","Print detailed info") G:X="^" END S INP(1)="Yy"[X G:'INP(1) L7
  D ANS("Print summary only? NO//","NY","Skip detail on each routine") G:X="^" END S INP(6)="Yy"[X G L7:INP(6)
  D ANS("Print routines? YES//","YN","Print routines code also") G:X="^" END S INP(2)="Yy"[X
- I INP(2) D ANS("Print (R)egular,(S)tructured or (B)oth w/ Control (F)low and (L)ine Numbers or (N)o Offsets ?  R//","RLIST") G:X="^" END S INP(5)=X
+ I INP(2) D ANS("Print (R)egular,(S)tructured or (B)oth or Control (F)low ?  R//","RLIST") G:X="^" END S INP(5)=X
  I INDDA>0,INP(10)'=9.7 D ANS("Print the DDs, Functions, Options, and other package code? YES//","YN","Gather other package code.") G:X="^" END S INP(4)="Yy"[X
  D ANS("Print errors and warnings with each routine? YES//","YN") G:X="^" END S INP(3)="Yy"[X
 L7 I $D(^DIC(9.8,0)),$D(DUZ) D ANS("Save parameters in ROUTINE file? NO//","NY","Update the ROUTINE file with details") G:X="^" END S INP(7)="Yy"[X
@@ -63,7 +63,7 @@ NY S %="N" D RD Q:"^YyNn"[X  W:$D(HELP) !,HELP W !,"Please enter 'N' or return f
  ;
 RD R X:DTIME S:X["^" X="^" S X=$E($$CASE^XINDX52(X)_%) Q
  ;
-RLIST S %="R" D RD Q:"^RSBFNO"[X  W !,"Please select one of the choices." S Y=0 Q
+RLIST S %="R" D RD Q:"^RSBF"[X  W !,"Please select one of the choices." S Y=0 Q
  Q
 ASKRTN ;Collect a list of routines to index.
  I '$D(^UTILITY($J)),$D(^%ZOSF("RSEL")) X ^("RSEL")
