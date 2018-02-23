@@ -138,6 +138,145 @@ Unit Tests
 
 No Unit Tests are supplied in this release.
 
+------------------------
+Brief Usage Instructions
+------------------------
+Most of how XINDEX is used has not changed. Refer to the XINDEX section in https://www.va.gov/vdl/documents/Infrastructure/Kernel/krn8_0dg.pdf.
+
+The following prompts are new. If you want all KIDS components to be analysed, use the Namespace option. If you want files as well, use files::
+
+	LIST OF NAMESPACES TO BE INDEXED; PRESS RETURN TO TERMINATE LIST
+
+	NAMESPACE: **XOBW**
+	NAMESPACE:
+
+	LIST OF FILES TO BE INDEXED; PRESS RETURN TO TERMINATE LIST
+
+	FILE: **18.02**
+	FILE: **18.12** 
+	FILE: **18.13**
+	FILE: 
+
+This prompt has been modified to include (F)low::
+
+	Print (R)egular,(S)tructured or (B)oth or Control (F)low ?  R//
+
+The text for this yes/no prompt has been modified to add "and other package code" as now XINDEX does more than functions and options::
+
+	Print the DDs, Functions, Options, and other package code? YES//
+
+XINDEX's output has been added to DD has been expanded to accomodate extra fields preiovusly not accounted for; and the new components generate these additional faux routines:
+
+* Forms (in faux routine \|form)
+* Print Templates ( " " " \|prnt)
+* Sort Tempaltes ( " " " \|sort) 
+* Input Templates ( " " " \|inpt)
+* Dialogs ( " " " \|dialog)
+* Help Frames ( " " " \|help)
+* Security Keys ( " " " \|key)
+* Protocols ( " " " \|ptcl)
+* List Templates ( " " " \|list)
+* HL7 Application Parameters ( " " " \|hlap)
+* Remote Procedures ( " " " \|rpc)
+
+Here is some sample output. *** means that this output is new. If a whole section is new, then *** will only show up on the section header. See the sample_output/ folder for a full example of XINDEXing the Health-e-Vet Web Services package. The sample below does not include the XINDEX and error listing for the faux routines for brevity's sake.::
+
+
+	|dd18.12        * *  41 Lines,  1452 Bytes, Checksum: 
+																										Feb 23, 2018@12:47:25 page 21
+								389 bytes in comments
+	|dd18.12 ;DD of the WEB SERVER file.
+	***IXPRIMARYSL --
+						; SET LOGIC
+					 S ^XOB(18.12,"PRIMARY",X,DA)=""
+	***IXPRIMARYKL --
+						; KILL LOGIC
+					 K ^XOB(18.12,"PRIMARY",X,DA)
+	***IXPRIMARYKEIC --
+						; KILL ENTIRE INDEX CODE
+					 K ^XOB(18.12,"PRIMARY")
+	.01      ; NAME
+					 K:$L(X)>30!($L(X)<3)!'(X'?1P.E) X
+	.01XRF1S ; SET LOGIC FOR 'B' XREF
+					 S ^XOB(18.12,"B",$E(X,1,30),DA)=""
+	.01XRF1K ; KILL LOGIC FOR 'B' XREF
+					 K ^XOB(18.12,"B",$E(X,1,30),DA)
+	...
+	...
+	...
+	***|inpt        * *  15 Lines,  403 Bytes, Checksum: Feb 23, 2018@12:47:25 page 24
+								151 bytes in comments
+	|inpt    ; '' Input Templates.
+					 ;
+	1749     ; XOBW WEB SERVER KEY SETUP - EXECUTABLE CODE
+					 ;
+	1747     ; XOBW WEB SERVER SETUP - EXECUTABLE CODE
+					 ;
+					 WRITE !!,"Security Credentials"
+					 WRITE !,"===================="
+					 IF +X=0 SET Y="@100"
+					 IF '$$SSLOK^XOBWENV() SET Y="@200"
+					 WRITE !!,"SSL Setup"
+					 WRITE !,"========="
+	1748     ; XOBW WEB SERVICE EDIT - EXECUTABLE CODE
+					 WRITE !,"========="
+					 IF X'=1 SET Y=200
+	...
+	...
+	...
+	***|list        * *  50 Lines,  1516 Bytes, Checksum: 
+																										Feb 23, 2018@12:47:25 page 25
+								1031 bytes in comments
+	|list    ; '' List Templates.
+					 ;
+	666      ; XOBW WEB SERVER - HEADER CODE (#100)
+					 DO HDR^XOBWU
+					 ; XOBW WEB SERVER - EXPAND CODE (#102)
+					 DO EXPAND^XOBWU
+					 ; XOBW WEB SERVER - HELP CODE (#103)
+					 DO HELP^XOBWU
+					 ; XOBW WEB SERVER - EXIT CODE (#105)
+					 DO EXIT^XOBWU
+					 ; XOBW WEB SERVER - ENTRY CODE (#106)
+					 DO INIT^XOBWU
+					 ; XOBW WEB SERVER - ARRAY NAME (#107)
+					 I $L(^TMP("XOB) Q
+	669      ; XOBW WEB SERVER LOOKUPKEY - HEADER CODE (#100)
+					 DO HDR^XOBWUA
+					 ; XOBW WEB SERVER LOOKUPKEY - EXPAND CODE (#102)
+					 DO EXPAND^XOBWUA
+					 ; XOBW WEB SERVER LOOKUPKEY - HELP CODE (#103)
+					 DO HELP^XOBWUA
+					 ; XOBW WEB SERVER LOOKUPKEY - EXIT CODE (#105)
+					 DO EXIT^XOBWUA
+					 ; XOBW WEB SERVER LOOKUPKEY - ENTRY CODE (#106)
+					 DO INIT^XOBWUA
+					 ; XOBW WEB SERVER LOOKUPKEY - ARRAY NAME (#107)
+					 I $L(^TMP("XOB) Q
+	667      ; XOBW WEB SERVICE - HEADER CODE (#100)
+					 DO HDR^XOBWUS
+					 ; XOBW WEB SERVICE - EXPAND CODE (#102)
+					 DO EXPAND^XOBWUS
+					 ; XOBW WEB SERVICE - HELP CODE (#103)
+					 DO HELP^XOBWUS
+					 ; XOBW WEB SERVICE - EXIT CODE (#105)
+					 DO EXIT^XOBWUS
+					 ; XOBW WEB SERVICE - ENTRY CODE (#106)
+					 DO INIT^XOBWUS
+					 ; XOBW WEB SERVICE - ARRAY NAME (#107)
+					 I $L(^TMP("XOB) Q
+	668      ; XOBW WEB SERVICE DISPLAY - HEADER CODE (#100)
+					 DO HDR^XOBWUS2
+					 ; XOBW WEB SERVICE DISPLAY - EXPAND CODE (#102)
+					 ;
+					 ; XOBW WEB SERVICE DISPLAY - HELP CODE (#103)
+					 DO HELP^XOBWUS2
+					 ; XOBW WEB SERVICE DISPLAY - EXIT CODE (#105)
+					 DO EXIT^XOBWUS2
+					 ; XOBW WEB SERVICE DISPLAY - ENTRY CODE (#106)
+					 DO INIT^XOBWUS2
+					 ; XOBW WEB SERVICE DISPLAY - ARRAY NAME (#107)
+					 ;
 -----
 Links
 -----
