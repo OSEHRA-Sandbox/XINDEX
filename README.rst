@@ -64,8 +64,7 @@ is new:
 * Post-Action code in ^DD(file,0,"ACT")
 * New Style Indexes
 * M code embedded in Print Templates
-* M code in the Sort Template file (#.401)--embedded code in Sort Tempaltes is
-very rare: only a simple $DATA check was found in all of FOIA.
+* M code in the Sort Template file (#.401)--embedded code in Sort Tempaltes is very rare: only a single $DATA check was found in all of FOIA.
 * M code embedded in Input Templates
 
 The first 5 bullets are shown under the \|ddnnn faux routine. Print, Sort, and
@@ -117,29 +116,20 @@ expressions as well, not just upright fields.
 
 Other Enhancements to XINDEX
 ============================
-* XINDX2 Modified to not crash on non-Cache systems when trying to evaluate the
-existence of Cache classes (JS)
-* XINDX6 allows you to choose "F" for diagramming control flow (DHW).
-already supported this but did not show "F" as an option when printing routines.
-* XINDX8 ':' (post-conditionals) show as a lowercase "if" in structured listing
-of routines (DHW).
+* XINDX2 Modified to not crash on non-Cache systems when trying to evaluate the existence of Cache classes (JS)
+* XINDX6 allows you to choose "F" for diagramming control flow (DHW). XINDEX already supported this but did not show "F" as an option when printing routines.
+* XINDX8 ':' (post-conditionals) show as a lowercase "if" in structured listing of routines (DHW).
 * XINDX5 Tags can be 16 characters long according to latest SAC (JM).
 * XINDX3 R $$ or R $P is invalid syntax (GFT).
-* XINDX7 Update VA Standards and Conventions tag line with correct version of
-the current SAC that this XINDEX enforces (SMH); ^$PDISPLAY is not a
-standard SSVN (GFT). Fix spelling on environment (CJE).
-* XINDX51 Routine name can be up to 16 characters long in the header (GFT); 
-print Fileman documentation file in routine listings if it is present (GFT).
+* XINDX7 Update VA Standards and Conventions tag line with correct version of the current SAC that this XINDEX enforces (SMH); ^$PDISPLAY is not a standard SSVN (GFT). Fix spelling on environment (CJE).
+* XINDX51 Routine name can be up to 16 characters long in the header (GFT); print Fileman documentation file in routine listings if it is present (GFT).
 
 ----------------
 Future Work List
 ----------------
 
-* All new items, plus \|opt, print as a single faux routine. Consider making each
-internal entry number a faux routine. E.g. \|opt123.
-* If a build file or install file is entered, the new components should be
-analysed. Right now, the new components are only analyzed when selecting by
-namespaces.
+* All new items, plus \|opt, print as a single faux routine. Consider making each internal entry number a faux routine. E.g. \|opt123.
+* If a build file or install file is entered, the new components should be analysed. Right now, the new components are only analysed when selecting by namespaces.
 * Create pexpect based Unit Tests.
 
 ----------
