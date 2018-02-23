@@ -1,6 +1,6 @@
-XINDX12 ;OSEHRA/CJE - Create phantom routines for build components ;01/12/2018
- ;;7.3;TOOLKIT;**20,27,121,132**;Apr 25, 1995;Build 13
- ; Per VHA Directive 2004-038, this routine should not be modified.
+XINDX12 ;OSEHRA/CJE - Create phantom routines for build components ;2018-02-20  2:29 PM
+ ;;7.3;TOOLKIT;**10001**;Apr 25, 1995;Build 13
+ ; Entire routine authored by Chirstopher Edwards
  ;
  ; Variables passed through the stack:
  ; B = {IEN}

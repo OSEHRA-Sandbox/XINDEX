@@ -1,7 +1,9 @@
-XINDX11 ;ISC/GRK - Create phantom routines for functions, options, etc. ;07/08/98  15:06
- ;;7.3;TOOLKIT;**20,27,121,132**;Apr 25, 1995;Build 13
- ; Per VHA Directive 2004-038, this routine should not be modified.
- G:INP(10)=9.7 RTN
+XINDX11 ;ISC/GRK - Create phantom routines for functions, options, etc. ;2018-02-20  2:28 PM
+ ;;7.3;TOOLKIT;**20,27,121,132,10001**;Apr 25, 1995;Build 13
+ ; Original routine authored by U.S. Department of Veterans Affairs
+ ; Entrypoints PKG+3ff,LNS,NS,NAME,NAMSP,ADDLN &
+ ; Line XINDX11+8 added by Christopher Edwards
+ G:INP(10)=9.77 RTN
  W !,"The option and function files are being processed.",!
  G:INP(10)=9.4 PKG
  G:INP(10)="NAMESPACE" LNS
@@ -104,6 +106,6 @@ OPTC F J=1:1 S H=$P(INDN,",",J) Q:H=""  I $D(^DIC(19,B,H))#2 D
 ADD ;Put code in UTILITY for processing
  S INDLC=INDLC+1,^UTILITY($J,1,INDRN,0,INDLC,0)=INDC I INDX]"" S INDLC=INDLC+1,^UTILITY($J,1,INDRN,0,INDLC,0)=" "_INDX
  Q
-ADDLN
+ADDLN ;
  S INDLC=INDLC+1,^UTILITY($J,1,INDRN,0,INDLC,0)=" "_INDX
  Q
