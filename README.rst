@@ -179,7 +179,7 @@ XINDEX's output has been added to DD has been expanded to accomodate extra field
 * HL7 Application Parameters ( " " " \|hlap)
 * Remote Procedures ( " " " \|rpc)
 
-Here is some sample output. *** means that this output is new. If a whole section is new, then *** will only show up on the section header. See the sample_output/ folder for a full example of XINDEXing the Health-e-Vet Web Services package. The sample below does not include the XINDEX and error listing for the faux routines for brevity's sake.::
+Here is some sample output. \*\*\* means that this output is new. If a whole section is new, then \*\*\* will only show up on the section header. See the sample_output/ folder for a full example of XINDEXing the Health-e-Vet Web Services package. The sample below does not include the XINDEX and error listing for the faux routines for brevity's sake.::
 
 
 	|dd18.12        * *  41 Lines,  1452 Bytes, Checksum: 
