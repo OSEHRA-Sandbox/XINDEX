@@ -1,4 +1,4 @@
-XINDX10 ;ISC/GRK - assemble DD executable code ;2018-02-20  2:23 PM
+XINDX10 ;ISC/GRK - assemble DD executable code ;2018-02-23  11:20 AM
  ;;7.3;TOOLKIT;**20,27,66,68,132,10001**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; Entry points ASKNS,ASKFILES,N1,F1,NS,FILE,INDX &
@@ -84,7 +84,7 @@ INDX ;Get New-Style Cross-Reference stored in the INDEX File
  . I $D(^DD("IX",X,1))#2 S INDC="IX"_INDEL_"SL ; SET LOGIC",INDX=$E(^DD("IX",X,1),1,245) D ADD
  . S SUB="" F  S SUB=$O(^DD("IX",X,1.2,SUB)) Q:SUB=""  Q:SUB'=+SUB  I $D(^DD("IX",X,1.2,SUB,1))#2 S INDC="IX"_INDEL_"P"_SUB_"SOF ; OVERFLOW SET LOGIC ("_SUB_")",INDX=$E(^DD("IX",X,1.2,SUB,1),1,245) D ADD
  . I $D(^DD("IX",X,1.4))#2 S INDC="IX"_INDEL_"SCC ; SET CONDITION CODE",INDX=$E(^DD("IX",X,1.4),1,245) D ADD
- . I $D(^DD("IX",X,2.1))#2 S INDC="IX"_INDEL_"KL ; KILL LOGIC",INDX=$E(^DD("IX",X,2.1),1,245) D ADD
+ . I $D(^DD("IX",X,2))#2 S INDC="IX"_INDEL_"KL ; KILL LOGIC",INDX=$E(^DD("IX",X,2),1,245) D ADD
  . S SUB="" F  S SUB=$O(^DD("IX",X,2.2,SUB)) Q:SUB=""  Q:SUB'=+SUB  I $D(^DD("IX",X,2.2,SUB,2))#2 S INDC="IX"_INDEL_"P"_SUB_"KOF ; OVERFLOW KILL LOGIC ("_SUB_")",INDX=$E(^DD("IX",X,2.2,SUB,2),1,245) D ADD
  . I $D(^DD("IX",X,2.4))#2 S INDC="IX"_INDEL_"KCC ; KILL CONDITION CODE",INDX=$E(^DD("IX",X,2.4),1,245) D ADD
  . I $D(^DD("IX",X,2.5))#2 S INDC="IX"_INDEL_"KEIC ; KILL ENTIRE INDEX CODE",INDX=$E(^DD("IX",X,2.5),1,245) D ADD
