@@ -136,7 +136,13 @@ Future Work List
 Unit Tests
 ----------
 
-No Unit Tests are supplied in this release.
+No Unit Tests are supplied in this release. The following are manual testing instructions:
+
+To exercise the enhanced finding of M-code snippets in the database, follow the example in `here <sample_output/request_to_index_all_of_XOBW.txt>`_. See usage instructions below for more details.
+
+To exercise the tracing of pointers in Fileman templates, run these entry points in succession::
+  
+  D DIPT^XINDX13,DIBT^XINDX13,DIET^XINDX13
 
 ------------------------
 Brief Usage Instructions
