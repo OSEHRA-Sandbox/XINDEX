@@ -283,6 +283,47 @@ Here is some sample output. \*\*\* means that this output is new. If a whole sec
            DO INIT^XOBWUS2
            ; XOBW WEB SERVICE DISPLAY - ARRAY NAME (#107)
            ;
+
+--------------------
+Install Instructions
+--------------------
+From https://github.com/OSEHRA-Sandbox/XINDEX/releases, grab the latest KIDS build. Install that KIDS build into a VistA or RPMS system.
+Here's an example of an install transcript (** means type the following **)::
+
+    $ **$gtm_dist/mumps -r ^%XCMD 'S DUZ=1 D DUZ^XUP(DUZ),HOME^%ZIS,^XPDIL,^XPDI'**
+
+    Enter a Host File: **./XT-7p3-10001T1.KID**
+
+    KIDS Distribution saved on Feb 23, 2018@13:20:39
+    Comment: T1 version
+
+    This Distribution contains Transport Globals for the following Package(s):
+    Build XT*7.3*10001
+    Distribution OK!
+
+    Want to Continue with Load? YES// **enter**
+    Loading Distribution...
+
+       XT*7.3*10001
+    Use INSTALL NAME: XT*7.3*10001 to install this Distribution.
+
+    Select INSTALL NAME: **XT*7.3*10001**      2/26/18@15:00:49
+         => T1 version  ;Created on Feb 23, 2018@13:20:39
+
+    This Distribution was loaded on Feb 26, 2018@15:00:49 with header of 
+       T1 version  ;Created on Feb 23, 2018@13:20:39
+       It consisted of the following Install(s):
+       XT*7.3*10001
+    Checking Install for Package XT*7.3*10001
+
+    Install Questions for XT*7.3*10001
+
+
+
+    Want KIDS to INHIBIT LOGONs during the install? NO// **enter** 
+    Want to DISABLE Scheduled Options, Menu Options, and Protocols? NO// **enter** 
+
+
 -----
 Links
 -----
