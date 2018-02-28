@@ -42,8 +42,8 @@ The authors will be referenced by their initials. Here is a list of all of them:
 
 * Christopher Edwards; CJE (main author)
 * Sam Habiel; SMH (secondary author; corresponding author for questions)
-* Joe Synder; JS (contributor)
-* David Whitten; DHW (contributor)
+* Jason Li; JL (contributor)
+* David Whitten; DJW (contributor)
 * John McCormack; JM (contributor)
 * George Timson; GFT (contributor)
 
@@ -94,7 +94,7 @@ work.
 Fileman Template Pointer Analysis (SMH)
 =======================================
 This is the routine XINDX13, which has the entry points DIBT, DIET, and DIPT,
-that produce CSV files in ``/tmp/`` called respectively DIBTOUT.csv, DIETOUT.csv,
+that produce CSV files called respectively DIBTOUT.csv, DIETOUT.csv,
 and DIPTOUT.csv. Here's some sample output::
 
   SORT TEMPLATE IEN,SORT TEMPLATE NAME,SOURCE FILE,DESTINATION FILE,DESTINATION FIELD
@@ -114,11 +114,22 @@ pattern.
 It's worth noting for experienced readers that the templates analyse computed
 expressions as well, not just upright fields.
 
+The entry points are:
+
+* ALL^XINDX13(path) - Run all the entry points.
+* DIBT^XINDX13(path,filename) - Export CSV of sort templates
+* DIET^XINDX13(path,filename) - Export CSV of input templates
+* DIPT^XINDX13(path,filename) - Export CSV of print templates
+
+In all of these entry points, if path is not specified, then the value of
+``$$DEFDIR^%ZISH()`` is used; and if filename is not specific, the default
+filenames of ``DIBTOUT.csv``, ``DIETOUT.csv``, and ``DIPTOUT.csv`` are used.
+
 Other Enhancements to XINDEX
 ============================
 * XINDX2 Modified to not crash on non-Cache systems when trying to evaluate the existence of Cache classes (JS)
-* XINDX6 allows you to choose "F" for diagramming control flow (DHW). XINDEX already supported this but did not show "F" as an option when printing routines.
-* XINDX8 ':' (post-conditionals) show as a lowercase "if" in structured listing of routines (DHW).
+* XINDX6 allows you to choose "F" for diagramming control flow (DJW). XINDEX already supported this but did not show "F" as an option when printing routines.
+* XINDX8 ':' (post-conditionals) show as a lowercase "if" in structured listing of routines (DJW).
 * XINDX5 Tags can be 16 characters long according to latest SAC (JM).
 * XINDX3 R $$ or R $P is invalid syntax (GFT).
 * XINDX7 Update VA Standards and Conventions tag line with correct version of the current SAC that this XINDEX enforces (SMH); ^$PDISPLAY is not a standard SSVN (GFT). Fix spelling on environment (CJE).
@@ -130,6 +141,7 @@ Future Work List
 
 * All new items, plus \|opt, print as a single faux routine. Consider making each internal entry number a faux routine. E.g. \|opt123.
 * If a build file or install file is entered, the new components should be analysed. Right now, the new components are only analysed when selecting by namespaces.
+* ISVs and SSVNs cause an XINDEX warning report when in lower case.
 * Create pexpect based Unit Tests.
 
 ----------
@@ -140,9 +152,8 @@ No Unit Tests are supplied in this release. The following are manual testing ins
 
 To exercise the enhanced finding of M-code snippets in the database, follow the example in `here <sample_output/request_to_index_all_of_XOBW.txt>`_. See usage instructions below for more details.
 
-To exercise the tracing of pointers in Fileman templates, run these entry points in succession::
-  
-  D DIPT^XINDX13,DIBT^XINDX13,DIET^XINDX13
+To exercise the tracing of pointers in Fileman templates, run ``D
+ALL^XINDX13``.
 
 ------------------------
 Brief Usage Instructions

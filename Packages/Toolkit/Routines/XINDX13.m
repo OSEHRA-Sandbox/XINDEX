@@ -1,4 +1,4 @@
-XINDX13 ; OSE/SMH - Input, Print, and Sort Template Analysis;2018-02-20  2:39 PM
+XINDX13 ; OSE/SMH - Input, Print, and Sort Template Analysis;2018-02-28  10:16 AM
  ;;7.3;TOOLKIT;**10001**;Apr 25, 1995;Build 13
  ; Entire routine authored by Sam Habiel; minor modifications by
  ; Christopher Edwards
@@ -7,23 +7,33 @@ XINDX13 ; OSE/SMH - Input, Print, and Sort Template Analysis;2018-02-20  2:39 PM
  ; EPs DIPTM and DIETM support XINDX12 in finding M code in Input and
  ; Print templates.
  ;
+ALL(path) ; [Public] Export all template CSV files at once to a specific dir
+ i $g(path)=""     s path=$$DEFDIR^%ZISH()
+ do DIBT(path),DIET(path),DIPT(path)
+ quit
  ;
-DIBT ; [Public] Sort template analysis
+DIBT(path,filename) ; [Public] Sort template analysis
  n outputData
+ i $g(path)=""     s path=$$DEFDIR^%ZISH()
+ i $g(filename)="" s filename="DIBTOUT.csv"
  d DIBTCOL(.outputData)
- d DIBTOUT(.outputData,"/tmp/","DIBTOUT.csv")
+ d DIBTOUT(.outputData,path,filename)
  quit
  ;
-DIET ; [Public] Input template analysis
+DIET(path,filename) ; [Public] Input template analysis
  n outputData
+ i $g(path)=""     s path=$$DEFDIR^%ZISH()
+ i $g(filename)="" s filename="DIETOUT.csv"
  d DIETCOL(.outputData)
- d DIETOUT(.outputData,"/tmp/","DIETOUT.csv")
+ d DIETOUT(.outputData,path,filename)
  quit
  ;
-DIPT ; [Public] Print template analysis
+DIPT(path,filename) ; [Public] Print template analysis
  n outputData
+ i $g(path)=""     s path=$$DEFDIR^%ZISH()
+ i $g(filename)="" s filename="DIPTOUT.csv"
  d DIPTCOL(.outputData)
- d DIPTOUT(.outputData,"/tmp/","DIPTOUT.csv")
+ d DIPTOUT(.outputData,path,filename)
  quit
  ;
 DIBTCOL(outputData) ; [Private] Sort Template Data Collection
@@ -337,6 +347,7 @@ DIPTOUT(outputData,outputPath,outputFile) ; [Private] Print Template Data Output
  ; INDX = {code to be XINDEXED}
  ; INDL = {NAME field (.01) of IEN}
 DIETM ; [Public] Collect M code fileds from all input templates
+ ; ZEXCEPT: B,INDX
  quit:'$data(^DIE(B,0))                 ; get valid ones only
  new name s name=$p(^DIE(B,0),U)
  new file s file=$p(^DIE(B,0),U,4)
@@ -358,6 +369,7 @@ DIETM ; [Public] Collect M code fileds from all input templates
  quit
  ;
 DIPTM ; [Public] Collect M code fields from all print templates
+ ; ZEXCEPT: B,INDX
  quit:'$data(^DIPT(B,0))                 ; get valid ones only
  new name s name=$p(^DIPT(B,0),U)
  new file s file=$p(^DIPT(B,0),U,4)
