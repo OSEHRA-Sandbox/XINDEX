@@ -130,6 +130,7 @@ Other Enhancements to XINDEX
 * XINDX2 Modified to not crash on non-Cache systems when trying to evaluate the existence of Cache classes (JS)
 * XINDX6 allows you to choose "F" for diagramming control flow (DJW). XINDEX already supported this but did not show "F" as an option when printing routines.
 * XINDX8 ':' (post-conditionals) show as a lowercase "if" in structured listing of routines (DJW).
+* XINDX9 Lower case ISV's are now recognized as valid M syntax (SMH).
 * XINDX5 Tags can be 16 characters long according to latest SAC (JM).
 * XINDX3 R $$ or R $P is invalid syntax (GFT).
 * XINDX7 Update VA Standards and Conventions tag line with correct version of the current SAC that this XINDEX enforces (SMH); ^$PDISPLAY is not a standard SSVN (GFT). Fix spelling on environment (CJE).
