@@ -1,4 +1,4 @@
-XINDX10 ;ISC/GRK - assemble DD executable code ;2018-02-23  11:20 AM
+XINDX10 ;ISC/GRK - assemble DD executable code ;2018-02-28  1:19 PM
  ;;7.3;TOOLKIT;**20,27,66,68,132,10001**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; Entry points ASKNS,ASKFILES,N1,F1,NS,FILE,INDX &
@@ -36,7 +36,7 @@ F1 R !,"FILE: ",FILE:$S($G(DTIME):DTIME,1:360) Q:FILE=""  Q:FILE="^"
  . ; translate the file name into a number
  . I FILE'=+FILE S FILE=$O(^DIC("B",FILE,"")) I FILE="" W "  INVALID FILENAME" Q
  . ; if we have a number then we can add it and continue
- . S FILESC=FILESC+1,FILES($J,FILE)=""
+ . S FILESC=FILESC+1,FILES($J,FILE)="" W " ",FILE
  S INP(10)="NAMESPACE",DA=1
  G F1
  Q
