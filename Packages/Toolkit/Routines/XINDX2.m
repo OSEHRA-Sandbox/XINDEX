@@ -1,7 +1,7 @@
-XINDX2 ;ISC/REL,GRK,RWF - PROCESS "GRB" ;2018-02-20  2:33 PM
+XINDX2 ;ISC/REL,GRK,RWF - PROCESS "GRB" ;2018-02-28  10:30 AM
  ;;7.3;TOOLKIT;**20,27,48,110,121,133,140,10001**;Apr 25, 1995;Build 23
  ; Original routine authored by U.S. Department of Veterans Affairs
- ; OBJTEST+1:3 by Kitware/Joseph Snyder
+ ; OBJTEST+1:3 by Kitware/Jason Li
 % S LINE=GRB,(CM,COM)="" F I=0:0 S STR=$P(LINE,$C(9),1),LINE=$P(LINE,$C(9),2,999),NOA=0 D:STR]"" ARGG Q:LINE']""
  Q
  ;Process argument
