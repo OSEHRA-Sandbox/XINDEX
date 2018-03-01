@@ -1,4 +1,4 @@
-XINDX11 ;ISC/GRK - Create phantom routines for functions, options, etc. ;2018-02-28  5:01 PM
+XINDX11 ;ISC/GRK - Create phantom routines for functions, options, etc. ;2018-03-01  8:33 AM
  ;;7.3;TOOLKIT;**20,27,121,132,10001**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; Entrypoints PKG+3ff,LNS,NS,NAME,NAMSP,ADDLN &
@@ -25,7 +25,7 @@ BUILD ; Process Build File. Fall through from above.
  S BLDFIL=.4,INDFN="^DIPT(",INDRN="|prnt",INDD="Print Template",INDSB="PRINT^XINDX12",INDXN="Build file" D BLDITEM
  S BLDFIL=.403,INDFN="^DIST(.403,",INDRN="|form",INDD="Form",INDSB="FORM^XINDX12",INDXN="Build file" D BLDITEM
  S BLDDEL=U
- S BLDFIL=.84,INDFN="^DI(.84,",INDRN="|dialog",INDD="Dialog",INDSB="DIALOG^XINDX12",INDXN="Build file" D BLDITEM
+ S BLDFIL=.84,INDFN="^DI(.84,",INDRN="|dlg",INDD="Dialog",INDSB="DIALOG^XINDX12",INDXN="Build file" D BLDITEM
  S BLDFIL=9.2,INDFN="^DIC(9.2,",INDRN="|help",INDD="Help Frame",INDSB="HELP^XINDX12",INDXN="Build file" D BLDITEM
  S BLDFIL=19.1,INDFN="^DIC(19.1,",INDRN="|key",INDD="Security Key",INDSB="KEY^XINDX12",INDXN="Build file" D BLDITEM
  S BLDFIL=409.61,INDFN="^SD(409.61,",INDRN="|list",INDD="List Template",INDSB="LIST^XINDX12",INDXN="Build file" D BLDITEM
@@ -55,7 +55,7 @@ PKG D NAMSP ;Package file
  S INDFN="^DIE(",INDRN="|inpt",INDD="Input Template",INDSB="INPUT^XINDX12" D NAME
  S INDFN="^DIPT(",INDRN="|prnt",INDD="Print Template",INDSB="PRINT^XINDX12" D NAME
  S INDFN="^DIST(.403,",INDRN="|form",INDD="Form",INDSB="FORM^XINDX12" D NAME
- S INDFN="^DI(.84,",INDRN="|dialog",INDD="Dialog",INDSB="DIALOG^XINDX12" D NAME
+ S INDFN="^DI(.84,",INDRN="|dlg",INDD="Dialog",INDSB="DIALOG^XINDX12" D NAME
  S INDFN="^DIC(9.2,",INDRN="|help",INDD="Help Frame",INDSB="HELP^XINDX12" D NAME
  S INDFN="^DIC(19.1,",INDRN="|key",INDD="Security Key",INDSB="KEY^XINDX12" D NAME
  S INDFN="^SD(409.61,",INDRN="|list",INDD="List Template",INDSB="LIST^XINDX12" D NAME
@@ -70,7 +70,7 @@ LNS S INDXN="NAMESPACE" ; Defined list of namespaces
  S INDFN="^DIE(",INDRN="|inpt",INDD="Input Template",INDSB="INPUT^XINDX12" D NS
  S INDFN="^DIPT(",INDRN="|prnt",INDD="Print Template",INDSB="PRINT^XINDX12" D NS
  S INDFN="^DIST(.403,",INDRN="|form",INDD="Form",INDSB="FORM^XINDX12" D NS
- S INDFN="^DI(.84,",INDRN="|dialog",INDD="Dialog",INDSB="DIALOG^XINDX12" D NS
+ S INDFN="^DI(.84,",INDRN="|dlg",INDD="Dialog",INDSB="DIALOG^XINDX12" D NS
  S INDFN="^DIC(9.2,",INDRN="|help",INDD="Help Frame",INDSB="HELP^XINDX12" D NS
  S INDFN="^DIC(19.1,",INDRN="|key",INDD="Security Key",INDSB="KEY^XINDX12" D NS
  S INDFN="^SD(409.61,",INDRN="|list",INDD="List Template",INDSB="LIST^XINDX12" D NS
