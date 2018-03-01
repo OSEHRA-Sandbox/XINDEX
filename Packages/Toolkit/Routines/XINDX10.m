@@ -1,4 +1,4 @@
-XINDX10 ;ISC/GRK - assemble DD executable code ;2018-02-28  1:19 PM
+XINDX10 ;ISC/GRK - assemble DD executable code ;2018-03-01  6:33 PM
  ;;7.3;TOOLKIT;**20,27,66,68,132,10001**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; Entry points ASKNS,ASKFILES,N1,F1,NS,FILE,INDX &
@@ -110,7 +110,79 @@ STRIP ;
  ; Additional Data Dictionary fields that contain executable code
  I $D(^DD(INDFN,INDF,12.2)) S INDC=INDF_"SCREXP ; EXPRESSION FOR POINTER SCREEN",INDX=$S($D(^(12.2))#2:^(12.2),1:"Q") D ADD
  S INDEL="" F  S INDEL=$O(^DD(INDFN,INDF,"V",INDEL)) Q:INDEL=""  I $D(^(INDEL,1))#2 S INDC=INDF_"VPSCR"_INDEL_" ; VARIABLE POINTER SCREEN",INDX=^(1) D ADD
+ ;
+ I A["K" D DATA1 ; OSE/SMH - M code in Data
+ ;
  Q
+ ;
+DATA1 ; OSE/SMH *10001* - XINDEX data in M fields in the file
+ ; First, find the data storage location in the file/subfile
+ n q s q=""""
+ n spec s spec=$P(^DD(INDFN,INDF,0),U,4)
+ n sub s sub=$p(spec,";",1)
+ n piece s piece=$p(spec,";",2)
+ n eStart,eEnd
+ i $e(piece)="E" s eStart=$e(piece,2,$f(piece,",")-2),eEnd=$p(piece,",",2)
+ ;
+ ; Walk up the "UP" node to extract all the parents of myself
+ n parents
+ n done s done=0
+ n subfile s subfile=INDFN
+ n n s n=0
+ f  d  q:done
+ . i $d(^DD(subfile,0,"UP")) s parents(n)=subfile,subfile=^("UP"),n=n+1
+ . e  s parents(n)=subfile,done=1
+ ;
+ ; Walk down the parents array from the top to the subfile to construct
+ ; the global reference. D0, D1, etc are the subscripts in the walk
+ n globalRef
+ n dn s dn=0
+ n ql
+ n first s first=1
+ n n f n=99:0 s n=$o(parents(n),-1) q:n=""  d
+ . n file           s file=parents(n)
+ . i first s globalRef=^DIC(file,0,"GL")_0_")",first=0,ql(dn)=$ql(globalRef),dn=dn+1
+ . e  d
+ .. n parentFile s parentFile=parents(n+1)
+ .. n subFileField s subFileField=$o(^DD(parentFile,"SB",file,0))
+ .. n subFileLoc   s subFileLoc=$p(^DD(parentFile,subFileField,0),U,4)
+ .. n sub s sub=$p(subFileLoc,";")
+ .. s globalRef=$na(@globalRef@(sub,0))
+ .. s ql(dn)=$ql(globalRef)
+ .. s dn=dn+1
+ ;
+ ; Go back down one to tell us how many for loops we need to have to traverse
+ s dn=dn-1
+ ;
+ ; Append the subscript of the data to the global location and close reference
+ s globalRef=$na(@globalRef@(sub))
+ ;
+ ; Now traverse the data
+ ; If you don't understand the recursive algorithm... neither do I!
+ ; d = data array; l = level; glo = current operations global
+ ; Current global is the global - 1 from the d level we are working at
+ ; d(0) (i.e. D0) is at ql(1). So we start at the one before it so we can
+ ; iterate over the D0.
+ n d,l,glo s l=0 s glo=$na(@globalRef,ql(l)-1)
+AGAIN ; Looper entry point
+ s d(l)=0 ; D0, D1, etc.
+ f  s d(l)=$o(@glo@(d(l))) q:'d(l)  d
+ . ; Is there a subfile under us?
+ . i $d(ql(l+1)) do  quit
+ .. ; push up a stack
+ .. s l=l+1
+ .. ; Keep oldglo just for the next statement after this
+ .. n oldglo s oldglo=glo
+ .. ; Our new looping global is the CURRENT entry (d(l-1)) with the next subscript.
+ .. ; next subscript = Dl subscript (i.e. the value of ql(l)) - 1 in the full global Reference
+ .. n glo s glo=$na(@oldglo@(d(l-1),$qs(globalRef,ql(l)-1)))
+ .. d AGAIN
+ .. ; pop stack
+ .. s l=l-1
+ . n finalGlo s finalGlo=$na(@glo@(d(l),$qs(globalRef,$ql(globalRef))))
+ . w finalGlo,!
+ quit
+ ; 
 XREFS Q:('$D(^(G))#2)!(G=3)  ;Node 3 is don't delete comment.
  S INDC=INDF_"XRF"_INDXRF_$S(G=1:"S",G=2:"K",1:"n"_G)_" ; "_$S(G<2:"SET",G<3:"KILL",1:"OVERFLOW")_" LOGIC FOR '"_$S(C]"":C,1:INDXRF)_"' XREF",INDX=^(G) D ADD
  Q
