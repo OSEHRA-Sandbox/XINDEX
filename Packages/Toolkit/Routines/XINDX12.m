@@ -1,4 +1,4 @@
-XINDX12 ;OSEHRA/CJE - Create phantom routines for build components ;2018-02-20  2:29 PM
+XINDX12 ;OSEHRA/CJE - Create phantom routines for build components ;2018-03-01  8:37 AM
  ;;7.3;TOOLKIT;**10001**;Apr 25, 1995;Build 13
  ; Entire routine authored by Chirstopher Edwards
  ;
@@ -214,7 +214,7 @@ LIST ;Process List Templates
  S INDC=" ; "_INDL_" - ENTRY CODE (#106)"
  D ADD^XINDX11
  ;
- S INDX=$S($L($G(^SD(409.61,B,"ARRAY"))):"I $L("_$P($G(^SD(409.61,B,"ARRAY"))," ",2)_") Q",1:";")
+ S INDX=$S($L($G(^SD(409.61,B,"ARRAY"))):"I $L("_$P($G(^SD(409.61,B,"ARRAY"))," ",2,99)_") Q",1:";")
  S INDC=" ; "_INDL_" - ARRAY NAME (#107)"
  D ADD^XINDX11
  Q
