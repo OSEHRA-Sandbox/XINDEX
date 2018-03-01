@@ -16,6 +16,9 @@ It has been found that XINDEX doesn't run or report on all VistA components
 that can be contained within a KIDS build. This creates errors of omission
 when trying to find other code references or compliance with the SAC.
 
+Opportunity was taken during this development to incorporate VistA community
+feedback and enhancements on XINDEX.
+
 -----------
 Development
 -----------
@@ -76,7 +79,7 @@ Other Component Coverage (CJE)
 These components that have M code were previously not analyzed by XINDEX:
 
 * Forms (in faux routine \|form)
-* Dialogs ( " " " \|dialog)
+* Dialogs ( " " " \|dlg)
 * Help Frames ( " " " \|help)
 * Security Keys ( " " " \|key)
 * Protocols ( " " " \|ptcl)
@@ -87,9 +90,10 @@ These components that have M code were previously not analyzed by XINDEX:
 Remarks on how this is accomplished (CJE)
 -----------------------------------------
 There is a new select by namespace prompt and a new select file prompt. This
-lets users choose to analyse a whole namespace. What BUILD or INSTALL selects
-has not changed: These still do not do new components. This is left for future
-work.
+lets users choose to analyse a whole namespace. BUILD, INSTALL, PACKAGE prompts
+will analyse all components in the BUILD file (for both builds and installs)
+and will analyze all Package elements by the namespace obtained from the
+package file.
 
 Fileman Template Pointer Analysis (SMH)
 =======================================
@@ -127,23 +131,29 @@ filenames of ``DIBTOUT.csv``, ``DIETOUT.csv``, and ``DIPTOUT.csv`` are used.
 
 Other Enhancements to XINDEX
 ============================
-* XINDX2 Modified to not crash on non-Cache systems when trying to evaluate the existence of Cache classes (JS)
+* XINDX1 Added error 65: ;;X,Z,DI,DD,KMP;S - Vendor specific code is not allowed (SACC 2.2.8) (SMH)
+* XINDX2 Modified to not crash on non-Cache systems when trying to evaluate the existence of Cache classes (JL)
 * XINDX6 allows you to choose "F" for diagramming control flow (DJW). XINDEX already supported this but did not show "F" as an option when printing routines.
 * XINDX8 ':' (post-conditionals) show as a lowercase "if" in structured listing of routines (DJW).
 * XINDX9 Lower case ISV's are now recognized as valid M syntax (SMH).
+* XINDX9 Cache Objects will trigger error #65, but only for non-Kernel packages (SMH).
 * XINDX5 Tags can be 16 characters long according to latest SAC (JM).
 * XINDX3 R $$ or R $P is invalid syntax (GFT).
-* XINDX7 Update VA Standards and Conventions tag line with correct version of the current SAC that this XINDEX enforces (SMH); ^$PDISPLAY is not a standard SSVN (GFT). Fix spelling on environment (CJE).
-* XINDX51 Routine name can be up to 16 characters long in the header (GFT); print Fileman documentation file in routine listings if it is present (GFT).
+* XINDX7 Update VA Standards and Conventions tag line with correct version of the current SAC that this XINDEX enforces (SMH).
+* XINDX7 ^$PDISPLAY is not a standard SSVN (GFT).
+* XINDX7 Fix spelling on environment (CJE).
+* XINDX51 Routine name can be up to 16 characters long in the header (GFT)
+* XINDX51 Print Fileman documentation file in routine listings if it is present (GFT).
 
 ----------------
 Future Work List
 ----------------
 
 * All new items, plus \|opt, print as a single faux routine. Consider making each internal entry number a faux routine. E.g. \|opt123.
-* If a build file or install file is entered, the new components should be analysed. Right now, the new components are only analysed when selecting by namespaces.
-* ISVs and SSVNs cause an XINDEX warning report when in lower case.
 * Create pexpect based Unit Tests.
+* Warn on use of && or ||
+* Recognize $ROLES and $NAMESPACE as vendor specific constructs
+* Better parsing for COS in general (See PSSHTTP for an example that fails)
 
 ----------
 Unit Tests
