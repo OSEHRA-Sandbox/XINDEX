@@ -1,4 +1,4 @@
-XINDX10 ;ISC/GRK - assemble DD executable code ;2018-03-01  6:33 PM
+XINDX10 ;ISC/GRK - assemble DD executable code ;2018-03-02  11:05 AM
  ;;7.3;TOOLKIT;**20,27,66,68,132,10001**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; Entry points ASKNS,ASKFILES,N1,F1,NS,FILE,INDX &
@@ -180,7 +180,18 @@ AGAIN ; Looper entry point
  .. ; pop stack
  .. s l=l-1
  . n finalGlo s finalGlo=$na(@glo@(d(l),$qs(globalRef,$ql(globalRef))))
+ . i $d(@finalGlo) d
+ .. i $g(eStart) s INDX=$e(@finalGlo,eStart,eEnd)
+ .. e  s INDX=$p(@finalGlo,U,piece)
+ .. I INDX]"" D
+ ... N IENS S IENS=""
+ ... n l s l=""  f  s l=$o(d(l),-1) q:l=""  s IENS=IENS_d(l)_","
+ ... S INDC=INDF_"DATA"_IENS
+ ... s INDC=INDC_" ; Data file "_INDFN_", field "_INDF_", IENS "_IENS
+ ... d ADD
+ . ; debugging - remove later
  . w finalGlo,!
+ . ; debugging
  quit
  ; 
 XREFS Q:('$D(^(G))#2)!(G=3)  ;Node 3 is don't delete comment.
