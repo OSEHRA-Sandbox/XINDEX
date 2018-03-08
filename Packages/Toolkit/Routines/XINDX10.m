@@ -1,4 +1,4 @@
-XINDX10 ;ISC/GRK - assemble DD executable code ;2018-03-02  11:05 AM
+XINDX10 ;ISC/GRK,KRM/CJE,OSE/SMH - assemble DD executable code ;2018-03-08  1:38 PM
  ;;7.3;TOOLKIT;**20,27,66,68,132,10001**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; Entry points ASKNS,ASKFILES,N1,F1,NS,FILE,INDX &
@@ -111,37 +111,72 @@ STRIP ;
  I $D(^DD(INDFN,INDF,12.2)) S INDC=INDF_"SCREXP ; EXPRESSION FOR POINTER SCREEN",INDX=$S($D(^(12.2))#2:^(12.2),1:"Q") D ADD
  S INDEL="" F  S INDEL=$O(^DD(INDFN,INDF,"V",INDEL)) Q:INDEL=""  I $D(^(INDEL,1))#2 S INDC=INDF_"VPSCR"_INDEL_" ; VARIABLE POINTER SCREEN",INDX=^(1) D ADD
  ;
- I A["K" D DATA1 ; OSE/SMH - M code in Data
+ ; Modifications to XINDEX data *10001* OSE/SMH
+ I A["K" D DATA1(INDFN,INDF) ; OSE/SMH - M code in Data
+ I $P(^DD(INDFN,INDF,0),U)["ROUTINE" D ROUTAG ; OSE/SMH - Routine and tag stored separately
  ;
  Q
  ;
-DATA1 ; OSE/SMH *10001* - XINDEX data in M fields in the file
+ROUTAG ; [Private] OSE/SMH *10001* - XINDEX Routine and Tag when stored separately.
+ ; We are at the routine; find the tag in the dd before or after.
+ ; If we can't find the tag, forget about it then.
+ n tagSub
+ n prevSub s prevSub=$O(^DD(INDFN,INDF),-1)
+ n nextSub s nextSub=$O(^DD(INDFN,INDF),+1)
+ D
+ . I $P(^DD(INDFN,prevSub,0),U)["TAG" s tagSub=prevSub quit
+ . I $P(^DD(INDFN,nextSub,0),U)["TAG" s tagSub=nextSub quit
+ I $g(tagSub)="" quit
+ ; debug
+ ; w "found "_tagSub_" as "_$P(^DD(INDFN,tagSub,0),U),!
+ ; debug
+ d DATA1(INDFN,tagSub,INDF)
+ quit
+ ;
+DATA1(inFile,inField1,inField2) ; [Private] OSE/SMH *10001* - XINDEX data in M fields in the file
+ ; If inFile and inField1 are passed, iField1 is assumed to be an M code field
+ ; If inField1 and inField2 are both passed, inField1 is the tag, and inField2 is the routine.
  ; First, find the data storage location in the file/subfile
- n q s q=""""
- n spec s spec=$P(^DD(INDFN,INDF,0),U,4)
- n sub s sub=$p(spec,";",1)
- n piece s piece=$p(spec,";",2)
- n eStart,eEnd
- i $e(piece)="E" s eStart=$e(piece,2,$f(piece,",")-2),eEnd=$p(piece,",",2)
+ n spec1,spec2
+ n sub1,sub2
+ n piece1,piece2
+ n eStart1,eEnd1,eStart2,eEnd2
+ ;
+ ; Field 1
+ s spec1=$P(^DD(inFile,inField1,0),U,4)
+ s sub1=$p(spec1,";",1)
+ s piece1=$p(spec1,";",2)
+ i $e(piece1)="E" s eStart1=$e(piece1,2,$f(piece1,",")-2),eEnd1=$p(piece1,",",2)
+ ;
+ ; Field 2
+ i $g(inField2) d
+ . s spec2=$P(^DD(inFile,inField2,0),U,4)
+ . s sub2=$p(spec2,";",1)
+ . s piece2=$p(spec2,";",2)
+ . i $e(piece2)="E" s eStart2=$e(piece2,2,$f(piece2,",")-2),eEnd2=$p(piece2,",",2)
  ;
  ; Walk up the "UP" node to extract all the parents of myself
  n parents
  n done s done=0
- n subfile s subfile=INDFN
+ n subfile s subfile=inFile
  n n s n=0
  f  d  q:done
  . i $d(^DD(subfile,0,"UP")) s parents(n)=subfile,subfile=^("UP"),n=n+1
  . e  s parents(n)=subfile,done=1
  ;
  ; Walk down the parents array from the top to the subfile to construct
- ; the global reference. D0, D1, etc are the subscripts in the walk
- n globalRef
- n dn s dn=0
- n ql
- n first s first=1
+ ; the global reference.
+ n globalRef ; We we will store the full global reference; this is constructed in stages
+ n dn s dn=0 ; D level (D0, D1 etc)
+ n ql ; $ql output for each of the levels (where is D0, where is D1)
+ n first s first=1 ; flag for us to grab the top item from ^DIC(fn,0,"gl")
+ ;
+ ; Walk to the parents from the top to the bottom (top numbers are the lowest levels)
  n n f n=99:0 s n=$o(parents(n),-1) q:n=""  d
  . n file           s file=parents(n)
+ . ; first entry: get global OREF and close; grab ql(dn) for this level, increment dn
  . i first s globalRef=^DIC(file,0,"GL")_0_")",first=0,ql(dn)=$ql(globalRef),dn=dn+1
+ . ; Subsequent entries: Get parent, get field from parent, find us under the parent
  . e  d
  .. n parentFile s parentFile=parents(n+1)
  .. n subFileField s subFileField=$o(^DD(parentFile,"SB",file,0))
@@ -154,17 +189,20 @@ DATA1 ; OSE/SMH *10001* - XINDEX data in M fields in the file
  ; Go back down one to tell us how many for loops we need to have to traverse
  s dn=dn-1
  ;
- ; Append the subscript of the data to the global location and close reference
- s globalRef=$na(@globalRef@(sub))
+ ; Append the subscript of the data to the global location
+ n globalRef1,globalRef2
+ s globalRef1=$na(@globalRef@(sub1))
+ i $g(sub2)]"" s globalRef2=$na(@globalRef@(sub2))
  ;
- ; Now traverse the data
+ ; Now traverse the data (using the first global reference)
  ; If you don't understand the recursive algorithm... neither do I!
  ; d = data array; l = level; glo = current operations global
- ; Current global is the global - 1 from the d level we are working at
- ; d(0) (i.e. D0) is at ql(1). So we start at the one before it so we can
- ; iterate over the D0.
- n d,l,glo s l=0 s glo=$na(@globalRef,ql(l)-1)
-AGAIN ; Looper entry point
+ ; Current global(glo) is the global - 1 from the d level we are working at
+ ; E.g. if d(0) (i.e. D0) is at $ql of 2, we set glo to $ql of 1 so the order
+ ; variable is at $ql of 2
+ n d,l,glo s l=0 s glo=$na(@globalRef1,ql(l)-1)
+ ;
+AGAIN ; Recursive Looper entry point
  s d(l)=0 ; D0, D1, etc.
  f  s d(l)=$o(@glo@(d(l))) q:'d(l)  d
  . ; Is there a subfile under us?
@@ -175,25 +213,40 @@ AGAIN ; Looper entry point
  .. n oldglo s oldglo=glo
  .. ; Our new looping global is the CURRENT entry (d(l-1)) with the next subscript.
  .. ; next subscript = Dl subscript (i.e. the value of ql(l)) - 1 in the full global Reference
- .. n glo s glo=$na(@oldglo@(d(l-1),$qs(globalRef,ql(l)-1)))
+ .. n glo s glo=$na(@oldglo@(d(l-1),$qs(globalRef1,ql(l)-1)))
  .. d AGAIN
  .. ; pop stack
  .. s l=l-1
- . n finalGlo s finalGlo=$na(@glo@(d(l),$qs(globalRef,$ql(globalRef))))
- . i $d(@finalGlo) d
- .. i $g(eStart) s INDX=$e(@finalGlo,eStart,eEnd)
- .. e  s INDX=$p(@finalGlo,U,piece)
- .. I INDX]"" D
- ... N IENS S IENS=""
- ... n l s l=""  f  s l=$o(d(l),-1) q:l=""  s IENS=IENS_d(l)_","
+ . n finalGlo1 s finalGlo1=$na(@glo@(d(l),$qs(globalRef1,$ql(globalRef1))))
+ . n finalGlo2
+ . i $g(globalRef2)]"" s finalGlo2=$na(@glo@(d(l),$qs(globalRef2,$ql(globalRef2))))
+ . i $d(@finalGlo1) d
+ .. ; If we have a routine/tag, it's invalid when either of them is not present!
+ .. i $d(finalGlo2),'$d(@finalGlo2) quit
+ .. ;
+ .. N IENS S IENS=""
+ .. N INDX ; don't work on old data!
+ .. n l s l=""  f  s l=$o(d(l),-1) q:l=""  s IENS=IENS_d(l)_","
+ .. s $e(IENS,$l(IENS))="" ; remove trailing comma
+ .. n datum1,datum2
+ .. i $g(eStart1) s datum1=$e(@finalGlo1,eStart1,eEnd1)
+ .. e  s datum1=$p(@finalGlo1,U,piece1)
+ .. i $d(finalGlo2),$d(@finalGlo2) d
+ ... i $g(eStart2) s datum2=$e(@finalGlo2,eStart2,eEnd2)
+ ... e  s datum2=$p(@finalGlo2,U,piece2)
+ .. i $g(datum2)]"" s INDX=" D "_datum1_U_datum2
+ .. e  i datum1]"" s INDX=datum1
+ .. I $g(INDX)]"" D
  ... S INDC=INDF_"DATA"_IENS
  ... s INDC=INDC_" ; Data file "_INDFN_", field "_INDF_", IENS "_IENS
  ... d ADD
  . ; debugging - remove later
- . w finalGlo,!
+ . w finalGlo1
+ . w:$d(finalGlo2) " ",finalGlo2
+ . w !
  . ; debugging
  quit
- ; 
+ ;
 XREFS Q:('$D(^(G))#2)!(G=3)  ;Node 3 is don't delete comment.
  S INDC=INDF_"XRF"_INDXRF_$S(G=1:"S",G=2:"K",1:"n"_G)_" ; "_$S(G<2:"SET",G<3:"KILL",1:"OVERFLOW")_" LOGIC FOR '"_$S(C]"":C,1:INDXRF)_"' XREF",INDX=^(G) D ADD
  Q
