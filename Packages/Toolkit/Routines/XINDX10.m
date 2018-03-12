@@ -1,4 +1,4 @@
-XINDX10 ;ISC/GRK,KRM/CJE,OSE/SMH - assemble DD executable code ;2018-03-08  1:38 PM
+XINDX10 ;ISC/GRK,KRM/CJE,OSE/SMH - assemble DD executable code ;2018-03-12  3:47 PM
  ;;7.3;TOOLKIT;**20,27,66,68,132,10001**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; Entry points ASKNS,ASKFILES,N1,F1,NS,FILE,INDX &
@@ -124,8 +124,8 @@ ROUTAG ; [Private] OSE/SMH *10001* - XINDEX Routine and Tag when stored separate
  n prevSub s prevSub=$O(^DD(INDFN,INDF),-1)
  n nextSub s nextSub=$O(^DD(INDFN,INDF),+1)
  D
- . I $P(^DD(INDFN,prevSub,0),U)["TAG" s tagSub=prevSub quit
- . I $P(^DD(INDFN,nextSub,0),U)["TAG" s tagSub=nextSub quit
+ . I prevSub,$P(^DD(INDFN,prevSub,0),U)["TAG" s tagSub=prevSub quit
+ . I nextSub,$P(^DD(INDFN,nextSub,0),U)["TAG" s tagSub=nextSub quit
  I $g(tagSub)="" quit
  ; debug
  ; w "found "_tagSub_" as "_$P(^DD(INDFN,tagSub,0),U),!
