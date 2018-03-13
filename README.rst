@@ -73,6 +73,32 @@ is new:
 The first 5 bullets are shown under the \|ddnnn faux routine. Print, Sort, and
 Input templates are shown under faux routines \|prnt, \|sort, and \|inpt.
 
+Fileman Data Coverage (SMH)
+---------------------------
+XINDEX now checks Fileman data for items that can be xindex'ed. These are
+either fields marked as having M code or a field whose label contains the word
+"ROUTINE" which has a field before or after it with a label that contains the
+word "TAG". E.g., on file 3.2::
+
+	|dd3.2        * *  1399 Lines,  55619 Bytes, Checksum: 
+         S ^%ZIS(2,"B",$E(X,1,30),DA)=""
+   .01XRF1S+1   S - Set to a '%' global.
+         50
+   5DATA77+1    F - UNDEFINED COMMAND (rest of line not checked).
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72 S $Y=DY)_$X=DX
+   5DATA167+1   F - Unmatched Parenthesis.
+   5DATA167+1   F - Invalid or wrong number of arguments to a function.
+   5DATA167+1   F - Unmatched Parenthesis.
+
+Routine print-outs have a label indicating in a verbose way which entry we are
+talking about, plus code::
+
+	 2DATA1,360 --
+         ; Data file 3.2055, field 2, IENS 1,360
+         W "^XA"
+
+See the sample_output/ folder for a full example of XINDEXing the TERMINAL TYPE
+file (#3.2).
 
 Other Component Coverage (CJE)
 ------------------------------

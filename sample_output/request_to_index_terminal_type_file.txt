@@ -1,12 +1,6 @@
-FOIA201802>D ^XINDEX 
-
                    V. A.  C R O S S  R E F E R E N C E R  7.3
                      [5/5/2016 VA Standards & Conventions]
-              UCI: FOIA201802 CPU: ICARUS    Feb 23, 2018@12:47:25
-
-Routine: XOBW*
-XOBWD     XOBWENV   XOBWLIB   XOBWLIB1  XOBWP004  XOBWPA04  XOBWPB04  XOBWPST   XOBWPWD   XOBWSSL   XOBWU     XOBWU1    XOBWUA    XOBWUA1   XOBWUS    XOBWUS1   XOBWUS2   
-Current total of 17 routines.
+              UCI: FOIA201802 CPU: ICARUS    Mar 13, 2018@10:57:58
 
 Routine: 
 
@@ -15,16 +9,13 @@ Select INSTALL NAME:
 Select PACKAGE NAME: 
 LIST OF NAMESPACES TO BE INDEXED; PRESS RETURN TO TERMINATE LIST
 
-NAMESPACE: XOBW
 NAMESPACE: 
 LIST OF FILES TO BE INDEXED; PRESS RETURN TO TERMINATE LIST
 
-FILE: 18.02
-FILE: 18.12 
-FILE: 18.13
+FILE: 3.2 3.2
 FILE: 
 
-Include the compiled template routines: N//
+Include the compiled template routines: N//y
 
 Print more than compiled errors and warnings? YES//
 
@@ -41,12 +32,10 @@ Print errors and warnings with each routine? YES//
 Save parameters in ROUTINE file? NO//
 
 Index all called routines? NO//
-
-This report could take some time, Remember to QUEUE the report.
-
-DEVICE: HFS  Host File Device
+DEVICE: hfs  Host File Device
 HOST FILE NAME: /dev/shm/hfs.dat//
 
 
 --- CROSS-REFERENCING ALL ROUTINES ---
 --- D O N E ---
+

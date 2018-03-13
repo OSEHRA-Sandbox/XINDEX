@@ -1,0 +1,2388 @@
+                   V. A.  C R O S S  R E F E R E N C E R  7.3
+                     [5/5/2016 VA Standards & Conventions]
+              UCI: FOIA201802 CPU: ICARUS    Mar 13, 2018@10:57:58
+
+The selected file Data Dictionaries are being processed.
+
+3.2 TERMINAL TYPE.........
+3.206 OPEN EXECUTE DESCRIPTION........................................................
+3.2055 CONTROL CODES...................................................
+3.207 OPEN PRINTER DESCRIPTION..............................................
+The option and function files are being processed.
+
+
+Routines are being processed.
+Routines: 0  Faux Routines: 4
+
+
+
+          Data Dictionaries
+|dd3.2         |dd3.2055      |dd3.206       |dd3.207       
+
+--- CROSS REFERENCING ---
+
+
+Compiled list of Errors and Warnings              Mar 13, 2018@10:57:58 page 1
+
+|dd3.2        * *  1399 Lines,  55619 Bytes, Checksum: 
+         S ^%ZIS(2,"B",$E(X,1,30),DA)=""
+   .01XRF1S+1   S - Set to a '%' global.
+         50
+   5DATA77+1    F - UNDEFINED COMMAND (rest of line not checked).
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72 S $Y=DY)_$X=DX
+   5DATA167+1   F - Unmatched Parenthesis.
+   5DATA167+1   F - Invalid or wrong number of arguments to a function.
+   5DATA167+1   F - Unmatched Parenthesis.
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72 S $X=DX)_$Y=DY
+   5DATA228+1   F - Unmatched Parenthesis.
+   5DATA228+1   F - Invalid or wrong number of arguments to a function.
+   5DATA228+1   F - Unmatched Parenthesis.
+         PAGE LENGTH
+   5DATA263+1   F - UNDEFINED COMMAND (rest of line not checked).
+         PAGE LENGTH
+   5DATA276+1   F - UNDEFINED COMMAND (rest of line not checked).
+         50
+   5.2DATA77+1  F - UNDEFINED COMMAND (rest of line not checked).
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72 S $Y=DY)_$X=DX
+   5.2DATA167+1 F - Unmatched Parenthesis.
+   5.2DATA167+1 F - Invalid or wrong number of arguments to a function.
+   5.2DATA167+1 F - Unmatched Parenthesis.
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72 S $X=DX)_$Y=DY
+   5.2DATA228+1 F - Unmatched Parenthesis.
+   5.2DATA228+1 F - Invalid or wrong number of arguments to a function.
+   5.2DATA228+1 F - Unmatched Parenthesis.
+         PAGE LENGTH
+   5.2DATA263+1 F - UNDEFINED COMMAND (rest of line not checked).
+         PAGE LENGTH
+   5.2DATA276+1 F - UNDEFINED COMMAND (rest of line not checked).
+         C IO H 3 O IO
+   6DATA87+1    S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA87+1    S - 'OPEN' command should be invoked through ^%ZIS.
+         L ^%ZTSCH:10 C IO H 3 O IO L
+   6DATA107+1   S - Non-Incremental Lock.
+   6DATA107+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA107+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         C IO H 3 O IO
+   6DATA129+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA129+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         I '$D(ZTQUEUED) N (DTIME,DUZ) S %IO=$I,%ZIS="NQ",%ZIS("B")="" X "U $P" 
+          R !,"NUMBER OF COPIES: ",COPIES:60 W !,"OUTPUT TO DEVICE" D ^%ZIS U %I
+          O Q:POP  F %="ION","IO","IOS","IOM","IOST","COPIES" S ^TMP("SDP",$J,%)
+          =@%
+   6DATA185+1   S - Exclusive or Unargumented NEW command.
+         I '$D(ZTQUEUED) N (DTIME,DUZ) S %IO=$I,%ZIS="NQ",%ZIS("B")="" X "U $P" 
+          R !,"NUMBER OF COPIES: ",COPIES:60 W !,"OUTPUT TO DEVICE" D ^%ZIS U %I
+          O Q:POP  F %="ION","IO","IOS","IOM","IOST","COPIES" S ^TMP("SDP",$J,%)
+          =@%
+   6DATA186+1   S - Exclusive or Unargumented NEW command.
+         C IO O IO:NEW U IO D ^A2AHDR
+   6DATA260+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA260+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         C IO O IO:NEW U IO W *27,"&l0O",*27,"&s0C",*27,"&k10H",*27,"&l7.4c69p2e
+          67F",*27,"&a05l95M"
+   6DATA263+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA263+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         O IO W *27,"[?21 J",*27,"[90 C",*27,"2w",*27,"[1;70r",*27,"[1;201s"
+   6DATA286+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         C IO O IO:NEWVERSION U IO W *27,"E" D ^A2AHDR
+   6DATA291+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA291+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         C IO O IO:NEWVERSION U IO D ^A2AHDR
+   6DATA292+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA292+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         C IO O IO:NEWVERSION U IO W *27,"[3;43 G" D ^A2AHDR
+   6DATA301+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA301+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         C IO O IO:NEW U IO
+   6DATA315+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA315+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         C IO O IO:NEW U IO D ^A2AHDR
+   6DATA323+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA323+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         U $I:(:::::512) C $I
+   7DATA75+1    S - 'Close' command should be invoked through 'D ^%ZISC'.
+         C IO
+   7DATA87+1    S - 'Close' command should be invoked through 'D ^%ZISC'.
+         C IO
+   7DATA129+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+         U $I:(:::::512) C $I
+   7DATA147+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+         W !,##
+   7DATA150+1   F - Undefined Function.
+         W !,##
+   7DATA151+1   F - Undefined Function.
+         U IO:NOMODEM C IO
+   7DATA167+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+         N X C IO S X=$P(IO,":"),X=$ZC(%SPAWN,"SUBMIT/REMOTE "_X_"::DECNET_LOCAL
+          _PRINT.COM")
+   7DATA173+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA173+1   S - Non-standard $Z function used.
+   7DATA173+1   F - Undefined Function.
+         W:$X ! X "U IO:(::0)" D READ^XMAPHOST C IO S X=$ZOS(2,XMPMSG) K XMPMSG,
+          IO(1,IO)
+   7DATA190+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA190+1   S - Non-standard $Z function used.
+   7DATA190+1   F - Undefined Function.
+         W:$X ! X "U IO:(::0)" D READ^XMAPHOST C IO K XMPMSG,IO(1,IO)
+   7DATA192+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+         C IO S X=$P(IO,":")_"::DECNET_LOCAL_PRINT.COM",D=$ZC(%SPAWN,"SUBMIT/REM
+          OTE "_X)
+   7DATA260+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA260+1   S - Non-standard $Z function used.
+   7DATA260+1   F - Undefined Function.
+         W *27,"E",! C IO S X=$P(IO,":")_"::DECNET_LOCAL_PRINT.COM",D=$ZC(%SPAWN
+          ,"SUBMIT/REMOTE "_X)
+   7DATA291+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA291+1   S - Non-standard $Z function used.
+   7DATA291+1   F - Undefined Function.
+         W *27,"[8;72 G",! C IO S X=$P(IO,":")_"::DECNET_LOCAL_PRINT.COM",D=$ZC(
+          %SPAWN,"SUBMIT/REMOTE "_X)
+   7DATA292+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA292+1   S - Non-standard $Z function used.
+   7DATA292+1   F - Undefined Function.
+         C IO S XXX=$ZC(%PRINT,"PCTS.TXT","/QUEUE=FORUM5_ADM31/DELETE")
+   7DATA296+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA296+1   S - Non-standard $Z function used.
+   7DATA296+1   F - Undefined Function.
+         W:$X ! S ZIO=$ZIO,ZZIO=IO C IO S IO=ZIO O IO:("RS"):1 D READ^XMAPHOST X
+           "C IO:""D""" K IO(1,ZZIO),ZIO,ZZIO
+   7DATA297+1   S - Non-standard $Z special variable used.
+   7DATA297+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA297+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         W *27,"[8;72 G",! C IO S X=$P(IO,":")_"::DECNET_LOCAL_PRINT.COM",D=$ZC(
+          %SPAWN,"SUBMIT/REMOTE "_X)
+   7DATA301+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA301+1   S - Non-standard $Z function used.
+   7DATA301+1   F - Undefined Function.
+         C IO S XXX=$ZC(%PRINT,IO,"/QUEUE=SUP$PRT/FORM=HP16/DELETE")
+   7DATA318+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA318+1   S - Non-standard $Z function used.
+   7DATA318+1   F - Undefined Function.
+         W *27,"[8;72 G",! C IO S XXX=$ZC(%PRINT,IO,"/QUEUE="_$P(ION,"-",2)_"/DE
+          LETE/NONOTIFY")
+   7DATA320+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA320+1   S - Non-standard $Z function used.
+   7DATA320+1   F - Undefined Function.
+         W *27,"[8;72 G",! C IO S XXX=$ZC(%PRINT,IO,"/QUEUE="_$P(ION,"-",2)_"/DE
+          LETE/NONOTIFY")
+   7DATA321+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA321+1   S - Non-standard $Z function used.
+   7DATA321+1   F - Undefined Function.
+         C IO S X=$P(IO,":")_"::DECNET_LOCAL_PRINT.COM",D=$ZC(%SPAWN,"SUBMIT/REM
+          OTE "_X)
+   7DATA323+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA323+1   S - Non-standard $Z function used.
+   7DATA323+1   F - Undefined Function.
+         W *27,"(s3T",*27,"(s10H",! S QUE="/QUEUE="_$E(ION,1,$F(ION,"PRT")-1)_"/
+          DELETE",QUE=$ZC(%PRINT,IO,QUE)
+   7DATA329+1   S - Non-standard $Z function used.
+   7DATA329+1   F - Undefined Function.
+         W *27,"E" C IO S XXX=$ZC(%PRINT,IO,"/QUEUE="_$P(ION,"-",2)_"/DELETE/NON
+          OTIFY")
+   7DATA330+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA330+1   S - Non-standard $Z function used.
+   7DATA330+1   F - Undefined Function.
+         W *27,"E" U IO K IO(1,IO) S IO=$ZIO C IO S XXX=$ZC(%PRINT,IO,"/QUEUE="_
+          $P(ION,"-",2)_"/DELETE/PASSALL/NONOTIFY")
+   7DATA338+1   S - Non-standard $Z special variable used.
+   7DATA338+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA338+1   S - Non-standard $Z function used.
+   7DATA338+1   F - Undefined Function.
+         W:$X ! S ZIO=$ZIO,ZZIO=IO C IO S IO=ZIO O IO:("RS"):1 D READ^XMAPHOST X
+           "C IO:""D""" K IO(1,ZZIO),ZIO,ZZIO
+   7DATA352+1   S - Non-standard $Z special variable used.
+   7DATA352+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA352+1   S - 'OPEN' command should be invoked through ^%ZIS.
+         W *27,"E" U IO K IO(1,IO) S IO=$ZIO C IO S QUE="/QUEUE="_$E(ION,1,$F(IO
+          N,"PRT")-1)_"/DELETE",QUE=$ZC(%PRINT,IO,QUE)
+   7DATA356+1   S - Non-standard $Z special variable used.
+   7DATA356+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA356+1   S - Non-standard $Z function used.
+   7DATA356+1   F - Undefined Function.
+         S ^%ZIS(2,"B",$E(X,1,30),DA)=1
+   1925XRF1S+1  S - Set to a '%' global.
+   DX)          W - Invalid local variable name.
+   DY)          W - Invalid local variable name.
+   7DATA240+1   F - Reference to routine '^%CLOSE'. That isn't in this UCI.
+                F - Call to this MISSING LABEL CLOSE^%ZTM4
+                F - Call to this MISSING LABEL OPEN^%ZTM4
+   6DATA206+1   F - Reference to routine '^A2AHDR'. That isn't in this UCI.
+   7DATA184+1   F - Reference to routine '^A6ADOC8'. That isn't in this UCI.
+   6DATA184+1   F - Reference to routine '^A6ADOC8'. That isn't in this UCI.
+   7DATA161+1   F - Reference to routine '^AAH9UF39'. That isn't in this UCI.
+   7DATA298+1   F - Reference to routine '^AKFAXD'. That isn't in this UCI.
+   7DATA317+1   F - Reference to routine '^NVSPRTU'. That isn't in this UCI.
+   7DATA339+1   F - Reference to routine '^WWWMAL83'. That isn't in this UCI.
+   7DATA339+1   F - Reference to routine '^WWWMAL83'. That isn't in this UCI.
+   7DATA166+1   F - Reference to routine '^XGLDEVWN'. That isn't in this UCI.
+                F - Call to this MISSING LABEL DIALDF03^XMM1
+                F - Call to this MISSING LABEL HANGDF03^XMM1
+   50DATA219+1  F - Reference to routine '^XMM4'. That isn't in this UCI.
+   51DATA219+1  F - Reference to routine '^XMM4'. That isn't in this UCI.
+   50DATA240+1  F - Reference to routine '^XMMHAYES'. That isn't in this UCI.
+   7DATA240+1   F - Reference to routine '^XMMHAYES'. That isn't in this UCI.
+
+|dd3.2055       * *  15 Lines,  491 Bytes, Checksum: 
+         S ^%ZIS(2,DA(1),55,"B",$E(X,1,30),DA)=""
+   .01XRF1S+1   S - Set to a '%' global.
+
+--- Routine Detail   --- with REGULAR ROUTINE LISTING ---
+
+
+|dd3.2        * *  1399 Lines,  55619 Bytes, Checksum: 
+                                                  Mar 13, 2018@10:57:58 page 2
+              20795 bytes in comments
+|dd3.2   ;DD of the TERMINAL TYPE file.
+IDW99    ; IDENTIFIER CODE FOR W99
+         N % S %=$P($G(^(9)),U,1) D:$L(%) EN^DDIOL("  "_%,"",$S($S($X>30:$X,1:30
+          )+$L(%)>76:"!?8",1:"?30"))
+.01      ; NAME
+         K:$L(X)>30!($L(X)<3)!(X'?1.2U1"-".UNP) X
+.01XRF1S ; SET LOGIC FOR 'B' XREF
+         S ^%ZIS(2,"B",$E(X,1,30),DA)=""
+.01XRF1K ; KILL LOGIC FOR 'B' XREF
+         K ^%ZIS(2,"B",$E(X,1,30),DA)
+1        ; RIGHT MARGIN
+         K:+X'=X!(X>256)!(X<0)!(X?.E1"."1N.N) X
+2        ; FORM FEED
+         D CHECK^%ZISS1,FORM^%ZISS1 K:$L(X)>70!($L(X)<1) X
+3        ; PAGE LENGTH
+         K:+X'=X!(X>65500)!(X<3)!(X?.E1"."1.N) X
+4        ; BACK SPACE
+         D CHECK^%ZISS1 K:$L(X)>9!($L(X)<1) X
+5        ; *OLD XY CRT
+         D CHECK1^%ZISS1 K:$L(X)>100!($L(X)<2) X D ^DIM:$D(X)
+5DATA1   ; Data file 3.2, field 5, IENS 1
+         W $C(27,89,DY+32,DX+32)
+5DATA3   ; Data file 3.2, field 5, IENS 3
+         W $C(27,61,DY+32,DX+32)
+5DATA6   ; Data file 3.2, field 5, IENS 6
+         W $C(126,17,DX+$S(DX>30:0)_1:96)_$C(DY+96)
+5DATA8   ; Data file 3.2, field 5, IENS 8
+         W $C(27,89,DX+32,27,88,DY+32)
+5DATA9   ; Data file 3.2, field 5, IENS 9
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA10  ; Data file 3.2, field 5, IENS 10
+         W $C(27,89,DY+32,DX+32)
+5DATA30  ; Data file 3.2, field 5, IENS 30
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA38  ; Data file 3.2, field 5, IENS 38
+         W $C(30,DX+32,DY+32)
+5DATA39  ; Data file 3.2, field 5, IENS 39
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA44  ; Data file 3.2, field 5, IENS 44
+         W (($C(27,61,DY+32,DX+32)))
+5DATA60  ; Data file 3.2, field 5, IENS 60
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(102)
+5DATA73  ; Data file 3.2, field 5, IENS 73
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(102)
+5DATA75  ; Data file 3.2, field 5, IENS 75
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA77  ; Data file 3.2, field 5, IENS 77
+         50
+5DATA86  ; Data file 3.2, field 5, IENS 86
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(102)
+5DATA90  ; Data file 3.2, field 5, IENS 90
+         W $C(255,67,DX,DY)
+5DATA91  ; Data file 3.2, field 5, IENS 91
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA92  ; Data file 3.2, field 5, IENS 92
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA93  ; Data file 3.2, field 5, IENS 93
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA94  ; Data file 3.2, field 5, IENS 94
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA98  ; Data file 3.2, field 5, IENS 98
+         W $C(27,89,DY+32,DX+32)
+5DATA134 ; Data file 3.2, field 5, IENS 134
+         W $C(126,17,DX+$S(DX>30:0)_1:96)_$C(DY+96)
+5DATA137 ; Data file 3.2, field 5, IENS 137
+         W $C(27,102,DX+32,DY+32)
+5DATA149 ; Data file 3.2, field 5, IENS 149
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA152 ; Data file 3.2, field 5, IENS 152
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA164 ; Data file 3.2, field 5, IENS 164
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA167 ; Data file 3.2, field 5, IENS 167
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72 S $Y=DY)_$X=DX
+5DATA170 ; Data file 3.2, field 5, IENS 170
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA210 ; Data file 3.2, field 5, IENS 210
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA212 ; Data file 3.2, field 5, IENS 212
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA228 ; Data file 3.2, field 5, IENS 228
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72 S $X=DX)_$Y=DY
+5DATA229 ; Data file 3.2, field 5, IENS 229
+         W $C(27,217,DY+32,DX+32)
+5DATA230 ; Data file 3.2, field 5, IENS 230
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72) S $X=DX S $Y=DY
+5DATA234 ; Data file 3.2, field 5, IENS 234
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA238 ; Data file 3.2, field 5, IENS 238
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA258 ; Data file 3.2, field 5, IENS 258
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA263 ; Data file 3.2, field 5, IENS 263
+         PAGE LENGTH
+5DATA276 ; Data file 3.2, field 5, IENS 276
+         PAGE LENGTH
+5DATA290 ; Data file 3.2, field 5, IENS 290
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA293 ; Data file 3.2, field 5, IENS 293
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA294 ; Data file 3.2, field 5, IENS 294
+         W $C(27,61)_(*DY+32)_(*DX+32)
+5DATA295 ; Data file 3.2, field 5, IENS 295
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA302 ; Data file 3.2, field 5, IENS 302
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA308 ; Data file 3.2, field 5, IENS 308
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA316 ; Data file 3.2, field 5, IENS 316
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA322 ; Data file 3.2, field 5, IENS 322
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5DATA328 ; Data file 3.2, field 5, IENS 328
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA342 ; Data file 3.2, field 5, IENS 342
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA343 ; Data file 3.2, field 5, IENS 343
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA344 ; Data file 3.2, field 5, IENS 344
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA345 ; Data file 3.2, field 5, IENS 345
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA346 ; Data file 3.2, field 5, IENS 346
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA347 ; Data file 3.2, field 5, IENS 347
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA348 ; Data file 3.2, field 5, IENS 348
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA349 ; Data file 3.2, field 5, IENS 349
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5DATA350 ; Data file 3.2, field 5, IENS 350
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2      ; XY CRT
+         D CHECK1^%ZISS1 K:$L(X)>245 X D:$D(X) ^DIM
+5.2XRF1S ; SET LOGIC FOR '1' XREF
+         K DIV S DIV=X,D0=DA,DIV(0)=D0 S Y(1)=$S($D(^%ZIS(2,D0,1)):^(1),1:"") S 
+          X=$P(Y(1),U,5),X=X S DIU=X K Y S X=DIV S X=DIV X ^DD(3.2,5.2,1,1,1.4)
+5.2XRF1n1.4 --
+          ; SET LOGIC FOR '1' XREF
+         S DIH=$S($D(^%ZIS(2,DIV(0),1)):^(1),1:""),DIV=X S $P(^(1),U,5)=DIV,DIH=
+          3.2,DIG=5 D ^DICR:$O(^DD(DIH,DIG,1,0))>0
+5.2XRF1K ; KILL LOGIC FOR '1' XREF
+         K DIV S DIV=X,D0=DA,DIV(0)=D0 S Y(1)=$S($D(^%ZIS(2,D0,1)):^(1),1:"") S 
+          X=$P(Y(1),U,5),X=X S DIU=X K Y S X="" S DIH=$S($D(^%ZIS(2,DIV(0),1)):^
+          (1),1:""),DIV=X S $P(^(1),U,5)=DIV,DIH=3.2,DIG=5 D ^DICR:$O(^DD(DIH,DI
+          G,1,0))>0
+5.2DATA1 ; Data file 3.2, field 5.2, IENS 1
+         W $C(27,89,DY+32,DX+32)
+5.2DATA3 ; Data file 3.2, field 5.2, IENS 3
+         W $C(27,61,DY+32,DX+32)
+5.2DATA6 ; Data file 3.2, field 5.2, IENS 6
+         W $C(126,17,DX+$S(DX>30:0)_1:96)_$C(DY+96)
+5.2DATA8 ; Data file 3.2, field 5.2, IENS 8
+         W $C(27,89,DX+32,27,88,DY+32)
+5.2DATA9 ; Data file 3.2, field 5.2, IENS 9
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA10 ; Data file 3.2, field 5.2, IENS 10
+         W $C(27,89,DY+32,DX+32)
+5.2DATA30 ; Data file 3.2, field 5.2, IENS 30
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA38 ; Data file 3.2, field 5.2, IENS 38
+         W $C(30,DX+32,DY+32)
+5.2DATA39 ; Data file 3.2, field 5.2, IENS 39
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA44 ; Data file 3.2, field 5.2, IENS 44
+         W (($C(27,61,DY+32,DX+32)))
+5.2DATA60 ; Data file 3.2, field 5.2, IENS 60
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(102)
+5.2DATA73 ; Data file 3.2, field 5.2, IENS 73
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(102)
+5.2DATA75 ; Data file 3.2, field 5.2, IENS 75
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA77 ; Data file 3.2, field 5.2, IENS 77
+         50
+5.2DATA86 ; Data file 3.2, field 5.2, IENS 86
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(102)
+5.2DATA90 ; Data file 3.2, field 5.2, IENS 90
+         W $C(255,67,DX,DY)
+5.2DATA91 ; Data file 3.2, field 5.2, IENS 91
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA92 ; Data file 3.2, field 5.2, IENS 92
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA93 ; Data file 3.2, field 5.2, IENS 93
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA94 ; Data file 3.2, field 5.2, IENS 94
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA98 ; Data file 3.2, field 5.2, IENS 98
+         W $C(27,89,DY+32,DX+32)
+5.2DATA134 --
+          ; Data file 3.2, field 5.2, IENS 134
+         W $C(126,17,DX+$S(DX>30:0)_1:96)_$C(DY+96)
+5.2DATA137 --
+          ; Data file 3.2, field 5.2, IENS 137
+         W $C(27,102,DX+32,DY+32)
+5.2DATA149 --
+          ; Data file 3.2, field 5.2, IENS 149
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA152 --
+          ; Data file 3.2, field 5.2, IENS 152
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA164 --
+          ; Data file 3.2, field 5.2, IENS 164
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA167 --
+          ; Data file 3.2, field 5.2, IENS 167
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72 S $Y=DY)_$X=DX
+5.2DATA170 --
+          ; Data file 3.2, field 5.2, IENS 170
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA210 --
+          ; Data file 3.2, field 5.2, IENS 210
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA212 --
+          ; Data file 3.2, field 5.2, IENS 212
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA228 --
+          ; Data file 3.2, field 5.2, IENS 228
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72 S $X=DX)_$Y=DY
+5.2DATA229 --
+          ; Data file 3.2, field 5.2, IENS 229
+         W $C(27,217,DY+32,DX+32)
+5.2DATA230 --
+          ; Data file 3.2, field 5.2, IENS 230
+         S $X=250 W $C(27)_$C(91)_(DY+1)_$C(59)_(DX+1)_$C(72) S $X=DX S $Y=DY
+5.2DATA234 --
+          ; Data file 3.2, field 5.2, IENS 234
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA238 --
+          ; Data file 3.2, field 5.2, IENS 238
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA258 --
+          ; Data file 3.2, field 5.2, IENS 258
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA263 --
+          ; Data file 3.2, field 5.2, IENS 263
+         PAGE LENGTH
+5.2DATA276 --
+          ; Data file 3.2, field 5.2, IENS 276
+         PAGE LENGTH
+5.2DATA290 --
+          ; Data file 3.2, field 5.2, IENS 290
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA293 --
+          ; Data file 3.2, field 5.2, IENS 293
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA294 --
+          ; Data file 3.2, field 5.2, IENS 294
+         W $C(27,61)_(*DY+32)_(*DX+32)
+5.2DATA295 --
+          ; Data file 3.2, field 5.2, IENS 295
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA302 --
+          ; Data file 3.2, field 5.2, IENS 302
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA308 --
+          ; Data file 3.2, field 5.2, IENS 308
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA316 --
+          ; Data file 3.2, field 5.2, IENS 316
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA322 --
+          ; Data file 3.2, field 5.2, IENS 322
+         W $C(27,91)_(DY+1)_$C(59)_(DX+1)_$C(72)
+5.2DATA328 --
+          ; Data file 3.2, field 5.2, IENS 328
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA342 --
+          ; Data file 3.2, field 5.2, IENS 342
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA343 --
+          ; Data file 3.2, field 5.2, IENS 343
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA344 --
+          ; Data file 3.2, field 5.2, IENS 344
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA345 --
+          ; Data file 3.2, field 5.2, IENS 345
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA346 --
+          ; Data file 3.2, field 5.2, IENS 346
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA347 --
+          ; Data file 3.2, field 5.2, IENS 347
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA348 --
+          ; Data file 3.2, field 5.2, IENS 348
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA349 --
+          ; Data file 3.2, field 5.2, IENS 349
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+5.2DATA350 --
+          ; Data file 3.2, field 5.2, IENS 350
+         W $C(27,91)_((DY+1))_$C(59)_((DX+1))_$C(72)
+6        ; OPEN EXECUTE
+         K:$L(X)>245 X D:$D(X) ^DIM
+6DATA12  ; Data file 3.2, field 6, IENS 12
+         W *27,"[w"
+6DATA14  ; Data file 3.2, field 6, IENS 14
+         W *27,"[4w"
+6DATA17  ; Data file 3.2, field 6, IENS 17
+         W *27,*31,*11
+6DATA19  ; Data file 3.2, field 6, IENS 19
+         W *27,"[w"
+6DATA23  ; Data file 3.2, field 6, IENS 23
+         W *27,"[2w"
+6DATA27  ; Data file 3.2, field 6, IENS 27
+         W *27,*31,*11
+6DATA30  ; Data file 3.2, field 6, IENS 30
+         W *27,"[?",3,*104
+6DATA36  ; Data file 3.2, field 6, IENS 36
+         W *27,"[?7i"
+6DATA37  ; Data file 3.2, field 6, IENS 37
+         W *27,"P",*27,"/"
+6DATA46  ; Data file 3.2, field 6, IENS 46
+         W *27,"6"
+6DATA47  ; Data file 3.2, field 6, IENS 47
+         W *27,"8"
+6DATA48  ; Data file 3.2, field 6, IENS 48
+         W *27,"5",*27,"7"
+6DATA49  ; Data file 3.2, field 6, IENS 49
+         W *27,"@"
+6DATA50  ; Data file 3.2, field 6, IENS 50
+         W *27,"8"
+6DATA51  ; Data file 3.2, field 6, IENS 51
+         W *27,"7"
+6DATA52  ; Data file 3.2, field 6, IENS 52
+         W *27,*63,*37,*34,*27,*63,*34,*32
+6DATA53  ; Data file 3.2, field 6, IENS 53
+         W *27,"?""#"
+6DATA54  ; Data file 3.2, field 6, IENS 54
+         W *27,*63,*37,*34,*27,*63,*34,*32
+6DATA55  ; Data file 3.2, field 6, IENS 55
+         W *27,"E10"
+6DATA56  ; Data file 3.2, field 6, IENS 56
+         W *27,"E12"
+6DATA57  ; Data file 3.2, field 6, IENS 57
+         W *27,*63,*34,*32,*27,*63,*35,*34
+6DATA62  ; Data file 3.2, field 6, IENS 62
+         W *27,*31,*11
+6DATA64  ; Data file 3.2, field 6, IENS 64
+         W *27,"[120:60 G"
+6DATA66  ; Data file 3.2, field 6, IENS 66
+         W *27,"[5i","[?3h",*27,"[?7i",*27,"[4w"
+6DATA68  ; Data file 3.2, field 6, IENS 68
+         W *27,"8"
+6DATA69  ; Data file 3.2, field 6, IENS 69
+         W *27,*80,*67,*92
+6DATA70  ; Data file 3.2, field 6, IENS 70
+         W *27,*80,*68,*92
+6DATA71  ; Data file 3.2, field 6, IENS 71
+         W *30
+6DATA72  ; Data file 3.2, field 6, IENS 72
+         W *28
+6DATA75  ; Data file 3.2, field 6, IENS 75
+         U $I:(0:255::255:512)
+6DATA81  ; Data file 3.2, field 6, IENS 81
+         W *27,"E"
+6DATA82  ; Data file 3.2, field 6, IENS 82
+         W *27,"&k4S"
+6DATA83  ; Data file 3.2, field 6, IENS 83
+         W *27,"E",*27,"&l1o6c5e"
+6DATA84  ; Data file 3.2, field 6, IENS 84
+         W *27,"E",*27,"&k7.2H",*27,"&k2S",*27,"&l0o11c1e5.15c100F",*27,"&a0l178
+          m0R",*27,"(s0p16.66h12v0s0b3T"
+6DATA85  ; Data file 3.2, field 6, IENS 85
+         W *27,"E",*27,"&k7.2H",*27,"&k2S",*27,"&l1o11c1e5.15c72F",*27,"&a01l230
+          m0R",*27,"(s0p16.66h12v0s0b3T"
+6DATA87  ; Data file 3.2, field 6, IENS 87
+         C IO H 3 O IO
+6DATA88  ; Data file 3.2, field 6, IENS 88
+         U IO:(TERM="",PACK)
+6DATA95  ; Data file 3.2, field 6, IENS 95
+         W *27,"E",*27,"&s0C",*27,"&k10H",*27,"&10o7.64c69p2e67F",*27,"&a196M"
+6DATA98  ; Data file 3.2, field 6, IENS 98
+         W *27,"h"
+6DATA99  ; Data file 3.2, field 6, IENS 99
+         W *27,"@"
+6DATA101 ; Data file 3.2, field 6, IENS 101
+         W *27,"@"
+6DATA102 ; Data file 3.2, field 6, IENS 102
+         W *27,"@"
+6DATA104 ; Data file 3.2, field 6, IENS 104
+         W *27,"[?5i",*27,"[4w"
+6DATA106 ; Data file 3.2, field 6, IENS 106
+         W *27,"[4w"
+6DATA107 ; Data file 3.2, field 6, IENS 107
+         L ^%ZTSCH:10 C IO H 3 O IO L
+6DATA109 ; Data file 3.2, field 6, IENS 109
+         W *27,*91,"7i",*27,*91,"5i",*27,*91,"4w"
+6DATA110 ; Data file 3.2, field 6, IENS 110
+         W *27,4,*27,"zf",!,*27,"m3300,75,75,75,2400",!
+6DATA111 ; Data file 3.2, field 6, IENS 111
+         W *27,"[5i"
+6DATA113 ; Data file 3.2, field 6, IENS 113
+         W *27,"[4w"
+6DATA114 ; Data file 3.2, field 6, IENS 114
+         W *27,1,*27,"zf",!,*27,"m2550,75,75,150,3150",!
+6DATA115 ; Data file 3.2, field 6, IENS 115
+         W *27,*91,"?5i"
+6DATA116 ; Data file 3.2, field 6, IENS 116
+         W *27,"@"
+6DATA117 ; Data file 3.2, field 6, IENS 117
+         W *27,"[2w"
+6DATA118 ; Data file 3.2, field 6, IENS 118
+         W *27,"+5Titan12iso-P",!,*27,5,*27,"zf",!,*27,"m3300,75,75,250,2400",!
+6DATA119 ; Data file 3.2, field 6, IENS 119
+         W *27,2,*27,"zf",*27,"m2550,75,75,150,3150",!
+6DATA120 ; Data file 3.2, field 6, IENS 120
+         W *27,"+8LetterGothic20-L",!,*27,8,*27,"m2550,75,75,150,3150",!
+6DATA121 ; Data file 3.2, field 6, IENS 121
+         W *27,"+6XCP14iso-P",!,*27,6,*27,"zf",*27,"m3300,75,75,150,2400",!
+6DATA122 ; Data file 3.2, field 6, IENS 122
+         W *27,"+7LP162x66iso-P",!,*27,7,*27,"zf",*27,"m3300,75,75,150,2400",!
+6DATA123 ; Data file 3.2, field 6, IENS 123
+         W *27,"[5i",*27,"[4w",*27,"[?3h"
+6DATA124 ; Data file 3.2, field 6, IENS 124
+         W *27,"[5i",*27,"[?5i",*27,"[w"
+6DATA125 ; Data file 3.2, field 6, IENS 125
+         W *27,"[?5i",*27,"[6w"
+6DATA126 ; Data file 3.2, field 6, IENS 126
+         S CSI=$C(27)_"[" W *27,"[5i" W CSI_"!p"_CSI_"?21 J"_CSI_"15m"_CSI_"1;66
+          r" H 2 W CSI_"2g" H 1 W CSI_"14;22;30;38;46;54;62;70;78;86;94;102;110;
+          118;126u" H 1 W #
+6DATA128 ; Data file 3.2, field 6, IENS 128
+         W *27,"+3LP162x66iso-L",!,*27,3,*27,"zf",!,*27,"m2550,75,75,150,3150",!
+6DATA129 ; Data file 3.2, field 6, IENS 129
+         C IO H 3 O IO
+6DATA130 ; Data file 3.2, field 6, IENS 130
+         W !,"OPEN EXECUTE TEST" H 3
+6DATA131 ; Data file 3.2, field 6, IENS 131
+         W *27,"[0p",*27,"[380s",*27,"%"
+6DATA132 ; Data file 3.2, field 6, IENS 132
+         W *27,"[1;1r",*27,"[1p",*27,"[7508;1s",*27,"[1;;1w"
+6DATA139 ; Data file 3.2, field 6, IENS 139
+         W *27,*40,*48,*85,*27,*40,*115,*49,*80,*27,*40,*115,"14.4",*86,*27,*40,
+          *115,"3",*66,*27,*40,*115,"4",*84,*27,*38,*49,"4",*68
+6DATA140 ; Data file 3.2, field 6, IENS 140
+         W *27,"[1;1r",*27,"[0p",*27,"[7508;0;1s",*27,"[1;;1w"
+6DATA141 ; Data file 3.2, field 6, IENS 141
+         W *27,"[0p",*27,"[250s",*27,"[0;;1w"
+6DATA142 ; Data file 3.2, field 6, IENS 142
+         W *27,"[0p",*27,"[1106s",*27,"[1;;1w"
+6DATA143 ; Data file 3.2, field 6, IENS 143
+         W *27,"[1;1r",*27,"[0p",*27,"[7506;0;1s"
+6DATA144 ; Data file 3.2, field 6, IENS 144
+         W $C(18)
+6DATA146 ; Data file 3.2, field 6, IENS 146
+         D OPEN^%ZTM4
+6DATA147 ; Data file 3.2, field 6, IENS 147
+         U $I:(0:255::255:512)
+6DATA148 ; Data file 3.2, field 6, IENS 148
+         W *27,"[1;1r",*27,"[0p",*27,"[10;0;1s",*27,"[1;;1w"
+6DATA149 ; Data file 3.2, field 6, IENS 149
+         W $C(27,91,49,109)
+6DATA150 ; Data file 3.2, field 6, IENS 150
+         W $C(27,91,49,50,48,59,55,50,32,71)
+6DATA151 ; Data file 3.2, field 6, IENS 151
+         W $C(27,91,59,52,51,32,71)
+6DATA153 ; Data file 3.2, field 6, IENS 153
+         W *27,"[1;1r",*27,"[1p",*27,"[10;1;1s",*27,"[1;;1w"
+6DATA154 ; Data file 3.2, field 6, IENS 154
+         W $C(27)_"[?5i"
+6DATA155 ; Data file 3.2, field 6, IENS 155
+         W $C(33,82,33)_" RES; FONT 6; EXIT;"_$C(27)_"&s0C"
+6DATA158 ; Data file 3.2, field 6, IENS 158
+         W $C(33,82,33)_" RES; FONT 15; EXIT;"_$C(27)_"&s0C"
+6DATA159 ; Data file 3.2, field 6, IENS 159
+         W *27,*41,*115,*49,*83
+6DATA160 ; Data file 3.2, field 6, IENS 160
+         U IO:(TERM="",PACK)
+6DATA161 ; Data file 3.2, field 6, IENS 161
+         S AAH9MSG=$S($D(AAH9MSG):AAH9MSG,$D(DHD):DHD,$D(XMR):$P(XMR,U),1:"     
+               ") U IO(0) W !,"...one moment..." S:AAH9MSG="W """" D ^DIDH" AAH9
+          MSG="DATA DICTIONARY" U IO
+6DATA163 ; Data file 3.2, field 6, IENS 163
+         U $I:(0::255::512)
+6DATA168 ; Data file 3.2, field 6, IENS 168
+         U IO:(PACK)
+6DATA169 ; Data file 3.2, field 6, IENS 169
+         S:$G(XMR)]"" DDBDMSG=$P(XMR,"^") D OPEN^DDBRZIS
+6DATA174 ; Data file 3.2, field 6, IENS 174
+         W *27,"E",*27,"(8U",*27,"(s0P",*27,"(s12H",*27,"(s10V",*27,"(s0S",*27,"
+          (s-3B",*27,"(s0T",*27,"&k4S"
+6DATA175 ; Data file 3.2, field 6, IENS 175
+         W *27,"E",*27,"(8U",*27,"(s0P",*27,"(s16H",*27,"(s9V",*27,"(s0S",*27,"(
+          s-3B",*27,"(s0T",*27,"&l88P",*27,"&a255M",*27,"&k2S",*27,"&l8D",*27,"&
+          s1C"
+6DATA176 ; Data file 3.2, field 6, IENS 176
+         W *27,"+6XCP14iso-P",!,*27,6,*27,"zf",!,*27,"+C5",*27,"m3300,75,75,150,
+          2400",!,$C(13),$C(10),!
+6DATA177 ; Data file 3.2, field 6, IENS 177
+         W *27,"+5Titan12iso-P",!,*27,5,*27,"zf",!,*27,"m3300,75,75,150,2400",!,
+          *27,"+C3",!,$C(13),$C(10),!
+6DATA178 ; Data file 3.2, field 6, IENS 178
+         W $C(27,69),$C(27),"&l0O",$C(27),"(0N",$C(27),"(s0p10h0s0b4099T" S $X=0
+6DATA179 ; Data file 3.2, field 6, IENS 179
+         W $C(27,69),$C(27),"&l0O",$C(27),"(0N",$C(27),"(s0p12h0s0b4099T" S $X=0
+6DATA180 ; Data file 3.2, field 6, IENS 180
+         W $C(27,69),$C(27),"&l0O",$C(27),"(0N",$C(27),"(s0p16h0s0b4099T",$C(27)
+          ,"&a10L" S $X=0
+6DATA181 ; Data file 3.2, field 6, IENS 181
+         W $C(27,69),$C(27),"&l0O",$C(27),"(0N",$C(27),"(s0p12h0s0b4099T",$C(27)
+          ,"&a10L" S $X=0
+6DATA182 ; Data file 3.2, field 6, IENS 182
+         W $C(27,69),$C(27),"&l0O",$C(27),"(0N",$C(27),"(s0p12h0s0b4099T",$C(27,
+          38,97),"6",$C(76) S $X=0
+6DATA183 ; Data file 3.2, field 6, IENS 183
+         W $C(27,69),$C(27),"&l0O",$C(27),"(0N",$C(27),"(s0p16h0s0b4099T",$C(27,
+          57),$C(27,38,97),"96",$C(77),$C(27,38,97),"5",$C(76)
+6DATA184 ; Data file 3.2, field 6, IENS 184
+         D OPEN^A6ADOC8
+6DATA185 ; Data file 3.2, field 6, IENS 185
+         I '$D(ZTQUEUED) N (DTIME,DUZ) S %IO=$I,%ZIS="NQ",%ZIS("B")="" X "U $P" 
+          R !,"NUMBER OF COPIES: ",COPIES:60 W !,"OUTPUT TO DEVICE" D ^%ZIS U %I
+          O Q:POP  F %="ION","IO","IOS","IOM","IOST","COPIES" S ^TMP("SDP",$J,%)
+          =@%
+6DATA186 ; Data file 3.2, field 6, IENS 186
+         I '$D(ZTQUEUED) N (DTIME,DUZ) S %IO=$I,%ZIS="NQ",%ZIS("B")="" X "U $P" 
+          R !,"NUMBER OF COPIES: ",COPIES:60 W !,"OUTPUT TO DEVICE" D ^%ZIS U %I
+          O Q:POP  F %="ION","IO","IOS","IOM","IOST","COPIES" S ^TMP("SDP",$J,%)
+          =@%
+6DATA187 ; Data file 3.2, field 6, IENS 187
+         W $C(27,69),$C(27),"&l1O",$C(27),"(0N",$C(27),"(s0p18h0s0b4099T",$C(27)
+          ,"&a10L",$C(27,38,97),"0L",$C(27,38,108,56,68) S $X=0
+6DATA188 ; Data file 3.2, field 6, IENS 188
+         W $C(27,69),$C(27),"&l1O",$C(27),"(0N",$C(27),"(s0p18h0s0b4099T",$C(27)
+          ,"&a10L",$C(27,38,97),"0L",$C(27,38,108,49,50,68) S $X=0
+6DATA189 ; Data file 3.2, field 6, IENS 189
+         W "<STX><ESC>P:C3,1D,0E,1F,1F,19,13,08,1C,00,00,00,1C,08,19,1F,00,09,01
+          ,1E;R;<ETX>"
+6DATA195 ; Data file 3.2, field 6, IENS 195
+         D OPEN^XDRDVAL
+6DATA202 ; Data file 3.2, field 6, IENS 202
+         W *27,*31,*11
+6DATA205 ; Data file 3.2, field 6, IENS 205
+         W *27,"[?3h",*27,"[5i"
+6DATA206 ; Data file 3.2, field 6, IENS 206
+         W *27,"E",*27,"&l0O",*27,"&s0C",*27,"&k10H",*27,"&l7.4c69p2e67F",*27,"&
+          a05l95M" D ^A2AHDR
+6DATA207 ; Data file 3.2, field 6, IENS 207
+         W *27,"&k0G",*27,"&l5E",*27,"&a02L",*27,"&a130M",*27,"&l1O",*27,"&s1C",
+          *27,"&k10H" D ^A2AHDR
+6DATA209 ; Data file 3.2, field 6, IENS 209
+         W *27,*31,*13
+6DATA218 ; Data file 3.2, field 6, IENS 218
+         W *27,"E" W *27,"&koG",*27,"&l4E",*27,"&a129m05l",*27,"(s16.67h",*27,"&
+          s0C",*27,"&k07H" D ^A2AHDR
+6DATA221 ; Data file 3.2, field 6, IENS 221
+         W *27,"&k2S",*27,"&l132F"
+6DATA222 ; Data file 3.2, field 6, IENS 222
+         W *27,"&k0S"
+6DATA224 ; Data file 3.2, field 6, IENS 224
+         W *27,"[5i",*27,"[",$C(0),";",$C(132),"s"
+6DATA226 ; Data file 3.2, field 6, IENS 226
+         W *27,"0"
+6DATA232 ; Data file 3.2, field 6, IENS 232
+         W *27,"&l0O",*27,"(s16.66h8.5v",*27,"&a01L",*27,"&a133M",*27,"(0U",*27,
+          "&l8D" D ^A2AHDR
+6DATA233 ; Data file 3.2, field 6, IENS 233
+         W *27,"&l0O",*27,"(s16.66h8.5v",*27,"&a5L",*27,"&a137M",*27,"(0uU" D ^A
+          2AHDR
+6DATA237 ; Data file 3.2, field 6, IENS 237
+         W *27,"@"
+6DATA239 ; Data file 3.2, field 6, IENS 239
+         W *27,"&a05L",*27,"&a126M",*27,"&l1O",*27,"&s0C",*27,"&k10H",*27,"&l8D"
+           D ^A2AHDR
+6DATA241 ; Data file 3.2, field 6, IENS 241
+         W *27,"[?5i"
+6DATA242 ; Data file 3.2, field 6, IENS 242
+         W *27,"#0"
+6DATA243 ; Data file 3.2, field 6, IENS 243
+         W *27,"&lO",*27,"(8U",*27,"(sP",*27,"(s16.66H",*27,"(s8.5V",*27,"(sS",*
+          27,"(sB",*27,"(sT",$C(15),*27,"&l0E",*27,"&l84F" H 2 W *27,"&l84P",*27
+          ,"&l8D",*27,"&l0L"
+6DATA244 ; Data file 3.2, field 6, IENS 244
+         W *27,"&l0O",*27,"&s0C",*27,"&k10H",*27,"&l7.27c66F",*27,"&a05l95M"
+6DATA245 ; Data file 3.2, field 6, IENS 245
+         W *27,"(s10H",*27,"&16D",*27,"&a12L",*27,"&a68M",*27,"&s0C",*27,"[4i",*
+          27,"[?5i"
+6DATA246 ; Data file 3.2, field 6, IENS 246
+         W *27,"&lO",*27,"(8U",*27,"(sP",*27,"(s16.66H",*27,"(s8.5V",*27,"(sS",*
+          27,"(sB",*27,"(sT",$C(15),*27,"&l0E",*27,"&l66F" H 2 W *27,"&l66P",*27
+          ,"&l6D",*27,"&l0L"
+6DATA247 ; Data file 3.2, field 6, IENS 247
+         W *27,"&lO",*27,"(8U",*27,"(sP",*27,"(s10H",*27,"(s10V",*27,"(s1S",*27,
+          "(sB",*27,"(s3T",$C(15),*27,"&l0E",*27,"&l66F" H 2 W *27,"&l66P",*27,"
+          &l6D",*27,"&l0L"
+6DATA248 ; Data file 3.2, field 6, IENS 248
+         W *27,"&lO",*27,"(8U",*27,"(sP",*27,"(s16.66H",*27,"(s8.5V",*27,"(sS",*
+          27,"(sB",*27,"(sT",$C(15),*27,"&l0E",*27,"&l66F" H 2 W *27,"&l66P",*27
+          ,"&l6D",*27,"&a9L",*27,"&l0L"
+6DATA249 ; Data file 3.2, field 6, IENS 249
+         W *27,"&lO",*27,"(8U",*27,"(sP",*27,"(s16.66H",*27,"(s8.5V",*27,"(sS",*
+          27,"(sB",*27,"(sT",$C(15),*27,"&l0E",*27,"&l84F" H 2 W *27,"&l84P",*27
+          ,"&l8D",*27,"&a9L",*27,"&l0L"
+6DATA250 ; Data file 3.2, field 6, IENS 250
+         W *27,"&l1O",*27,"(s16.7H" H 2 W *27,"&a176M",*27,"&l48P"
+6DATA251 ; Data file 3.2, field 6, IENS 251
+         W *27,"E",*27,"(s1B",*27,"(s12H",*27,"&a5L"
+6DATA252 ; Data file 3.2, field 6, IENS 252
+         U IO W *27,"(s16.7H",*27,"&l6D",*27,"&a12L",*27,"&a120M"
+6DATA254 ; Data file 3.2, field 6, IENS 254
+         W *27,"[5i",*27,"[6w",*27,"[4i",*27,"[?5i",*27,"[?3h",*27,"[6w"
+6DATA255 ; Data file 3.2, field 6, IENS 255
+         W *27,"[5i",*27,"[6w",*27,"[0;60r",*27,"[10;0s",*27,"[4i",*27,"[?5i",*2
+          7,"[?3h",*27,"[6w"
+6DATA257 ; Data file 3.2, field 6, IENS 257
+         W *27,"[5i",*27,"[6w",*27,"[9;17;25;33;41;49;57;65;73;81;89;97;105;113;
+          121u",*27,"[4i",*27,"[?5i",*27,"[?3h",*27,"[6w"
+6DATA259 ; Data file 3.2, field 6, IENS 259
+         W *27,"[5i"
+6DATA260 ; Data file 3.2, field 6, IENS 260
+         C IO O IO:NEW U IO D ^A2AHDR
+6DATA262 ; Data file 3.2, field 6, IENS 262
+         W *27,"[?5i"
+6DATA263 ; Data file 3.2, field 6, IENS 263
+         C IO O IO:NEW U IO W *27,"&l0O",*27,"&s0C",*27,"&k10H",*27,"&l7.4c69p2e
+          67F",*27,"&a05l95M"
+6DATA264 ; Data file 3.2, field 6, IENS 264
+         W *27,"&l0O",*27,"&s0C",*27,"&k10H",*27,"&l7.6c69p2e67F",*27,"&a05l95M"
+           D ^A2AHDR
+6DATA265 ; Data file 3.2, field 6, IENS 265
+         W *27,"[?3h",*27,"[>5i"
+6DATA266 ; Data file 3.2, field 6, IENS 266
+         W *27,"[?3l",*27,"[>5i"
+6DATA267 ; Data file 3.2, field 6, IENS 267
+         W *27,"&l0O",*27,"&l6D",*27,"&s0C",*27,"&k10H",*27,"&l7.4C",*27,"&l55P"
+          ,*27,"&l2E",*27,"&l55F",*27,"&a05L",*27,"&a95M"
+6DATA268 ; Data file 3.2, field 6, IENS 268
+         W *27,"&l0O",*27,"&k0G",*27,"&l4E",*27,"&a3L",*27,"&a140M",*27,"(sl0"
+6DATA269 ; Data file 3.2, field 6, IENS 269
+         W *27,"&l66P",*27,"&l4E",*27,"&l66F",*27,"&a02L",*27,"&a135M",*27,"&l8D
+          ",*27,"(s16.7H"
+6DATA270 ; Data file 3.2, field 6, IENS 270
+         W *27,"&l0O",*27,"&s0C",*27,"&k10H",*27,"&17.4c69p1e67F",*27,"&a05l95M"
+6DATA271 ; Data file 3.2, field 6, IENS 271
+         W *27,"[5i",*27,"[4w",*27,"[4i",*27,"[?5i",*27,"[?3h"
+6DATA272 ; Data file 3.2, field 6, IENS 272
+         W *27,*91,*63,*53,*105
+6DATA274 ; Data file 3.2, field 6, IENS 274
+         W *27,"[?5i"
+6DATA275 ; Data file 3.2, field 6, IENS 275
+         U IO:(TERM="",NOPACK)
+6DATA276 ; Data file 3.2, field 6, IENS 276
+         W *27,"[?5i","!R! RES;SPL 10.5;FONT 15;SLPI 8;EXIT;"
+6DATA277 ; Data file 3.2, field 6, IENS 277
+         W *27,"[?5i"
+6DATA278 ; Data file 3.2, field 6, IENS 278
+         W *27,"[?21 J",*27,"[2w"
+6DATA279 ; Data file 3.2, field 6, IENS 279
+         W *27,"c",*27,"[?20 J",*27,"[10m",*27,"[3;64r",*27,"[5;76s"
+6DATA280 ; Data file 3.2, field 6, IENS 280
+         W *27,"c",*27,"[?22 J",*27,"[15m",*27,"[1;90r",*27,"[5;100s"
+6DATA281 ; Data file 3.2, field 6, IENS 281
+         W *27,"c",*27,"[90 C",*27,"[4w"
+6DATA282 ; Data file 3.2, field 6, IENS 282
+         W *27,"[2w"
+6DATA283 ; Data file 3.2, field 6, IENS 283
+         W *27,"[5i"
+6DATA284 ; Data file 3.2, field 6, IENS 284
+         W *27,"c",*27,"[90 C",*27,"[4w",*27,"[10;132s"
+6DATA285 ; Data file 3.2, field 6, IENS 285
+         W *27,"[?21 J",*27,"E"
+6DATA286 ; Data file 3.2, field 6, IENS 286
+         O IO W *27,"[?21 J",*27,"[90 C",*27,"2w",*27,"[1;70r",*27,"[1;201s"
+6DATA287 ; Data file 3.2, field 6, IENS 287
+         W *27,"[2w",*27,"[6;92s"
+6DATA288 ; Data file 3.2, field 6, IENS 288
+         W *27,"E",*27,"&l1O",*27,"(8U",*27,"(s0p16.66H"
+6DATA289 ; Data file 3.2, field 6, IENS 289
+         U $I:NOFORM
+6DATA291 ; Data file 3.2, field 6, IENS 291
+         C IO O IO:NEWVERSION U IO W *27,"E" D ^A2AHDR
+6DATA292 ; Data file 3.2, field 6, IENS 292
+         C IO O IO:NEWVERSION U IO D ^A2AHDR
+6DATA298 ; Data file 3.2, field 6, IENS 298
+         U IO(0) W !," Spooling your request, please wait..."
+6DATA300 ; Data file 3.2, field 6, IENS 300
+         W *27,"[3;43 G"
+6DATA301 ; Data file 3.2, field 6, IENS 301
+         C IO O IO:NEWVERSION U IO W *27,"[3;43 G" D ^A2AHDR
+6DATA304 ; Data file 3.2, field 6, IENS 304
+         W *27,"[?5i"
+6DATA305 ; Data file 3.2, field 6, IENS 305
+         W *27,"[?5i"
+6DATA306 ; Data file 3.2, field 6, IENS 306
+         W *27,"[5i",*27,"[4w",*27,"[4i",*27,"[?5i",*27,"[?3h"
+6DATA307 ; Data file 3.2, field 6, IENS 307
+         W *27,"[?5i"
+6DATA309 ; Data file 3.2, field 6, IENS 309
+         W *27,"(s10H",*27,"&16D",*27,"a12L",*27,"&a68M",*27,"&s0C",*27,"[4i",*2
+          7,"[?5i"
+6DATA310 ; Data file 3.2, field 6, IENS 310
+         W *27,"[5i",*27,*69,*27,*38,*97,"5",*76,*27,*40,*115,*49,*54,*46,*54,*5
+          4,*72,*27,*38,*108,*56,*68,*13
+6DATA311 ; Data file 3.2, field 6, IENS 311
+         W *27,"[5i",*27,*69,*27,*38,*108,*49,*79,*27,*40,*115,*49,*54,*46,*54,*
+          54,*72,*27,*38,*97,"10",*76,*27,*38,*108,*56,*68,*13
+6DATA312 ; Data file 3.2, field 6, IENS 312
+         W *27,"E",*27,"[5i",*27,"(s16.7H",*27,"&l6D",*27,"&a12L",*27,"&a120M"
+6DATA313 ; Data file 3.2, field 6, IENS 313
+         W *27,"[5i",*27,"E",*27,"&l0O",*27,"&s0C",*27,"&k10H",*27,"&l7.4c69p2e6
+          7F",*27,"&a05l95M"
+6DATA315 ; Data file 3.2, field 6, IENS 315
+         C IO O IO:NEW U IO
+6DATA317 ; Data file 3.2, field 6, IENS 317
+         W *27,"E",*27,"(s16.7H",*27,"&s0C"
+6DATA319 ; Data file 3.2, field 6, IENS 319
+         W $C(27),"E"
+6DATA320 ; Data file 3.2, field 6, IENS 320
+         U IO D ^A2AHDR
+6DATA321 ; Data file 3.2, field 6, IENS 321
+         U IO W *27,"[3;43 G" D ^A2AHDR
+6DATA323 ; Data file 3.2, field 6, IENS 323
+         C IO O IO:NEW U IO D ^A2AHDR
+6DATA324 ; Data file 3.2, field 6, IENS 324
+         W $C(27,69),$C(27),"&l0O",$C(27),"(0N",$C(27),"(s0p10h0s0b4099T"
+6DATA326 ; Data file 3.2, field 6, IENS 326
+         W *27,"[4i",*27,"[?5i"
+6DATA327 ; Data file 3.2, field 6, IENS 327
+         W *27,"E",*27,"&l7C"
+6DATA329 ; Data file 3.2, field 6, IENS 329
+         W *27,"&k3G",*27,"&12a0o",*27,"(8U",*27,"(s0p12.00h12.0v0s0b2T",*27,"&1
+          7.16C",*27,"&a96M",*27,"&k9.8H"
+6DATA330 ; Data file 3.2, field 6, IENS 330
+         W *27,"E",*27,"&k2G"
+6DATA331 ; Data file 3.2, field 6, IENS 331
+         W $C(27),"E",$C(27),"(s16.7H",$C(27),"&s0C",$C(27),"&k2G"
+6DATA332 ; Data file 3.2, field 6, IENS 332
+         W *27,"E"
+6DATA333 ; Data file 3.2, field 6, IENS 333
+         W $C(27),"E",$C(27),"&l1E",$C(27),"&s0C",$C(27),"&l1S",$C(27),"&l0L"
+6DATA334 ; Data file 3.2, field 6, IENS 334
+         W *27,"E",*27,"(s16.7H",*27,"&l8D"
+6DATA335 ; Data file 3.2, field 6, IENS 335
+         W *27,*91,*53,*105,*27,*69,*27,*38,*108,1,*72
+6DATA336 ; Data file 3.2, field 6, IENS 336
+         W $C(27),"E",$C(27),"&l0O",$C(27),"&s0C",$C(27),"&k10H",$C(27),"&l7.4c2
+          e67F",$C(27),"&a05l95M" D ^A2AHDR
+6DATA337 ; Data file 3.2, field 6, IENS 337
+         W $C(27),"E",$C(27),"&k1G"
+6DATA338 ; Data file 3.2, field 6, IENS 338
+         W *27,"E",*27,"(s16.7H",*27,"&k1G"
+6DATA340 ; Data file 3.2, field 6, IENS 340
+         W *27,"[?5i",#
+6DATA341 ; Data file 3.2, field 6, IENS 341
+         U IO W $C(27),"(s16.7H",$C(27),"&l6D",$C(27),"&a12L",$C(27),"&a120M",$C
+          (27),"&s0C"
+6DATA351 ; Data file 3.2, field 6, IENS 351
+         W $C(27),"E",$C(27),"&l0O",$C(27),"&s0C",$C(27),"&k10H",$C(27),"&l7.4c6
+          9p2e67F",$C(27),"&a05l95M" D ^A2AHDR
+6DATA354 ; Data file 3.2, field 6, IENS 354
+         W *27,"E",*27,"&a1L",*27,"&a132M",*27,"&|1E",*27,"k2S"
+6DATA356 ; Data file 3.2, field 6, IENS 356
+         W *27,"E",*27,"(s16.7H",*27,"&l8D",*27,"&s0C"
+6DATA359 ; Data file 3.2, field 6, IENS 359
+         W *27,"[?5i"
+7        ; CLOSE EXECUTE
+         K:$L(X)>245 X D:$D(X) ^DIM
+7DATA30  ; Data file 3.2, field 7, IENS 30
+         W *27,"[?",3,*108
+7DATA36  ; Data file 3.2, field 7, IENS 36
+         W *27,"[?6i"
+7DATA48  ; Data file 3.2, field 7, IENS 48
+         W *27,"4"
+7DATA49  ; Data file 3.2, field 7, IENS 49
+         W *27,"A"
+7DATA52  ; Data file 3.2, field 7, IENS 52
+         W !,#
+7DATA53  ; Data file 3.2, field 7, IENS 53
+         W !,#
+7DATA57  ; Data file 3.2, field 7, IENS 57
+         W *27,*63,*35,*32
+7DATA66  ; Data file 3.2, field 7, IENS 66
+         W *27,"[4i","[2w",*27,"[?6i",*27,"[?3l"
+7DATA75  ; Data file 3.2, field 7, IENS 75
+         U $I:(:::::512) C $I
+7DATA81  ; Data file 3.2, field 7, IENS 81
+         W *27,"E"
+7DATA82  ; Data file 3.2, field 7, IENS 82
+         W *27,"E"
+7DATA84  ; Data file 3.2, field 7, IENS 84
+         W *27,"&l0O",*27,"s0C",*27,"&k10H",*27,"&17.4c69p2e67F",*27,"&a01l95M"
+7DATA85  ; Data file 3.2, field 7, IENS 85
+         W *27,"&l0O",*27,"&s0C",*27,"&k10H",*27,"&17.4c69p2e67F",*27,"&ao1l95M"
+7DATA87  ; Data file 3.2, field 7, IENS 87
+         C IO
+7DATA88  ; Data file 3.2, field 7, IENS 88
+         S IO("C")=1,ZTNONEXT=1,%ZTIO=""
+7DATA97  ; Data file 3.2, field 7, IENS 97
+         Q
+7DATA101 ; Data file 3.2, field 7, IENS 101
+         W *13,*27,"A"
+7DATA102 ; Data file 3.2, field 7, IENS 102
+         W *27,"A"
+7DATA104 ; Data file 3.2, field 7, IENS 104
+         W *27,"[?4i"
+7DATA106 ; Data file 3.2, field 7, IENS 106
+         W *27,"[1w"
+7DATA109 ; Data file 3.2, field 7, IENS 109
+         W *27,*91,"6i",*27,*91,"4i"
+7DATA110 ; Data file 3.2, field 7, IENS 110
+         W !,*27,"+X"
+7DATA111 ; Data file 3.2, field 7, IENS 111
+         W *27,"[4i"
+7DATA113 ; Data file 3.2, field 7, IENS 113
+         W *27,"[3w"
+7DATA114 ; Data file 3.2, field 7, IENS 114
+         W !,*27,"+X"
+7DATA115 ; Data file 3.2, field 7, IENS 115
+         W *27,*91,"?4i"
+7DATA116 ; Data file 3.2, field 7, IENS 116
+         W *27,"A"
+7DATA118 ; Data file 3.2, field 7, IENS 118
+         W !,*27,"+X"
+7DATA119 ; Data file 3.2, field 7, IENS 119
+         W !,*27,"+X"
+7DATA120 ; Data file 3.2, field 7, IENS 120
+         W !,*27,"+X"
+7DATA121 ; Data file 3.2, field 7, IENS 121
+         W !,*27,"+X"
+7DATA122 ; Data file 3.2, field 7, IENS 122
+         W !,*27,"+X"
+7DATA123 ; Data file 3.2, field 7, IENS 123
+         W *27,"[0w",*27,"[4i",*27,"[?3l"
+7DATA124 ; Data file 3.2, field 7, IENS 124
+         W *27,"[4i",*27,"[?4i"
+7DATA125 ; Data file 3.2, field 7, IENS 125
+         W *27,"[5w"
+7DATA126 ; Data file 3.2, field 7, IENS 126
+         W $C(27)_"[!p" W *27,"[4i" W #
+7DATA128 ; Data file 3.2, field 7, IENS 128
+         W !,*27,"+X"
+7DATA129 ; Data file 3.2, field 7, IENS 129
+         C IO
+7DATA130 ; Data file 3.2, field 7, IENS 130
+         W !,"CLOSE EXECUTE TEST" H 3
+7DATA131 ; Data file 3.2, field 7, IENS 131
+         W @IOF
+7DATA132 ; Data file 3.2, field 7, IENS 132
+         W @IOF
+7DATA140 ; Data file 3.2, field 7, IENS 140
+         W @IOF
+7DATA141 ; Data file 3.2, field 7, IENS 141
+         W @IOF
+7DATA142 ; Data file 3.2, field 7, IENS 142
+         W @IOF
+7DATA143 ; Data file 3.2, field 7, IENS 143
+         W @IOF
+7DATA144 ; Data file 3.2, field 7, IENS 144
+         W $C(23),$C(18)
+7DATA146 ; Data file 3.2, field 7, IENS 146
+         D CLOSE^%ZTM4
+7DATA147 ; Data file 3.2, field 7, IENS 147
+         U $I:(:::::512) C $I
+7DATA148 ; Data file 3.2, field 7, IENS 148
+         W @IOF
+7DATA150 ; Data file 3.2, field 7, IENS 150
+         W !,##
+7DATA151 ; Data file 3.2, field 7, IENS 151
+         W !,##
+7DATA153 ; Data file 3.2, field 7, IENS 153
+         W @IOF
+7DATA154 ; Data file 3.2, field 7, IENS 154
+         W ! W *27,"[?4i"
+7DATA155 ; Data file 3.2, field 7, IENS 155
+         W $C(27)_"E"
+7DATA156 ; Data file 3.2, field 7, IENS 156
+         W:$X ! X "U IO:DISCONNECT" D READ^XMAPHOST X "C IO:DELETE" K IO(1,IO)
+7DATA158 ; Data file 3.2, field 7, IENS 158
+         W $C(27)_"E"
+7DATA161 ; Data file 3.2, field 7, IENS 161
+         D EN^AAH9UF39(33,IO,IO(0),$G(AAH9MSG)) K AAH9MSG
+7DATA162 ; Data file 3.2, field 7, IENS 162
+         X "C IO:(SPOOL:DELETE:QUEUE=""VER$LW"")"
+7DATA163 ; Data file 3.2, field 7, IENS 163
+         U $I:(:::::512) S:$D(ZTQUEUED) %ZTIO="",ZTNONEXT=1,IO("C")=1
+7DATA166 ; Data file 3.2, field 7, IENS 166
+         U IO:DISCONNECT D READ^XGLDEVWN Q
+7DATA167 ; Data file 3.2, field 7, IENS 167
+         U IO:NOMODEM C IO
+7DATA168 ; Data file 3.2, field 7, IENS 168
+         S IO("C")=1,ZTNONEXT=1,%ZTIO=""
+7DATA169 ; Data file 3.2, field 7, IENS 169
+         D CLOSE^DDBRZIS
+7DATA173 ; Data file 3.2, field 7, IENS 173
+         N X C IO S X=$P(IO,":"),X=$ZC(%SPAWN,"SUBMIT/REMOTE "_X_"::DECNET_LOCAL
+          _PRINT.COM")
+7DATA174 ; Data file 3.2, field 7, IENS 174
+         W *27,"E"
+7DATA175 ; Data file 3.2, field 7, IENS 175
+         W *27,"E"
+7DATA176 ; Data file 3.2, field 7, IENS 176
+         W !,*27,"+X",!
+7DATA177 ; Data file 3.2, field 7, IENS 177
+         W !,*27,"+X",!
+7DATA178 ; Data file 3.2, field 7, IENS 178
+         W $C(27),"(s0p12h0s0b4099T"
+7DATA180 ; Data file 3.2, field 7, IENS 180
+         W $C(27),"&a0L",$C(27),"(s0p12h0s0b4099T"
+7DATA181 ; Data file 3.2, field 7, IENS 181
+         W $C(27),"&a0L",$C(27),"(s0p12h0s0b4099T"
+7DATA183 ; Data file 3.2, field 7, IENS 183
+         W $C(27),"(s0p12h0s0b4099T"
+7DATA184 ; Data file 3.2, field 7, IENS 184
+         D CLOSE^A6ADOC8
+7DATA185 ; Data file 3.2, field 7, IENS 185
+         I '$D(ZTQUEUED) N %ZISV,%ZISOS,EOF,ZZFF X ^%ZIS(2,+IOST(0),11) D ^%ZIS 
+          Q:POP  X "F %=1:1:%1 U IO(0):(DISCONNECT:NOTRAP) F  U IO(0) R %2 X EOF
+          ,ZZFF,EOF Q:$T  U IO W:$A(%2)'=12 ! W %2" D ^%ZISC X "S IO(0)=$P U IO(
+          0)"
+7DATA186 ; Data file 3.2, field 7, IENS 186
+         N %ZISV,%ZISOS U IO S IOP=^TMP("SDP",$J,"ION")_";"_^("IOM")_";"_IOST,%1
+          =^("COPIES") D ^%ZIS Q:POP  X "F %=1:1:%1 U IO(0):(DISCONNECT:NOTRAP) 
+          F  U IO(0) R %2 Q:$ZA=-1&(%2="""")  U IO W:$A(%2)'=12 ! W %2" D ^%ZISC
+           X "S IO=IO(0),IO(0)=$P U IO(0)"
+7DATA187 ; Data file 3.2, field 7, IENS 187
+         W $C(27),"&a0L",$C(27),"(s0p12h0s0b4099T"
+7DATA188 ; Data file 3.2, field 7, IENS 188
+         W $C(27),"&a0L",$C(27),"(s0p12h0s0b4099T"
+7DATA190 ; Data file 3.2, field 7, IENS 190
+         W:$X ! X "U IO:(::0)" D READ^XMAPHOST C IO S X=$ZOS(2,XMPMSG) K XMPMSG,
+          IO(1,IO)
+7DATA191 ; Data file 3.2, field 7, IENS 191
+         W:$X ! U IO:("R") D READ^XMAPHOST X "C IO:""D""" K IO(1,IO)
+7DATA192 ; Data file 3.2, field 7, IENS 192
+         W:$X ! X "U IO:(::0)" D READ^XMAPHOST C IO K XMPMSG,IO(1,IO)
+7DATA195 ; Data file 3.2, field 7, IENS 195
+         D CLOSE^XDRDVAL
+7DATA197 ; Data file 3.2, field 7, IENS 197
+         D CLOSE^MAGGTU5 X "C IO:""D""" K IO(1,IO)
+7DATA205 ; Data file 3.2, field 7, IENS 205
+         W *27,"[4i",*27,"[?3l"
+7DATA207 ; Data file 3.2, field 7, IENS 207
+         W *27,"&l0O",*27,"&s0C",*27,"&k10H",*27,"&l7.4c69p2e67F",*27,"&a05l95M"
+7DATA218 ; Data file 3.2, field 7, IENS 218
+         W *27,"E",#
+7DATA221 ; Data file 3.2, field 7, IENS 221
+         W *27,"&k0S"
+7DATA222 ; Data file 3.2, field 7, IENS 222
+         W *27,"&k0S"
+7DATA224 ; Data file 3.2, field 7, IENS 224
+         W *27,"[4i"
+7DATA226 ; Data file 3.2, field 7, IENS 226
+         W *27,"2"
+7DATA232 ; Data file 3.2, field 7, IENS 232
+         W *27,"E",*27,"&l0O",*27,"&s0C",*27,"&k10H",*27,"&l7.6c69p2e67F",*27,"&
+          a05l95M"
+7DATA233 ; Data file 3.2, field 7, IENS 233
+         W *27,"E"
+7DATA237 ; Data file 3.2, field 7, IENS 237
+         W *27,"A"
+7DATA240 ; Data file 3.2, field 7, IENS 240
+         D HANG^XMMHAYES S IO("C")=1,ZTNONEXT=1,%ZTIO="" D IO^%CLOSE
+7DATA241 ; Data file 3.2, field 7, IENS 241
+         W #,*27,"[?4i"
+7DATA242 ; Data file 3.2, field 7, IENS 242
+         W *27,"#1"
+7DATA243 ; Data file 3.2, field 7, IENS 243
+         W *27,"E"
+7DATA244 ; Data file 3.2, field 7, IENS 244
+         W *27,"E"
+7DATA245 ; Data file 3.2, field 7, IENS 245
+         W #,*27,"[?4i"
+7DATA246 ; Data file 3.2, field 7, IENS 246
+         W *27,"E"
+7DATA247 ; Data file 3.2, field 7, IENS 247
+         W *27,"E"
+7DATA248 ; Data file 3.2, field 7, IENS 248
+         W *27,"E"
+7DATA249 ; Data file 3.2, field 7, IENS 249
+         W *27,"E"
+7DATA250 ; Data file 3.2, field 7, IENS 250
+         W *27,"E"
+7DATA251 ; Data file 3.2, field 7, IENS 251
+         W #,*27,"E"
+7DATA252 ; Data file 3.2, field 7, IENS 252
+         W *27,"E"
+7DATA254 ; Data file 3.2, field 7, IENS 254
+         W *27,"[4i",*27,"[5i",*27,"[4w",*27,"[4i",*27,"[?3l"
+7DATA255 ; Data file 3.2, field 7, IENS 255
+         W *27,"[?4i",*27,"[5i",*27,"[4w",*27,"[0;0r",*27,"[0;0s",*27,"[4i",*27,
+          "[?3l"
+7DATA257 ; Data file 3.2, field 7, IENS 257
+         W *27,"[?4i",*27,"[5i",*27,"[4w",*27,"[4i",*27,"[?3l"
+7DATA259 ; Data file 3.2, field 7, IENS 259
+         W *27,"[4i"
+7DATA260 ; Data file 3.2, field 7, IENS 260
+         C IO S X=$P(IO,":")_"::DECNET_LOCAL_PRINT.COM",D=$ZC(%SPAWN,"SUBMIT/REM
+          OTE "_X)
+7DATA262 ; Data file 3.2, field 7, IENS 262
+         W *27,"[?4i"
+7DATA263 ; Data file 3.2, field 7, IENS 263
+         W #,*27,"E"
+7DATA264 ; Data file 3.2, field 7, IENS 264
+         W #,*27,"E"
+7DATA265 ; Data file 3.2, field 7, IENS 265
+         W *27,"[>4i",*27,"[?3l"
+7DATA266 ; Data file 3.2, field 7, IENS 266
+         W *27,"[>4i",*27,"[?3l"
+7DATA267 ; Data file 3.2, field 7, IENS 267
+         W #,*27,"E"
+7DATA268 ; Data file 3.2, field 7, IENS 268
+         W #,*27,"E"
+7DATA269 ; Data file 3.2, field 7, IENS 269
+         W #,*27,"E"
+7DATA270 ; Data file 3.2, field 7, IENS 270
+         W #,*27,"E"
+7DATA272 ; Data file 3.2, field 7, IENS 272
+         W *27,*91,*63,*52,*105
+7DATA274 ; Data file 3.2, field 7, IENS 274
+         W #,*27,"E",*27,"[?4i"
+7DATA276 ; Data file 3.2, field 7, IENS 276
+         W #,"!R! RES;FONT 1;EXIT;",*27,"[?4i"
+7DATA277 ; Data file 3.2, field 7, IENS 277
+         W !,*27,"[?4i"
+7DATA278 ; Data file 3.2, field 7, IENS 278
+         W #,*27,"[!p"
+7DATA279 ; Data file 3.2, field 7, IENS 279
+         W *27,"c"
+7DATA280 ; Data file 3.2, field 7, IENS 280
+         W *27,"c"
+7DATA281 ; Data file 3.2, field 7, IENS 281
+         W *27,"[!p",*13,*10
+7DATA282 ; Data file 3.2, field 7, IENS 282
+         W *27,"c"
+7DATA283 ; Data file 3.2, field 7, IENS 283
+         W *27,"[!p",*13,*10
+7DATA284 ; Data file 3.2, field 7, IENS 284
+         W *27,"[!p",*13,*10
+7DATA285 ; Data file 3.2, field 7, IENS 285
+         W *27,"c"
+7DATA286 ; Data file 3.2, field 7, IENS 286
+         W *27,"[!p",*13,*10,*27,"c"
+7DATA287 ; Data file 3.2, field 7, IENS 287
+         W *27,"[!p",*13,*10
+7DATA288 ; Data file 3.2, field 7, IENS 288
+         W *27,"E"
+7DATA291 ; Data file 3.2, field 7, IENS 291
+         W *27,"E",! C IO S X=$P(IO,":")_"::DECNET_LOCAL_PRINT.COM",D=$ZC(%SPAWN
+          ,"SUBMIT/REMOTE "_X)
+7DATA292 ; Data file 3.2, field 7, IENS 292
+         W *27,"[8;72 G",! C IO S X=$P(IO,":")_"::DECNET_LOCAL_PRINT.COM",D=$ZC(
+          %SPAWN,"SUBMIT/REMOTE "_X)
+7DATA296 ; Data file 3.2, field 7, IENS 296
+         C IO S XXX=$ZC(%PRINT,"PCTS.TXT","/QUEUE=FORUM5_ADM31/DELETE")
+7DATA297 ; Data file 3.2, field 7, IENS 297
+         W:$X ! S ZIO=$ZIO,ZZIO=IO C IO S IO=ZIO O IO:("RS"):1 D READ^XMAPHOST X
+           "C IO:""D""" K IO(1,ZZIO),ZIO,ZZIO
+7DATA298 ; Data file 3.2, field 7, IENS 298
+         D ^AKFAXD
+7DATA300 ; Data file 3.2, field 7, IENS 300
+         W *27,"[8;72 G"
+7DATA301 ; Data file 3.2, field 7, IENS 301
+         W *27,"[8;72 G",! C IO S X=$P(IO,":")_"::DECNET_LOCAL_PRINT.COM",D=$ZC(
+          %SPAWN,"SUBMIT/REMOTE "_X)
+7DATA304 ; Data file 3.2, field 7, IENS 304
+         W #,*27,"[?4i"
+7DATA305 ; Data file 3.2, field 7, IENS 305
+         W #,*27,"[?4i"
+7DATA306 ; Data file 3.2, field 7, IENS 306
+         W #,*27,"[?4i",*27,"[5i",*27,"[0w",*27,"[4i",*27,"[?3l"
+7DATA307 ; Data file 3.2, field 7, IENS 307
+         W #,*27,"[?4i"
+7DATA309 ; Data file 3.2, field 7, IENS 309
+         W #,*27,"[?4i"
+7DATA310 ; Data file 3.2, field 7, IENS 310
+         W *27,*69,*27,"[4i"
+7DATA311 ; Data file 3.2, field 7, IENS 311
+         W *27,*69,*27,"[4i"
+7DATA312 ; Data file 3.2, field 7, IENS 312
+         W *27,"E",*27,"[4i"
+7DATA313 ; Data file 3.2, field 7, IENS 313
+         W *27,"E",*27,"[4i"
+7DATA317 ; Data file 3.2, field 7, IENS 317
+         W $C(27),"E" D CLOSE^NVSPRTU
+7DATA318 ; Data file 3.2, field 7, IENS 318
+         C IO S XXX=$ZC(%PRINT,IO,"/QUEUE=SUP$PRT/FORM=HP16/DELETE")
+7DATA319 ; Data file 3.2, field 7, IENS 319
+         W $C(27),"E" D CLOSE^NVSPRTU
+7DATA320 ; Data file 3.2, field 7, IENS 320
+         W *27,"[8;72 G",! C IO S XXX=$ZC(%PRINT,IO,"/QUEUE="_$P(ION,"-",2)_"/DE
+          LETE/NONOTIFY")
+7DATA321 ; Data file 3.2, field 7, IENS 321
+         W *27,"[8;72 G",! C IO S XXX=$ZC(%PRINT,IO,"/QUEUE="_$P(ION,"-",2)_"/DE
+          LETE/NONOTIFY")
+7DATA323 ; Data file 3.2, field 7, IENS 323
+         C IO S X=$P(IO,":")_"::DECNET_LOCAL_PRINT.COM",D=$ZC(%SPAWN,"SUBMIT/REM
+          OTE "_X)
+7DATA324 ; Data file 3.2, field 7, IENS 324
+         W $C(27),"(s0p12h0s0b4099T" D CLOSE^NVSPRTU
+7DATA326 ; Data file 3.2, field 7, IENS 326
+         W *27,"[?4i",*27,"[5i",*27,"[4i"
+7DATA329 ; Data file 3.2, field 7, IENS 329
+         W *27,"(s3T",*27,"(s10H",! S QUE="/QUEUE="_$E(ION,1,$F(ION,"PRT")-1)_"/
+          DELETE",QUE=$ZC(%PRINT,IO,QUE)
+7DATA330 ; Data file 3.2, field 7, IENS 330
+         W *27,"E" C IO S XXX=$ZC(%PRINT,IO,"/QUEUE="_$P(ION,"-",2)_"/DELETE/NON
+          OTIFY")
+7DATA331 ; Data file 3.2, field 7, IENS 331
+         W $C(27),"E" D CLOSE^NVSPRTU
+7DATA332 ; Data file 3.2, field 7, IENS 332
+         W *27,"E"
+7DATA333 ; Data file 3.2, field 7, IENS 333
+         W $C(27),"E" D CLOSE^NVSPRTU
+7DATA334 ; Data file 3.2, field 7, IENS 334
+         W $C(27),"E" D CLOSE^NVSPRTU
+7DATA335 ; Data file 3.2, field 7, IENS 335
+         W *27,*69,*27,*91,*52,*105
+7DATA336 ; Data file 3.2, field 7, IENS 336
+         D CLOSE^NVSPRTU
+7DATA337 ; Data file 3.2, field 7, IENS 337
+         W $C(27),"E" D CLOSE^NVSPRTU
+7DATA338 ; Data file 3.2, field 7, IENS 338
+         W *27,"E" U IO K IO(1,IO) S IO=$ZIO C IO S XXX=$ZC(%PRINT,IO,"/QUEUE="_
+          $P(ION,"-",2)_"/DELETE/PASSALL/NONOTIFY")
+7DATA339 ; Data file 3.2, field 7, IENS 339
+         W:$X ! S XMREC="R X#255:1" X "U IO:DISCONNECT" D ^WWWMAL83,READ^WWWMAL8
+          3 X "C IO:DELETE" K XMIO,IO(1,IO) Q
+7DATA340 ; Data file 3.2, field 7, IENS 340
+         W #,*27,"[?4i"
+7DATA341 ; Data file 3.2, field 7, IENS 341
+         W $C(27),"E" D CLOSE^NVSPRTU
+7DATA351 ; Data file 3.2, field 7, IENS 351
+         W $C(27),"E" D CLOSE^NVSPRTU
+7DATA352 ; Data file 3.2, field 7, IENS 352
+         W:$X ! S ZIO=$ZIO,ZZIO=IO C IO S IO=ZIO O IO:("RS"):1 D READ^XMAPHOST X
+           "C IO:""D""" K IO(1,ZZIO),ZIO,ZZIO
+7DATA354 ; Data file 3.2, field 7, IENS 354
+         W *27,"E"
+7DATA356 ; Data file 3.2, field 7, IENS 356
+         W *27,"E" U IO K IO(1,IO) S IO=$ZIO C IO S QUE="/QUEUE="_$E(ION,1,$F(IO
+          N,"PRT")-1)_"/DELETE",QUE=$ZC(%PRINT,IO,QUE)
+7DATA359 ; Data file 3.2, field 7, IENS 359
+         W #,*27,"[?4i"
+8        ; ONLINE CHECK
+         K:$L(X)>245 X D:$D(X) ^DIM
+10       ; 10 PITCH
+         D CHECK^%ZISS1 K:$L(X)>25 X
+12       ; 12 PITCH
+         D CHECK^%ZISS1 K:$L(X)>25 X
+12.1     ; 16 PITCH
+         D CHECK^%ZISS1 K:$L(X)>25 X
+12.11    ; DEFAULT PITCH
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+12.12    ; X PITCH
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+12.13    ; 6 LINES PER INCH
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+12.14    ; 8 LINES PER INCH
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+12.15    ; DEFAULT LINES PER INCH
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+12.16    ; X LINES PER INCH
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+12.2     ; QUALITY 0
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<3) X
+12.3     ; QUALITY 1
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<3) X
+12.4     ; QUALITY 2
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<3) X
+13       ; HOME CURSOR
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+14       ; REVERSE VIDEO ON
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+15       ; REVERSE VIDEO OFF
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+16       ; ERASE TO END OF LINE
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+17       ; ERASE TO END OF PAGE
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+18       ; BLINK ON
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+19       ; BLINK OFF
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+20       ; RESET
+         D CHECK^%ZISS1 K:$L(X)>12!($L(X)<1) X
+20.5     ; SGR ATTRIBUTES OFF
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<1) X
+21       ; HALF UP
+         D CHECK^%ZISS1 K:$L(X)>12!($L(X)<1) X
+22       ; HALF DOWN
+         D CHECK^%ZISS1 K:$L(X)>12!($L(X)<1) X
+23       ; UNDERLINE ON
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+24       ; UNDERLINE OFF
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+25       ; REVERSE LINE FEED
+         D CHECK^%ZISS1 K:$L(X)>20 X
+26       ; PROPORTIONAL SPACING
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+27       ; HIGH INTENSITY (BOLD)
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<1) X
+28       ; LOW INTENSITY (UNBOLD)
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<1) X
+29       ; NORMAL INTENSITY (RESET)
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<1) X
+30       ; INSERT MODE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<1) X
+31       ; REPLACE MODE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<1) X
+32       ; ERASE FROM BEG OF PAGE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+33       ; ERASE ENTIRE PAGE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+34       ; ERASE FROM BEG OF LINE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+35       ; ERASE ENTIRE LINE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+36       ; ERASE CHARACTER
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+37       ; ERASE FIELD
+         D CHECK^%ZISS1 K:$L(X)>40!($L(X)<2) X
+40       ; CURSOR UP
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+41       ; CURSOR DOWN
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+42       ; CURSOR RIGHT
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+43       ; CURSOR LEFT
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+44       ; ARROW KEY STRING LENGTH
+         K:+X'=X!(X>3)!(X<1)!(X?.E1"."1N.N) X
+45       ; DELETE LINE
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+46       ; INSERT LINE
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+47       ; DELETE CHAR.
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+48       ; INSERT CHAR.
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+49       ; CURSOR ON
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+49.1     ; CURSOR OFF
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+50       ; MODEM DIAL LOGIC
+         K:$L(X)>245 X D:$D(X) ^DIM
+50DATA77 ; Data file 3.2, field 50, IENS 77
+         D DIAL3451^XMM1
+50DATA78 ; Data file 3.2, field 50, IENS 78
+         D DIALDF03^XMM1
+50DATA79 ; Data file 3.2, field 50, IENS 79
+         D DHAYES^XMM1
+50DATA80 ; Data file 3.2, field 50, IENS 80
+         D DIAL^XMM2
+50DATA138 ; Data file 3.2, field 50, IENS 138
+         D DHAYES^XMM1
+50DATA219 ; Data file 3.2, field 50, IENS 219
+         D DIAL^XMM4
+50DATA240 ; Data file 3.2, field 50, IENS 240
+         D DIAL^XMMHAYES
+51       ; MODEM HANG UP LOGIC
+         K:$L(X)>245 X D:$D(X) ^DIM
+51DATA77 ; Data file 3.2, field 51, IENS 77
+         D HANG3451^XMM1
+51DATA78 ; Data file 3.2, field 51, IENS 78
+         D HANGDF03^XMM1
+51DATA79 ; Data file 3.2, field 51, IENS 79
+         D HHAYES^XMM1
+51DATA80 ; Data file 3.2, field 51, IENS 80
+         D HANG^XMM2
+51DATA138 ; Data file 3.2, field 51, IENS 138
+         D HHAYES^XMM1
+51DATA219 ; Data file 3.2, field 51, IENS 219
+         D HANG^XMM4
+51DATA240 ; Data file 3.2, field 51, IENS 240
+         D HANG^XMMHAYES
+52       ; MODEM STATUS LOGIC
+         K:$L(X)>200!($L(X)<1) X
+60       ; BAR CODE ON
+         K:$L(X)>245!($L(X)<2) X
+61       ; BAR CODE OFF
+         K:$L(X)>245!($L(X)<2) X
+62       ; RESERVED
+         K:$L(X)>245!($L(X)<2) X
+65       ; SUBSCRIPT ON
+         K:$L(X)>245!($L(X)<2) X
+65.1     ; SUBSCRIPT OFF
+         K:$L(X)>245!($L(X)<2) X
+65.2     ; SUPERSCRIPT ON
+         K:$L(X)>245!($L(X)<2) X
+65.3     ; SUPERSCRIPT OFF
+         K:$L(X)>245!($L(X)<2) X
+66       ; ITALICS ON
+         K:$L(X)>245!($L(X)<2) X
+67       ; ITALICS OFF
+         K:$L(X)>245!($L(X)<2) X
+67.21    ; COLOR ON
+         K:$L(X)>245!($L(X)<1) X
+67.22    ; COLOR OFF
+         K:$L(X)>245!($L(X)<1) X
+68       ; GRAPHICS ON
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+69       ; GRAPHICS OFF
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+69.11    ; TOP LEFT CORNER
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+69.12    ; BOTTOM LEFT CORNER
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+69.13    ; TOP RIGHT CORNER
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+69.14    ; BOTTOM RIGHT CORNER
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+69.2     ; MIDDLE T
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+69.3     ; TOP T
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+69.4     ; BOTTOM T
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+69.5     ; LEFT T
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+69.6     ; RIGHT T
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+69.7     ; VERTICAL LINE
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+69.8     ; HORIZONTAL LINE
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<3) X
+70       ; INDEX
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+71       ; REVERSE INDEX
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+72       ; SAVE CURSOR
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+73       ; RESTORE CURSOR
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+74       ; NEXT LINE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+75       ; AUTO WRAP ON
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+76       ; AUTO WRAP OFF
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+77       ; AUTO REPEAT ON
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+78       ; AUTO REPEAT OFF
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+79       ; KEYPAD APPLICATION MODE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+79.1     ; KEYPAD NUMERIC MODE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+80       ; TAB SET
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+81       ; TAB CLEAR
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+82       ; CLEAR ALL TABS
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+83       ; SET TOP & BOTTOM MARGINS
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+85       ; DOUBLE HIGH DOUBLE WIDE TOP
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+86       ; DOUBLE HIGH DOUBLE WIDE BOTTOM
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+87       ; SINGLE HIGH DOUBLE WIDE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+88       ; SINGLE HIGH SINGLE WIDE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+99       ; DESCRIPTION
+         K:$L(X)>80!($L(X)<6) X
+102      ; ANSWERBACK LOGIC
+         K:$L(X)>245 X D:$D(X) ^DIM
+102DATA133 --
+          ; Data file 3.2, field 102, IENS 133
+         I 0
+110      ; OPEN PRINTER PORT
+         K:$L(X)>245 X D:$D(X) ^DIM
+110DATA9 ; Data file 3.2, field 110, IENS 9
+         W *27,"[5i"
+110DATA44 ; Data file 3.2, field 110, IENS 44
+         W *27,"@"
+110DATA60 ; Data file 3.2, field 110, IENS 60
+         W *27,"[5i"
+110DATA73 ; Data file 3.2, field 110, IENS 73
+         W *27,"[5i"
+110DATA91 ; Data file 3.2, field 110, IENS 91
+         W $C(27)_"[?5i"
+110DATA92 ; Data file 3.2, field 110, IENS 92
+         W $C(27)_"[?4i"
+110DATA93 ; Data file 3.2, field 110, IENS 93
+         W *27,*91,*53,*105
+110DATA94 ; Data file 3.2, field 110, IENS 94
+         W *27,*91,*53,*105
+110DATA115 --
+          ; Data file 3.2, field 110, IENS 115
+         W *27,*91,"?5i"
+110DATA149 --
+          ; Data file 3.2, field 110, IENS 149
+         W *27,"[?5i"
+110DATA152 --
+          ; Data file 3.2, field 110, IENS 152
+         W *27,"[>5i"
+110DATA164 --
+          ; Data file 3.2, field 110, IENS 164
+         W *27,"[5i"
+110DATA170 --
+          ; Data file 3.2, field 110, IENS 170
+         W *27,"[5i"
+110DATA272 --
+          ; Data file 3.2, field 110, IENS 272
+         W *27,*91,*63,*53,*105
+110DATA325 --
+          ; Data file 3.2, field 110, IENS 325
+         W *27,"[5i"
+110DATA327 --
+          ; Data file 3.2, field 110, IENS 327
+         W *27,"[5i"
+111      ; CLOSE PRINTER PORT
+         K:$L(X)>245 X D:$D(X) ^DIM
+111DATA9 ; Data file 3.2, field 111, IENS 9
+         W *27,"[4i"
+111DATA44 ; Data file 3.2, field 111, IENS 44
+         W *27,"A"
+111DATA60 ; Data file 3.2, field 111, IENS 60
+         W *27,"[4i"
+111DATA73 ; Data file 3.2, field 111, IENS 73
+         W *27,"[4i"
+111DATA91 ; Data file 3.2, field 111, IENS 91
+         W $C(27)_"[?4i"
+111DATA92 ; Data file 3.2, field 111, IENS 92
+         W $C(27)_"[?5i"
+111DATA93 ; Data file 3.2, field 111, IENS 93
+         W *27,*91,*52,*105
+111DATA94 ; Data file 3.2, field 111, IENS 94
+         W *27,*91,*52,*105
+111DATA115 --
+          ; Data file 3.2, field 111, IENS 115
+         W *27,*91,"?4i"
+111DATA149 --
+          ; Data file 3.2, field 111, IENS 149
+         W *27,"[?4i"
+111DATA152 --
+          ; Data file 3.2, field 111, IENS 152
+         W *27,"[>4i",#
+111DATA164 --
+          ; Data file 3.2, field 111, IENS 164
+         W *27,"[4i"
+111DATA170 --
+          ; Data file 3.2, field 111, IENS 170
+         W *27,"[4i"
+111DATA185 --
+          ; Data file 3.2, field 111, IENS 185
+         S EOF="I $ZA&(%2="""")" U IO S IOP=^TMP("SDP",$J,"ION")_";"_^("IOM")_";
+          "_IOST,%1=^("COPIES"),ZZFF="I $T U IO W:$Y @IOF U IO(0)"
+111DATA272 --
+          ; Data file 3.2, field 111, IENS 272
+         W *27,*91,*63,*52,*105
+111DATA325 --
+          ; Data file 3.2, field 111, IENS 325
+         W *27,"[4i"
+111DATA327 --
+          ; Data file 3.2, field 111, IENS 327
+         W *27,"[4i"
+112      ; PRINT SCREEN
+         D CHECK^%ZISS1 K:$L(X)>40!($L(X)<2) X
+120      ; KP0
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+121      ; KP1
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+122      ; KP2
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+123      ; KP3
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+124      ; KP4
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+125      ; KP5
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+126      ; KP6
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+127      ; KP7
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+128      ; KP8
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+129      ; KP9
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+130      ; PF1
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+131      ; PF2
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+132      ; PF3
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+133      ; PF4
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+134      ; MINUS
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+135      ; COMMA
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+136      ; ENTER
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+137      ; PERIOD
+         D CHECK^%ZISS1 K:$L(X)>20!($L(X)<2) X
+140      ; FIND
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+141      ; SELECT
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+142      ; INSERT HERE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+143      ; REMOVE
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+144      ; PREV SCREEN
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+145      ; NEXT SCREEN
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+146      ; HELP
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+147      ; DO
+         D CHECK^%ZISS1 K:$L(X)>30!($L(X)<2) X
+200      ; DEFAULT FONT TITLE
+         K:$L(X)>30!($L(X)<1) X
+201      ; DEFAULT FONT CODE
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+202      ; FONT NUMBER 1 TITLE
+         K:$L(X)>30!($L(X)<1) X
+203      ; FONT NUMBER 1 CODE
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+204      ; FONT NUMBER 2 TITLE
+         K:$L(X)>30!($L(X)<1) X
+205      ; FONT NUMBER 2 CODE
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+206      ; FONT NUMBER 3 TITLE
+         K:$L(X)>30!($L(X)<1) X
+207      ; FONT NUMBER 3 CODE
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+208      ; FONT NUMBER 4 TITLE
+         K:$L(X)>30!($L(X)<1) X
+209      ; FONT NUMBER 4 CODE
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+210      ; FONT NUMBER 5 TITLE
+         K:$L(X)>30!($L(X)<1) X
+211      ; FONT NUMBER 5 CODE
+         D CHECK^%ZISS1 K:$L(X)>245!($L(X)<2) X
+1001     ; SIMPLEX
+         K:$L(X)>30!($L(X)<2) X
+1002     ; DUPLEX, LONG EDGE BINDING
+         K:$L(X)>30!($L(X)<2) X
+1003     ; DUPLEX, SHORT EDGE BINDING
+         K:$L(X)>30!($L(X)<2) X
+1925     ; SYNONYM
+         K:X[""""!($A(X)=45) X I $D(X) K:$L(X)>9!($L(X)<1) X
+1925XRF1S ; SET LOGIC FOR 'B' XREF
+         S ^%ZIS(2,"B",$E(X,1,30),DA)=1
+1925XRF1K ; KILL LOGIC FOR 'B' XREF
+         K ^%ZIS(2,"B",$E(X,1,30),DA)
+*****   ERRORS & WARNINGS IN |dd3.2   *****
+   .01XRF1S+1   S - Set to a '%' global.
+   5DATA77+1    F - UNDEFINED COMMAND (rest of line not checked).
+   5DATA167+1   F - Unmatched Parenthesis.
+   5DATA167+1   F - Invalid or wrong number of arguments to a function.
+   5DATA167+1   F - Unmatched Parenthesis.
+   5DATA228+1   F - Unmatched Parenthesis.
+   5DATA228+1   F - Invalid or wrong number of arguments to a function.
+   5DATA228+1   F - Unmatched Parenthesis.
+   5DATA263+1   F - UNDEFINED COMMAND (rest of line not checked).
+   5DATA276+1   F - UNDEFINED COMMAND (rest of line not checked).
+   5.2DATA77+1  F - UNDEFINED COMMAND (rest of line not checked).
+   5.2DATA167+1 F - Unmatched Parenthesis.
+   5.2DATA167+1 F - Invalid or wrong number of arguments to a function.
+   5.2DATA167+1 F - Unmatched Parenthesis.
+   5.2DATA228+1 F - Unmatched Parenthesis.
+   5.2DATA228+1 F - Invalid or wrong number of arguments to a function.
+   5.2DATA228+1 F - Unmatched Parenthesis.
+   5.2DATA263+1 F - UNDEFINED COMMAND (rest of line not checked).
+   5.2DATA276+1 F - UNDEFINED COMMAND (rest of line not checked).
+   6DATA87+1    S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA87+1    S - 'OPEN' command should be invoked through ^%ZIS.
+   6DATA107+1   S - Non-Incremental Lock.
+   6DATA107+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA107+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   6DATA129+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA129+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   6DATA185+1   S - Exclusive or Unargumented NEW command.
+   6DATA186+1   S - Exclusive or Unargumented NEW command.
+   6DATA260+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA260+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   6DATA263+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA263+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   6DATA286+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   6DATA291+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA291+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   6DATA292+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA292+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   6DATA301+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA301+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   6DATA315+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA315+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   6DATA323+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   6DATA323+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   7DATA75+1    S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA87+1    S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA129+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA147+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA150+1   F - Undefined Function.
+   7DATA151+1   F - Undefined Function.
+   7DATA167+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA173+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA173+1   S - Non-standard $Z function used.
+   7DATA173+1   F - Undefined Function.
+   7DATA190+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA190+1   S - Non-standard $Z function used.
+   7DATA190+1   F - Undefined Function.
+   7DATA192+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA260+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA260+1   S - Non-standard $Z function used.
+   7DATA260+1   F - Undefined Function.
+   7DATA291+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA291+1   S - Non-standard $Z function used.
+   7DATA291+1   F - Undefined Function.
+   7DATA292+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA292+1   S - Non-standard $Z function used.
+   7DATA292+1   F - Undefined Function.
+   7DATA296+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA296+1   S - Non-standard $Z function used.
+   7DATA296+1   F - Undefined Function.
+   7DATA297+1   S - Non-standard $Z special variable used.
+   7DATA297+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA297+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   7DATA301+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA301+1   S - Non-standard $Z function used.
+   7DATA301+1   F - Undefined Function.
+   7DATA318+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA318+1   S - Non-standard $Z function used.
+   7DATA318+1   F - Undefined Function.
+   7DATA320+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA320+1   S - Non-standard $Z function used.
+   7DATA320+1   F - Undefined Function.
+   7DATA321+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA321+1   S - Non-standard $Z function used.
+   7DATA321+1   F - Undefined Function.
+   7DATA323+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA323+1   S - Non-standard $Z function used.
+   7DATA323+1   F - Undefined Function.
+   7DATA329+1   S - Non-standard $Z function used.
+   7DATA329+1   F - Undefined Function.
+   7DATA330+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA330+1   S - Non-standard $Z function used.
+   7DATA330+1   F - Undefined Function.
+   7DATA338+1   S - Non-standard $Z special variable used.
+   7DATA338+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA338+1   S - Non-standard $Z function used.
+   7DATA338+1   F - Undefined Function.
+   7DATA352+1   S - Non-standard $Z special variable used.
+   7DATA352+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA352+1   S - 'OPEN' command should be invoked through ^%ZIS.
+   7DATA356+1   S - Non-standard $Z special variable used.
+   7DATA356+1   S - 'Close' command should be invoked through 'D ^%ZISC'.
+   7DATA356+1   S - Non-standard $Z function used.
+   7DATA356+1   F - Undefined Function.
+   1925XRF1S+1  S - Set to a '%' global.
+   DX)          W - Invalid local variable name.
+   DY)          W - Invalid local variable name.
+   7DATA240+1   F - Reference to routine '^%CLOSE'. That isn't in this UCI.
+                F - Call to this MISSING LABEL CLOSE^%ZTM4
+                F - Call to this MISSING LABEL OPEN^%ZTM4
+   6DATA206+1   F - Reference to routine '^A2AHDR'. That isn't in this UCI.
+   7DATA184+1   F - Reference to routine '^A6ADOC8'. That isn't in this UCI.
+   6DATA184+1   F - Reference to routine '^A6ADOC8'. That isn't in this UCI.
+   7DATA161+1   F - Reference to routine '^AAH9UF39'. That isn't in this UCI.
+   7DATA298+1   F - Reference to routine '^AKFAXD'. That isn't in this UCI.
+   7DATA317+1   F - Reference to routine '^NVSPRTU'. That isn't in this UCI.
+   7DATA339+1   F - Reference to routine '^WWWMAL83'. That isn't in this UCI.
+   7DATA339+1   F - Reference to routine '^WWWMAL83'. That isn't in this UCI.
+   7DATA166+1   F - Reference to routine '^XGLDEVWN'. That isn't in this UCI.
+                F - Call to this MISSING LABEL DIALDF03^XMM1
+                F - Call to this MISSING LABEL HANGDF03^XMM1
+   50DATA219+1  F - Reference to routine '^XMM4'. That isn't in this UCI.
+   51DATA219+1  F - Reference to routine '^XMM4'. That isn't in this UCI.
+   50DATA240+1  F - Reference to routine '^XMMHAYES'. That isn't in this UCI.
+   7DATA240+1   F - Reference to routine '^XMMHAYES'. That isn't in this UCI.
+
+*****   INDEX OF |dd3.2   *****
+
+
+Local Variables      Line Occurrences   ( >> not killed explicitly)
+                                        ( * Changed  ! Killed  ~ Newed)
+   %            IDW99+1~*,6DATA185+1*,6DATA186+1*
+>> %1           7DATA186+1*,111DATA185+1*
+>> %IO          6DATA185+1*,6DATA186+1*
+>> %PRINT       7DATA296+1,7DATA318+1,7DATA320+1,7DATA321+1,7DATA329+1
+                7DATA330+1,7DATA338+1,7DATA356+1
+>> %SPAWN       7DATA173+1,7DATA260+1,7DATA291+1,7DATA292+1,7DATA301+1
+                7DATA323+1
+>> %ZIS         6DATA185+1*,6DATA186+1*
+>> %ZIS("B"     6DATA185+1*,6DATA186+1*
+   %ZISOS       7DATA185+1~,7DATA186+1~
+   %ZISV        7DATA185+1~,7DATA186+1~
+>> %ZTIO        7DATA88+1*,7DATA163+1*,7DATA168+1*,7DATA240+1*
+   AAH9MSG      6DATA161+1*,7DATA161+1!
+>> COPIES       6DATA185+1*,6DATA186+1*
+>> CSI          6DATA126+1*
+>> D            7DATA260+1*,7DATA291+1*,7DATA292+1*,7DATA301+1*,7DATA323+1*
+>> D0           5.2XRF1S+1*,5.2XRF1K+1*
+>> DA           .01XRF1S+1,.01XRF1K+1,5.2XRF1S+1,5.2XRF1K+1,1925XRF1S+1
+                1925XRF1K+1
+>> DDBDMSG      6DATA169+1*
+>> DHD          6DATA161+1
+>> DIG          5.2XRF1n1.4+1*,5.2XRF1K+1*
+>> DIH          5.2XRF1n1.4+1*,5.2XRF1K+1*
+>> DIU          5.2XRF1S+1*,5.2XRF1K+1*
+   DIV          5.2XRF1S+1!*,5.2XRF1n1.4+1*,5.2XRF1K+1!*
+   DIV(0        5.2XRF1S+1*,5.2XRF1n1.4+1,5.2XRF1K+1*
+   DTIME        6DATA185+1,6DATA186+1
+   DUZ          6DATA185+1,6DATA186+1
+>> DX           5DATA1+1,5DATA3+1,5DATA6+1,5DATA8+1,5DATA9+1,5DATA10+1
+                5DATA30+1,5DATA38+1,5DATA39+1,5DATA44+1,5DATA60+1,5DATA73+1
+                5DATA75+1,5DATA86+1,5DATA90+1,5DATA91+1,5DATA92+1,5DATA93+1
+                5DATA94+1,5DATA98+1,5DATA134+1,5DATA137+1,5DATA149+1,5DATA152+1
+                5DATA164+1,5DATA167+1,5DATA170+1,5DATA210+1,5DATA212+1
+                5DATA229+1,5DATA230+1,5DATA234+1,5DATA238+1,5DATA258+1
+                5DATA290+1,5DATA293+1,5DATA294+1,5DATA295+1,5DATA302+1
+                5DATA308+1,5DATA316+1,5DATA322+1,5DATA328+1,5DATA342+1
+                5DATA343+1
+                5DATA344+1,5DATA345+1,5DATA346+1,5DATA347+1,5DATA348+1
+                5DATA349+1,5DATA350+1,5.2DATA1+1,5.2DATA3+1,5.2DATA6+1
+                5.2DATA8+1,5.2DATA9+1,5.2DATA10+1,5.2DATA30+1,5.2DATA38+1
+                5.2DATA39+1,5.2DATA44+1,5.2DATA60+1,5.2DATA73+1,5.2DATA75+1
+                5.2DATA86+1
+                5.2DATA90+1,5.2DATA91+1,5.2DATA92+1,5.2DATA93+1,5.2DATA94+1
+                5.2DATA98+1,5.2DATA134+1,5.2DATA137+1,5.2DATA149+1,5.2DATA152+1
+                5.2DATA164+1,5.2DATA167+1,5.2DATA170+1,5.2DATA210+1
+                5.2DATA212+1,5.2DATA229+1,5.2DATA230+1,5.2DATA234+1
+                5.2DATA238+1
+                5.2DATA258+1,5.2DATA290+1,5.2DATA293+1,5.2DATA294+1
+                5.2DATA295+1,5.2DATA302+1,5.2DATA308+1,5.2DATA316+1
+                5.2DATA322+1,5.2DATA328+1,5.2DATA342+1,5.2DATA343+1
+                5.2DATA344+1,5.2DATA345+1,5.2DATA346+1,5.2DATA347+1
+                5.2DATA348+1,5.2DATA349+1
+                5.2DATA350+1
+>> DX)          5DATA228+1,5.2DATA228+1
+>> DY           5DATA1+1,5DATA3+1,5DATA6+1,5DATA8+1,5DATA9+1,5DATA10+1
+                5DATA30+1,5DATA38+1,5DATA39+1,5DATA44+1,5DATA60+1,5DATA73+1
+                5DATA75+1,5DATA86+1,5DATA90+1,5DATA91+1,5DATA92+1,5DATA93+1
+                5DATA94+1,5DATA98+1,5DATA134+1,5DATA137+1,5DATA149+1,5DATA152+1
+                5DATA164+1,5DATA170+1,5DATA210+1,5DATA212+1,5DATA228+1
+                5DATA229+1,5DATA230+1,5DATA234+1,5DATA238+1,5DATA258+1
+                5DATA290+1,5DATA293+1,5DATA294+1,5DATA295+1,5DATA302+1
+                5DATA308+1,5DATA316+1,5DATA322+1,5DATA328+1,5DATA342+1
+                5DATA343+1
+                5DATA344+1,5DATA345+1,5DATA346+1,5DATA347+1,5DATA348+1
+                5DATA349+1,5DATA350+1,5.2DATA1+1,5.2DATA3+1,5.2DATA6+1
+                5.2DATA8+1,5.2DATA9+1,5.2DATA10+1,5.2DATA30+1,5.2DATA38+1
+                5.2DATA39+1,5.2DATA44+1,5.2DATA60+1,5.2DATA73+1,5.2DATA75+1
+                5.2DATA86+1
+                5.2DATA90+1,5.2DATA91+1,5.2DATA92+1,5.2DATA93+1,5.2DATA94+1
+                5.2DATA98+1,5.2DATA134+1,5.2DATA137+1,5.2DATA149+1,5.2DATA152+1
+                5.2DATA164+1,5.2DATA170+1,5.2DATA210+1,5.2DATA212+1
+                5.2DATA228+1,5.2DATA229+1,5.2DATA230+1,5.2DATA234+1
+                5.2DATA238+1
+                5.2DATA258+1,5.2DATA290+1,5.2DATA293+1,5.2DATA294+1
+                5.2DATA295+1,5.2DATA302+1,5.2DATA308+1,5.2DATA316+1
+                5.2DATA322+1,5.2DATA328+1,5.2DATA342+1,5.2DATA343+1
+                5.2DATA344+1,5.2DATA345+1,5.2DATA346+1,5.2DATA347+1
+                5.2DATA348+1,5.2DATA349+1
+                5.2DATA350+1
+>> DY)          5DATA167+1,5.2DATA167+1
+   EOF          7DATA185+1~,111DATA185+1*
+   IO           6DATA87+1,6DATA88+1,6DATA107+1,6DATA129+1,6DATA160+1,6DATA161+1
+                6DATA168+1,6DATA252+1,6DATA260+1,6DATA263+1,6DATA275+1
+                6DATA286+1,6DATA291+1,6DATA292+1,6DATA301+1,6DATA315+1
+                6DATA320+1,6DATA321+1,6DATA323+1,6DATA341+1,7DATA87+1
+                7DATA129+1
+                7DATA156+1,7DATA161+1,7DATA166+1,7DATA167+1,7DATA173+1
+                7DATA186+1,7DATA190+1,7DATA191+1,7DATA192+1,7DATA197+1
+                7DATA260+1,7DATA291+1,7DATA292+1,7DATA296+1,7DATA297+1*
+                7DATA301+1,7DATA318+1,7DATA320+1,7DATA321+1,7DATA323+1
+                7DATA329+1
+                7DATA330+1,7DATA338+1*,7DATA339+1,7DATA352+1*,7DATA356+1*
+                111DATA185+1
+   IO("C"       7DATA88+1*,7DATA163+1*,7DATA168+1*,7DATA240+1*
+   IO(0         6DATA161+1,6DATA298+1,7DATA161+1
+   IO(1         7DATA156+1!,7DATA190+1!,7DATA191+1!,7DATA192+1!,7DATA197+1!
+                7DATA297+1!,7DATA338+1!,7DATA339+1!,7DATA352+1!,7DATA356+1!
+   IOF          7DATA131+1,7DATA132+1,7DATA140+1,7DATA141+1,7DATA142+1
+                7DATA143+1,7DATA148+1,7DATA153+1
+   ION          7DATA320+1,7DATA321+1,7DATA329+1,7DATA330+1,7DATA338+1
+                7DATA356+1
+>> IOP          7DATA186+1*,111DATA185+1*
+   IOST         7DATA186+1,111DATA185+1
+   IOST(0       7DATA185+1
+>> NOFORM       6DATA289+1
+>> POP          6DATA185+1,6DATA186+1,7DATA185+1,7DATA186+1
+>> QUE          7DATA329+1*,7DATA356+1*
+   U            IDW99+1,5.2XRF1S+1,5.2XRF1n1.4+1,5.2XRF1K+1,6DATA161+1
+   X            .01+1!,.01XRF1S+1,.01XRF1K+1,1+1!,2+1!,3+1!,4+1!,5+1!,5.2+1!
+                5.2XRF1S+1*,5.2XRF1n1.4+1,5.2XRF1K+1*,6+1!,7+1!,7DATA173+1~*
+                7DATA190+1*,7DATA260+1*,7DATA291+1*,7DATA292+1*,7DATA301+1*
+                7DATA323+1*,8+1!,10+1!,12+1!,12.1+1!,12.11+1!,12.12+1!
+                12.13+1!,12.14+1!,12.15+1!,12.16+1!,12.2+1!,12.3+1!,12.4+1!
+                13+1!,14+1!,15+1!,16+1!,17+1!,18+1!,19+1!,20+1!,20.5+1!,21+1!
+                22+1!,23+1!,24+1!,25+1!,26+1!,27+1!,28+1!,29+1!,30+1!,31+1!
+                32+1!,33+1!,34+1!,35+1!,36+1!,37+1!,40+1!,41+1!,42+1!
+                43+1!,44+1!,45+1!,46+1!,47+1!,48+1!,49+1!,49.1+1!,50+1!,51+1!
+                52+1!,60+1!,61+1!,62+1!,65+1!,65.1+1!,65.2+1!,65.3+1!,66+1!
+                67+1!,67.21+1!,67.22+1!,68+1!,69+1!,69.11+1!,69.12+1!,69.13+1!
+                69.14+1!,69.2+1!,69.3+1!,69.4+1!,69.5+1!,69.6+1!
+                69.7+1!,69.8+1!,70+1!,71+1!,72+1!,73+1!,74+1!,75+1!,76+1!,77+1!
+                78+1!,79+1!,79.1+1!,80+1!,81+1!,82+1!,83+1!,85+1!,86+1!,87+1!
+                88+1!,99+1!,102+1!,110+1!,111+1!,112+1!,120+1!,121+1!,122+1!
+                123+1!,124+1!,125+1!,126+1!,127+1!,128+1!,129+1!
+                130+1!,131+1!,132+1!,133+1!,134+1!,135+1!,136+1!,137+1!,140+1!
+                141+1!,142+1!,143+1!,144+1!,145+1!,146+1!,147+1!,200+1!,201+1!
+                202+1!,203+1!,204+1!,205+1!,206+1!,207+1!,208+1!,209+1!,210+1!
+                211+1!,1001+1!,1002+1!,1003+1!,1925+1!,1925XRF1S+1
+                1925XRF1K+1
+   XMIO         7DATA339+1!
+   XMPMSG       7DATA190+1!,7DATA192+1!
+>> XMR          6DATA161+1,6DATA169+1
+>> XMREC        7DATA339+1*
+>> XXX          7DATA296+1*,7DATA318+1*,7DATA320+1*,7DATA321+1*,7DATA330+1*
+                7DATA338+1*
+   Y            5.2XRF1S+1!,5.2XRF1K+1!
+   Y(1          5.2XRF1S+1*,5.2XRF1K+1*
+   ZIO          7DATA297+1*!,7DATA352+1*!
+>> ZTNONEXT     7DATA88+1*,7DATA163+1*,7DATA168+1*,7DATA240+1*
+>> ZTQUEUED     6DATA185+1,6DATA186+1,7DATA163+1,7DATA185+1
+   ZZFF         7DATA185+1~,111DATA185+1*
+   ZZIO         7DATA297+1*!,7DATA352+1*!
+
+Global Variables  ( * Changed  ! Killed)
+   ^%ZIS(2             .01XRF1S+1*,.01XRF1K+1!,5.2XRF1S+1,5.2XRF1n1.4+1
+                       5.2XRF1K+1,7DATA185+1,1925XRF1S+1*,1925XRF1K+1!
+   ^%ZTSCH             6DATA107+1
+   ^DD(                5.2XRF1n1.4+1,5.2XRF1K+1
+   ^DD(3.2             5.2XRF1S+1
+   ^TMP("SDP"          6DATA185+1*,6DATA186+1*,7DATA186+1,111DATA185+1
+
+Naked Globals
+   ^("COPIES"   7DATA186+1,111DATA185+1
+   ^("IOM"      7DATA186+1,111DATA185+1
+   ^(1          5.2XRF1S+1,5.2XRF1n1.4+1*,5.2XRF1K+1*
+   ^(9          IDW99+1
+
+Cache Objects
+   NONE
+
+Marked Items
+   NONE
+
+Label References
+   NONE
+
+External References
+   IO^%CLOSE           7DATA240+1
+   ^%ZIS               6DATA185+1,6DATA186+1,7DATA185+1,7DATA186+1
+   ^%ZISC              7DATA185+1,7DATA186+1
+   CHECK^%ZISS1        2+1,4+1,10+1,12+1,12.1+1,12.11+1,12.12+1,12.13+1,12.14+1
+                       12.15+1,12.16+1,12.2+1,12.3+1,12.4+1,13+1,14+1,15+1,16+1
+                       17+1,18+1,19+1,20+1,20.5+1,21+1,22+1,23+1,24+1,25+1,26+1
+                       27+1,28+1,29+1,30+1,31+1,32+1,33+1,34+1,35+1,36+1,37+1
+                       40+1
+                       41+1,42+1,43+1,45+1,46+1,47+1,48+1,49+1,49.1+1,68+1,69+1
+                       69.11+1,69.12+1,69.13+1,69.14+1,69.2+1,69.3+1,69.4+1
+                       69.5+1,69.6+1,69.7+1,69.8+1,70+1,71+1,72+1,73+1,74+1
+                       75+1,76+1,77+1,78+1,79+1,79.1+1,80+1,81+1,82+1,83+1,85+1
+                       86+1,87+1,88+1
+                       112+1,120+1,121+1,122+1,123+1,124+1,125+1,126+1,127+1
+                       128+1,129+1,130+1,131+1,132+1,133+1,134+1,135+1,136+1
+                       137+1,140+1,141+1,142+1,143+1,144+1,145+1,146+1,147+1
+                       201+1,203+1,205+1,207+1,209+1,211+1
+   CHECK1^%ZISS1       5+1,5.2+1
+   FORM^%ZISS1         2+1
+   CLOSE^%ZTM4         7DATA146+1
+   OPEN^%ZTM4          6DATA146+1
+   ^A2AHDR             6DATA206+1,6DATA207+1,6DATA218+1,6DATA232+1,6DATA233+1
+                       6DATA239+1,6DATA260+1,6DATA264+1,6DATA291+1,6DATA292+1
+                       6DATA301+1,6DATA320+1,6DATA321+1,6DATA323+1,6DATA336+1
+                       6DATA351+1
+   CLOSE^A6ADOC8       7DATA184+1
+   OPEN^A6ADOC8        6DATA184+1
+   EN^AAH9UF39         7DATA161+1
+   ^AKFAXD             7DATA298+1
+   CLOSE^DDBRZIS       7DATA169+1
+   OPEN^DDBRZIS        6DATA169+1
+   EN^DDIOL            IDW99+1
+   ^DICR               5.2XRF1n1.4+1,5.2XRF1K+1
+   ^DIM                5+1,5.2+1,6+1,7+1,8+1,50+1,51+1,102+1,110+1,111+1
+   CLOSE^MAGGTU5       7DATA197+1
+   CLOSE^NVSPRTU       7DATA317+1,7DATA319+1,7DATA324+1,7DATA331+1,7DATA333+1
+                       7DATA334+1,7DATA336+1,7DATA337+1,7DATA341+1,7DATA351+1
+   ^WWWMAL83           7DATA339+1
+   READ^WWWMAL83       7DATA339+1
+   CLOSE^XDRDVAL       7DATA195+1
+   OPEN^XDRDVAL        6DATA195+1
+   READ^XGLDEVWN       7DATA166+1
+   READ^XMAPHOST       7DATA156+1,7DATA190+1,7DATA191+1,7DATA192+1,7DATA297+1
+                       7DATA352+1
+   DHAYES^XMM1         50DATA79+1,50DATA138+1
+   DIAL3451^XMM1       50DATA77+1
+   DIALDF03^XMM1       50DATA78+1
+   HANG3451^XMM1       51DATA77+1
+   HANGDF03^XMM1       51DATA78+1
+   HHAYES^XMM1         51DATA79+1,51DATA138+1
+   DIAL^XMM2           50DATA80+1
+   HANG^XMM2           51DATA80+1
+   DIAL^XMM4           50DATA219+1
+   HANG^XMM4           51DATA219+1
+   DIAL^XMMHAYES       50DATA240+1
+   HANG^XMMHAYES       7DATA240+1,51DATA240+1
+
+*****   END   *****
+
+
+|dd3.2055       * *  15 Lines,  491 Bytes, Checksum: 
+                                                  Mar 13, 2018@10:57:58 page 3
+              212 bytes in comments
+|dd3.2055 ;DD of the CONTROL CODES sub-file of the TERMINAL TYPE (#3.2) file.
+.001     ; NUMBER
+         K:+X'=X!(X>99)!(X<1)!(X?.E1"."2N.N) X
+.01      ; CTRL CODE ABBREVIATION
+         K:$L(X)>8!($L(X)<2) X
+.01XRF1S ; SET LOGIC FOR 'B' XREF
+         S ^%ZIS(2,DA(1),55,"B",$E(X,1,30),DA)=""
+.01XRF1K ; KILL LOGIC FOR 'B' XREF
+         K ^%ZIS(2,DA(1),55,"B",$E(X,1,30),DA)
+1        ; FULL NAME
+         K:$L(X)>75!($L(X)<3) X
+2        ; CONTROL CODE
+         K:$L(X)>245 X D:$D(X) ^DIM
+2DATA1,360 --
+          ; Data file 3.2055, field 2, IENS 1,360
+         W "^XA"
+*****   ERRORS & WARNINGS IN |dd3.2055   *****
+   .01XRF1S+1   S - Set to a '%' global.
+
+*****   INDEX OF |dd3.2055   *****
+
+
+Local Variables      Line Occurrences   ( >> not killed explicitly)
+                                        ( * Changed  ! Killed  ~ Newed)
+>> DA           .01XRF1S+1,.01XRF1K+1
+>> DA(1         .01XRF1S+1,.01XRF1K+1
+   X            .001+1!,.01+1!,.01XRF1S+1,.01XRF1K+1,1+1!,2+1!
+
+Global Variables  ( * Changed  ! Killed)
+   ^%ZIS(2             .01XRF1S+1*,.01XRF1K+1!
+
+Naked Globals
+   NONE
+
+Cache Objects
+   NONE
+
+Marked Items
+   NONE
+
+Label References
+   NONE
+
+External References
+   ^DIM                2+1
+
+*****   END   *****
+
+
+|dd3.206        * *  1 Lines,  89 Bytes, Checksum: 
+                                                  Mar 13, 2018@10:57:58 page 4
+              78 bytes in comments
+|dd3.206 ;DD of the OPEN EXECUTE DESCRIPTION sub-file of the TERMINAL TYPE (#3.2
+          ) file.
+
+*****   INDEX OF |dd3.206   *****
+
+
+Local Variables      Line Occurrences   ( >> not killed explicitly)
+                                        ( * Changed  ! Killed  ~ Newed)
+   NONE
+
+Global Variables  ( * Changed  ! Killed)
+   NONE
+
+Naked Globals
+   NONE
+
+Cache Objects
+   NONE
+
+Marked Items
+   NONE
+
+Label References
+   NONE
+
+External References
+   NONE
+
+*****   END   *****
+
+
+|dd3.207        * *  1 Lines,  89 Bytes, Checksum: 
+                                                  Mar 13, 2018@10:57:58 page 5
+              78 bytes in comments
+|dd3.207 ;DD of the OPEN PRINTER DESCRIPTION sub-file of the TERMINAL TYPE (#3.2
+          ) file.
+
+*****   INDEX OF |dd3.207   *****
+
+
+Local Variables      Line Occurrences   ( >> not killed explicitly)
+                                        ( * Changed  ! Killed  ~ Newed)
+   NONE
+
+Global Variables  ( * Changed  ! Killed)
+   NONE
+
+Naked Globals
+   NONE
+
+Cache Objects
+   NONE
+
+Marked Items
+   NONE
+
+Label References
+   NONE
+
+External References
+   NONE
+
+*****   END   *****
+
+
+*****   Cross Reference of all Routines   *****   Mar 13, 2018@10:57:58 page 6
+
+Local Variables    Routines   ( >> not killed explicitly)
+                              ( * Changed  ! Killed  ~ Newed)
+   %            |dd3.2*~
+>> %1           |dd3.2*
+>> %IO          |dd3.2*
+>> %PRINT       |dd3.2
+>> %SPAWN       |dd3.2
+>> %ZIS         |dd3.2*
+>> %ZIS("B"     |dd3.2*
+   %ZISOS       |dd3.2~
+   %ZISV        |dd3.2~
+>> %ZTIO        |dd3.2*
+   AAH9MSG      |dd3.2*!
+>> COPIES       |dd3.2*
+>> CSI          |dd3.2*
+>> D            |dd3.2*
+>> D0           |dd3.2*
+>> DA           |dd3.2,|dd3.2055
+>> DA(1         |dd3.2055
+>> DDBDMSG      |dd3.2*
+>> DHD          |dd3.2
+>> DIG          |dd3.2*
+>> DIH          |dd3.2*
+>> DIU          |dd3.2*
+   DIV          |dd3.2*!
+   DIV(0        |dd3.2*
+   DTIME        |dd3.2
+   DUZ          |dd3.2
+>> DX           |dd3.2,|dd3.2,|dd3.2,|dd3.2,|dd3.2,|dd3.2
+>> DX)          |dd3.2
+>> DY           |dd3.2,|dd3.2,|dd3.2,|dd3.2,|dd3.2,|dd3.2
+>> DY)          |dd3.2
+   EOF          |dd3.2*~
+   IO           |dd3.2,|dd3.2*,|dd3.2*
+   IO("C"       |dd3.2*
+   IO(0         |dd3.2
+   IO(1         |dd3.2!
+   IOF          |dd3.2
+   ION          |dd3.2
+>> IOP          |dd3.2*
+   IOST         |dd3.2
+   IOST(0       |dd3.2
+>> NOFORM       |dd3.2
+>> POP          |dd3.2
+>> QUE          |dd3.2*
+   U            |dd3.2
+   X            |dd3.2*!~,|dd3.2!,|dd3.2!,|dd3.2!,|dd3.2!,|dd3.2,|dd3.2055!
+   XMIO         |dd3.2!
+   XMPMSG       |dd3.2!
+>> XMR          |dd3.2
+>> XMREC        |dd3.2*
+>> XXX          |dd3.2*
+   Y            |dd3.2!
+   Y(1          |dd3.2*
+   ZIO          |dd3.2*!
+>> ZTNONEXT     |dd3.2*
+>> ZTQUEUED     |dd3.2
+   ZZFF         |dd3.2*~
+   ZZIO         |dd3.2*!
+
+Global Variables
+   ^%ZIS(2             |dd3.2*!,|dd3.2055*!
+   ^%ZTSCH             |dd3.2
+   ^DD(                |dd3.2
+   ^DD(3.2             |dd3.2
+   ^TMP("SDP"          |dd3.2*
+
+Naked Globals
+   ^("COPIES"   |dd3.2
+   ^("IOM"      |dd3.2
+   ^(1          |dd3.2*
+   ^(9          |dd3.2
+
+Cache Objects
+   NONE
+
+Marked Items
+   NONE
+
+Routine             Invokes:
+   |dd3.2       IO^%CLOSE,%ZIS,%ZISC,CHECK^%ZISS1,CHECK1^%ZISS1,FORM^%ZISS1
+                CLOSE^%ZTM4,OPEN^%ZTM4,A2AHDR,CLOSE^A6ADOC8,OPEN^A6ADOC8
+                EN^AAH9UF39,AKFAXD,CLOSE^DDBRZIS,OPEN^DDBRZIS,EN^DDIOL,DICR,DIM
+                CLOSE^MAGGTU5,CLOSE^NVSPRTU,WWWMAL83,READ^WWWMAL83
+                CLOSE^XDRDVAL,OPEN^XDRDVAL,READ^XGLDEVWN,READ^XMAPHOST
+                DHAYES^XMM1,DIAL3451^XMM1,DIALDF03^XMM1,HANG3451^XMM1
+                HANGDF03^XMM1,HHAYES^XMM1,DIAL^XMM2,HANG^XMM2,DIAL^XMM4
+                HANG^XMM4,DIAL^XMMHAYES,HANG^XMMHAYES
+   |dd3.2055    DIM
+
+Routine             is Invoked by:
+   IO^%CLOSE           |dd3.2
+   ^%ZIS               |dd3.2
+   ^%ZISC              |dd3.2
+   CHECK^%ZISS1        |dd3.2
+   CHECK1^%ZISS1       |dd3.2
+   FORM^%ZISS1         |dd3.2
+   CLOSE^%ZTM4         |dd3.2
+   OPEN^%ZTM4          |dd3.2
+   ^A2AHDR             |dd3.2
+   CLOSE^A6ADOC8       |dd3.2
+   OPEN^A6ADOC8        |dd3.2
+   EN^AAH9UF39         |dd3.2
+   ^AKFAXD             |dd3.2
+   CLOSE^DDBRZIS       |dd3.2
+   OPEN^DDBRZIS        |dd3.2
+   EN^DDIOL            |dd3.2
+   ^DICR               |dd3.2
+   ^DIM                |dd3.2,|dd3.2055
+   CLOSE^MAGGTU5       |dd3.2
+   CLOSE^NVSPRTU       |dd3.2
+   ^WWWMAL83           |dd3.2
+   READ^WWWMAL83       |dd3.2
+   CLOSE^XDRDVAL       |dd3.2
+   OPEN^XDRDVAL        |dd3.2
+   READ^XGLDEVWN       |dd3.2
+   READ^XMAPHOST       |dd3.2
+   DHAYES^XMM1         |dd3.2
+   DIAL3451^XMM1       |dd3.2
+   DIALDF03^XMM1       |dd3.2
+   HANG3451^XMM1       |dd3.2
+   HANGDF03^XMM1       |dd3.2
+   HHAYES^XMM1         |dd3.2
+   DIAL^XMM2           |dd3.2
+   HANG^XMM2           |dd3.2
+   DIAL^XMM4           |dd3.2
+   HANG^XMM4           |dd3.2
+   DIAL^XMMHAYES       |dd3.2
+   HANG^XMMHAYES       |dd3.2
+
+*****   END   *****
+
+
+--- END ---
