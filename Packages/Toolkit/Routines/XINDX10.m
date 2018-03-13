@@ -1,8 +1,9 @@
-XINDX10 ;ISC/GRK,KRM/CJE,OSE/SMH - assemble DD executable code ;2018-03-12  3:47 PM
+XINDX10 ;ISC/GRK,KRM/CJE,OSE/SMH - assemble DD executable code ;2018-03-13  10:37 AM
  ;;7.3;TOOLKIT;**20,27,66,68,132,10001**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; Entry points ASKNS,ASKFILES,N1,F1,NS,FILE,INDX &
- ; Lines START+1,STRIP+14-16 authored by Christopher Edwards.
+ ; Lines START+1,STRIP+14-16 authored by Christopher Edwards 2017.
+ ; Lines STRIP+16ff, tags ROUTAG,DATA1,AGAIN by Sam Habiel for XINDEXING data 2018.
 ASK ;Ask for Build, Install, or Package file.
  N X,Y,P,V,RN
  S DA=0,Y=-1,INP(11)=""
@@ -241,9 +242,9 @@ AGAIN ; Recursive Looper entry point
  ... s INDC=INDC_" ; Data file "_INDFN_", field "_INDF_", IENS "_IENS
  ... d ADD
  . ; debugging - remove later
- . w finalGlo1
- . w:$d(finalGlo2) " ",finalGlo2
- . w !
+ . ; w finalGlo1
+ . ; w:$d(finalGlo2) " ",finalGlo2
+ . ; w !
  . ; debugging
  quit
  ;
