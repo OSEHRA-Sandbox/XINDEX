@@ -113,7 +113,7 @@ STRIP ;
  S INDEL="" F  S INDEL=$O(^DD(INDFN,INDF,"V",INDEL)) Q:INDEL=""  I $D(^(INDEL,1))#2 S INDC=INDF_"VPSCR"_INDEL_" ; VARIABLE POINTER SCREEN",INDX=^(1) D ADD
  ;
  ; Modifications to XINDEX data *10001* OSE/SMH
- I A["K" D DATA1(INDFN,INDF) ; OSE/SMH - M code in Data
+ I A["K"!($P(^DD(IDFN,INDF,0),"^",5,999)["^DIM") D DATA1(INDFN,INDF) ; OSE/SMH;WV/DJW - M code in Data
  I $P(^DD(INDFN,INDF,0),U)["ROUTINE" D ROUTAG ; OSE/SMH - Routine and tag stored separately
  ;
  Q
