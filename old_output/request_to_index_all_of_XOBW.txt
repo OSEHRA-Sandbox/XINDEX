@@ -1,0 +1,42 @@
+GTM>D ^XINDEX
+
+
+                   V. A.  C R O S S  R E F E R E N C E R  7.3
+                       [2008 VA Standards & Conventions]
+               UCI: F201303C CPU: ICARUS    Apr 10, 2018@12:52:27
+
+Routine: XOBW
+
+Current total of 0 routines.
+
+Routine: XOBW*
+XOBWD     XOBWENV   XOBWLIB   XOBWLIB1  XOBWPST   XOBWPWD   XOBWSSL   XOBWU     XOBWU1    XOBWUA    XOBWUA1   XOBWUS    XOBWUS1   XOBWUS2   
+Current total of 14 routines.
+
+Routine: 
+
+Select BUILD NAME: XOBW 1.0       WEB SERVICES CLIENT     WEB SERVICES CLIENT
+
+Include the compiled template routines: N//
+
+Print more than compiled errors and warnings? YES//
+
+Print summary only? NO//
+
+Print routines? YES//
+
+Print (R)egular,(S)tructured or (B)oth?  R//
+
+Print the DDs, Functions, and Options? YES//
+
+Print errors and warnings with each routine? YES//
+
+Save parameters in ROUTINE file? NO//
+
+Index all called routines? NO//
+
+This report could take some time, Remember to QUEUE the report.
+
+DEVICE: HFS  Host File Server
+HOST FILE NAME: USER$:[TEMP]TMP.DAT///tmp/hfs.dat  ADDRESS/PARAMETERS: "WNS"// newversion
+
