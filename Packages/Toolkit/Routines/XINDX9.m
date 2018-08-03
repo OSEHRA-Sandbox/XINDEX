@@ -1,5 +1,5 @@
-XINDX9 ;SF/RWF - XINDEX SYNTAX CHECKER ;2018-03-01  10:00 AM
- ;;7.3;TOOLKIT;**20,27,48,61,66,68,110,121,132,133,10001**;Apr 25, 1995;Build 15
+XINDX9 ;SF/RWF - XINDEX SYNTAX CHECKER ;2018-08-03  11:21 AM
+ ;;7.3;TOOLKIT;**20,27,48,61,66,68,110,121,132,133,10001**;Apr 25, 1995;Build 4
  ; Original routine authored by Department of Veterans Affairs
  ; Modifications in *10001* made by Sam Habiel: GVAR+2,OBJ+2,VAR1+7 in 2018
  N CH1,CHO,EC,OP
@@ -69,7 +69,8 @@ QUOTE F I=I+1:1 S CH=$E(STR,I) Q:CH=""!(CH=Q)
  ;
 GVAR() ;EF get var
  N % D VAR S %=$E(STR,LL,I),LL=I+1
- Q $$CASE(%)
+ I %["$$" Q %
+ E  Q $$CASE(%)
  ;
 OBJ ;check Cache Object
  S J=$E(STR,I,I+7),J=$$CASE(J) I J'="##CLASS(" D E^XINDX1(3) Q
