@@ -1,4 +1,4 @@
-XINDX10 ;ISC/GRK,KRM/CJE,OSE/SMH - assemble DD executable code ; 7/29/19 11:18am
+XINDX10 ;ISC/GRK,KRM/CJE,OSE/SMH - assemble DD executable code ; 7/30/19 2:30pm
  ;;7.3;TOOLKIT;**20,27,66,68,132,10001,10003**;Apr 25, 1995;Build 13
  ; Original routine authored by U.S. Department of Veterans Affairs
  ; Entry points ASKNS,ASKFILES,N1,F1,NS,FILE,INDX &
@@ -113,7 +113,7 @@ STRIP ;
  S INDEL="" F  S INDEL=$O(^DD(INDFN,INDF,"V",INDEL)) Q:INDEL=""  I $D(^(INDEL,1))#2 S INDC=INDF_"VPSCR"_INDEL_" ; VARIABLE POINTER SCREEN",INDX=^(1) D ADD
  ;
  ; Modifications to XINDEX data *10001* OSE/SMH
- I A["K"!($P(^DD(IDFN,INDF,0),"^",5,999)["^DIM") D DATA1(INDFN,INDF) ; OSE/SMH;WV/DJW - M code in Data ; *10003* M CODE if has ^DIM in input transform
+ I A["K"!($P(^DD(INDFN,INDF,0),"^",5,999)["^DIM") D DATA1(INDFN,INDF) ; OSE/SMH;WV/DJW - M code in Data ; *10003* M CODE if has ^DIM in input transform
  I $P(^DD(INDFN,INDF,0),U)["ROUTINE" D ROUTAG ; OSE/SMH - Routine and tag stored separately
  ;
  Q
