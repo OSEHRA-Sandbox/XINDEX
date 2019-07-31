@@ -19,6 +19,75 @@ when trying to find other code references or compliance with the SAC.
 Opportunity was taken during this development to incorporate VistA community
 feedback and enhancements on XINDEX.
 
+---------------
+Note on Release
+---------------
+As of August 2019, the enhanced XINDEX has two builds: XT*7.3*10001 and
+XT*7.3*10003. The latter build contains minor bug fixes for bugs/omissions
+discovered after the final release of XT*7.3*10001. You can install
+XT*7.3*10001 and then XT*7.3*10003 by themselves or install the multibuild that
+contains both of them. It's completely safe to re-install.
+
+* `XT*7.3*10001 <https://github.com/OSEHRA-Sandbox/XINDEX/releases/download/XT-7.3-10001/XT-7p3-10001T4.KID>`_
+* `XT*7.3*10003 <https://github.com/OSEHRA-Sandbox/XINDEX/releases/download/XT-7.3-10003/XT-7p3-10003.KID>`_
+* `Multibuild <https://github.com/OSEHRA-Sandbox/XINDEX/releases/download/XT-7.3-10003/XT-7p3-10001-10003-MB.KID>`_
+
+This README is for all of XINDEX. `Release notes specifically for XT*7.3*10003
+<Packages/Toolkit/Documentation/xt-7p3-10003/README.rst>`_
+are detailed in a separate document in the documentation folder.
+
+--------------------
+Install Instructions
+--------------------
+From the links above, grab the KIDS build. Install that KIDS build into a VistA or RPMS system.
+Here's an example of an install transcript for the Multibuild (\*\* means type the following \*\*)::
+
+
+
+
+    $ **$gtm_dist/mumps -r ^%XCMD 'S DUZ=1 D DUZ^XUP(DUZ),HOME^%ZIS,^XPDIL,^XPDI'**
+
+    Enter a Host File: **./XT-7p3-10001-10003-MB.KID**
+
+    KIDS Distribution saved on Jul 31, 2019@08:49:03
+    Comment: XINDEX Multibuild (contains all of XINDEX + fixes) T2
+
+    This Distribution contains Transport Globals for the following Package(s):
+       XT*7.3*10001
+       XT*7.3*10003
+    Distribution OK!
+
+    Want to Continue with Load? YES// **enter**
+    Loading Distribution...
+
+       XT*7.3*10001
+       XT*7.3*10003
+    Use INSTALL NAME: XT*7.3*10001 to install this Distribution.
+
+    Select INSTALL NAME: **XT*7.3*10001**       Loaded from Distribution    7/31/19@14:5
+    6:11
+         => XINDEX Multibuild (contains all of XINDEX + fixes) T2  ;Created on Jul
+
+    This Distribution was loaded on Jul 31, 2019@14:56:11 with header of 
+       XINDEX Multibuild (contains all of XINDEX + fixes) T2  ;Created on Jul 31, 20
+    19@08:49:03
+       It consisted of the following Install(s):
+       XT*7.3*10001   XT*7.3*10003
+    Checking Install for Package XT*7.3*10001
+
+    Install Questions for XT*7.3*10001
+
+
+    Checking Install for Package XT*7.3*10003
+
+    Install Questions for XT*7.3*10003
+
+
+
+    Want KIDS to INHIBIT LOGONs during the install? NO// **enter** 
+    Want to DISABLE Scheduled Options, Menu Options, and Protocols? NO// **enter** 
+
+
 -----------
 Development
 -----------
@@ -97,7 +166,7 @@ talking about, plus code::
          ; Data file 3.2055, field 2, IENS 1,360
          W "^XA"
 
-See the sample_output/ folder for a full example of XINDEXing the TERMINAL TYPE
+See the `Sample Output <Packages/Toolkit/Documentation/sample_output/>`__ folder for a full example of XINDEXing the TERMINAL TYPE
 file (#3.2).
 
 Other Component Coverage (CJE)
@@ -157,19 +226,33 @@ filenames of ``DIBTOUT.csv``, ``DIETOUT.csv``, and ``DIPTOUT.csv`` are used.
 
 Other Enhancements to XINDEX
 ============================
-* XINDX1 Added error 65: ;;X,Z,DI,DD,KMP;S - Vendor specific code is not allowed (SACC 2.2.8) (SMH)
-* XINDX2 Modified to not crash on non-Cache systems when trying to evaluate the existence of Cache classes (JL)
-* XINDX6 allows you to choose "F" for diagramming control flow (DJW). XINDEX already supported this but did not show "F" as an option when printing routines.
-* XINDX8 ':' (post-conditionals) show as a lowercase "if" in structured listing of routines (DJW).
-* XINDX9 Lower case ISV's are now recognized as valid M syntax (SMH).
-* XINDX9 Cache Objects will trigger error #65, but only for non-Kernel packages (SMH).
-* XINDX5 Tags can be 16 characters long according to latest SAC (JM).
-* XINDX3 R $$ or R $P is invalid syntax (GFT).
-* XINDX7 Update VA Standards and Conventions tag line with correct version of the current SAC that this XINDEX enforces (SMH).
-* XINDX7 ^$PDISPLAY is not a standard SSVN (GFT).
-* XINDX7 Fix spelling on environment (CJE).
-* XINDX51 Routine name can be up to 16 characters long in the header (GFT)
-* XINDX51 Print Fileman documentation file in routine listings if it is present (GFT).
+* XINDEX [p10003] Routine name printer when collecting routines now assumes
+  they are ≤16 characters long (DJW)
+* XINDX1 [p10001] Added error 65: ;;X,Z,DI,DD,KMP;S - Vendor specific code is
+  not allowed (SACC 2.2.8) (SMH)
+* XINDX2 [p10001] Modified to not crash on non-Cache systems when trying to
+  evaluate the existence of Cache classes (JL)
+* XINDX6 [p10001] allows you to choose "F" for diagramming control flow (DJW)
+  XINDEX already supported this but did not show "F" as an option when printing
+  routines
+* XINDX8 [p10001] ':' (post-conditionals) show as a lowercase "if" in
+  structured listing of routines (DJW)
+* XINDX9 [p10001] Lower case ISV's are now recognized as valid M syntax (SMH)
+* XINDX9 [p10001] Cache Objects will trigger error #65, but only for non-Kernel
+  packages (SMH)
+* XINDX9 [p10003] Don't uppercase labels in routines (SMH)
+* XINDX5 [p10001] Tags can be 16 characters long according to latest SAC (JM)
+* XINDX3 [p10001] R $$ or R $P is invalid syntax (GFT)
+* XINDX7 [p10001] Update VA Standards and Conventions tag line with correct
+  version of the current SAC that this XINDEX enforces (SMH)
+* XINDX7 [p10001] ^$PDISPLAY is not a standard SSVN (GFT)
+* XINDX7 [p10001] Fix spelling on environment (CJE)
+* XINDX10 [p10003] Check for call to ^DIM as wel to determine if field contains
+  M data (DJW)
+* XINDX51 [p10001] Routine name can be up to 16 characters long in the header
+  (GFT)
+* XINDX51 [p10001] Print Fileman documentation file in routine listings if it
+  is present (GFT)
 
 ----------------
 Future Work List
@@ -187,7 +270,7 @@ Unit Tests
 
 No Unit Tests are supplied in this release. The following are manual testing instructions:
 
-To exercise the enhanced finding of M-code snippets in the database, follow the example in `here <sample_output/request_to_index_all_of_XOBW.txt>`_. See usage instructions below for more details.
+To exercise the enhanced finding of M-code snippets in the database, follow the example in `here <Packages/Toolkit/Documentation/sample_output/request_to_index_all_of_XOBW.txt>`_. See usage instructions below for more details.
 
 To exercise the tracing of pointers in Fileman templates, run ``D
 ALL^XINDX13``.
@@ -233,7 +316,7 @@ XINDEX's output has been added to DD has been expanded to accomodate extra field
 * HL7 Application Parameters ( " " " \|hlap)
 * Remote Procedures ( " " " \|rpc)
 
-Here is some sample output. \*\*\* means that this output is new. If a whole section is new, then \*\*\* will only show up on the section header. See the sample_output/ folder for a full example of XINDEXing the Health-e-Vet Web Services package. The sample below does not include the XINDEX and error listing for the faux routines for brevity's sake.::
+Here is some sample output. \*\*\* means that this output is new. If a whole section is new, then \*\*\* will only show up on the section header. See the `Sample Output <Packages/Toolkit/Documentation/sample_output/>`__ folder for a full example of XINDEXing the Health-e-Vet Web Services package. The sample below does not include the XINDEX and error listing for the faux routines for brevity's sake.::
 
 
   |dd18.12        * *  41 Lines,  1452 Bytes, Checksum: 
@@ -331,46 +414,6 @@ Here is some sample output. \*\*\* means that this output is new. If a whole sec
            DO INIT^XOBWUS2
            ; XOBW WEB SERVICE DISPLAY - ARRAY NAME (#107)
            ;
-
---------------------
-Install Instructions
---------------------
-From https://github.com/OSEHRA-Sandbox/XINDEX/releases, grab the latest KIDS build. Install that KIDS build into a VistA or RPMS system.
-Here's an example of an install transcript (** means type the following **)::
-
-    $ **$gtm_dist/mumps -r ^%XCMD 'S DUZ=1 D DUZ^XUP(DUZ),HOME^%ZIS,^XPDIL,^XPDI'**
-
-    Enter a Host File: **./XT-7p3-10001T1.KID**
-
-    KIDS Distribution saved on Feb 23, 2018@13:20:39
-    Comment: T1 version
-
-    This Distribution contains Transport Globals for the following Package(s):
-    Build XT*7.3*10001
-    Distribution OK!
-
-    Want to Continue with Load? YES// **enter**
-    Loading Distribution...
-
-       XT*7.3*10001
-    Use INSTALL NAME: XT*7.3*10001 to install this Distribution.
-
-    Select INSTALL NAME: **XT*7.3*10001**      2/26/18@15:00:49
-         => T1 version  ;Created on Feb 23, 2018@13:20:39
-
-    This Distribution was loaded on Feb 26, 2018@15:00:49 with header of 
-       T1 version  ;Created on Feb 23, 2018@13:20:39
-       It consisted of the following Install(s):
-       XT*7.3*10001
-    Checking Install for Package XT*7.3*10001
-
-    Install Questions for XT*7.3*10001
-
-
-
-    Want KIDS to INHIBIT LOGONs during the install? NO// **enter** 
-    Want to DISABLE Scheduled Options, Menu Options, and Protocols? NO// **enter** 
-
 
 -----
 Links

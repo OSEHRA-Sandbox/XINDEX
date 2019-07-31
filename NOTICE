@@ -1,6 +1,7 @@
 OSEHRA XINDEX Modifications
 Copyright 2017-2018 Christopher Edwards, Samuel Habiel, Joseph Synder,
 David Whitten, John McCormack, George Timson.
+Copyright 2019      Samuel Habiel
 
 This product includes software developed for the Open Source
 Electronic Health Record Alliance (http://www.osehra.org/).
@@ -13,3 +14,6 @@ the FOIA release remain in the public domain.
 If a routine has been modified, one of the authors' names will be on the first
 few lines and what code in the routine they authored. Any code they did not
 author is in the public domain as far as can be ascertained.
+
+This product does not include any other external libraries. It is designed to
+run in either VistA or RPMS in an M implementation.
